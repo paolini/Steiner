@@ -1,0 +1,236 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{comment}
+\usepackage{hyperref}
+
+\newcommand{\RR}{\mathbb R}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\ZZ}{\mathbb Z}
+
+\renewcommand{\H}{\mathcal H}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\loc}{\mathrm{loc}}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\Abs}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\enclose}[1]{\left(#1\right)}
+\newcommand{\Enclose}[1]{\left[#1\right]}
+\newcommand{\ENCLOSE}[1]{\left\{#1\right\}}
+\newcommand{\weakstarto}{{\stackrel{*}{\rightharpoonup}}}
+
+\newcommand{\St}{\mathrm{St}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\dist}{\mathrm{dist}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{openpb}[theorem]{Open Problem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+
+\title{Solution to the Steiner problem on an infinite self-similar set}
+\author{Paolini Stepanov}
+
+\begin{document}
+\maketitle
+Let $\St(A)$ be the family of all compact sets $S$ such that 
+$S\cup A$ is connected.
+Let $\M(A)$ be the the subsets of $\St(A)$ of sets $S$ 
+with minimal length $\H^1(S)$.
+
+Let $A$ be the Cantor-like set you know which one: $A=A_1\cup A_2$ 
+with $A_1 = 1+\theta A$, $A_2 = 1+\bar \theta A$,
+$\theta = \lambda e^{i \frac \pi 3}$.
+Let $W=[-ih,ih]$ where $h=\frac{\sqrt{3}} 2 \lambda$.
+
+Let $Y=\ENCLOSE{(x,y)\colon x=0}$ be the $y$-axis.
+
+Let $\Sigma\in \St(Y\cup A)$ be the binary self-similar 
+tree you know which one.
+We claim that $\ENCLOSE{\Sigma} = \M(Y\cup A)$.
+
+\textbf{Ricordare. Dire che $S$ è connesso. 
+Dire che non importa se $Y$ non è limitato.
+Dire che dati due punti di $S$ esiste un unico arco che li connette.
+Dire cos'è un arco. }
+
+\begin{lemma}
+Let $P=(d,0)$, $X$ compact subset of $\overline{B_\rho(P)}$.
+Let $r=2\rho/\sqrt 3$ and suppose that $r<d$.
+Let $S \in \M(Y\cup X)$.
+Then there exists $Q\in \partial B_r(P)$ and $H\in Y$
+such that $S\setminus B_r(P) = [H,Q]$.
+Moreover $[H,Q]$ is perpendicular to $Y$.
+\end{lemma}
+\begin{proof}
+    Otherwise $S$ has a triple point outside $B_r(P)$.
+    So the 120 degree angle encloses the whole ball $B_\rho(P)$ 
+    and a projection would decrease the length.
+\end{proof}
+
+\begin{lemma}\label{lm:precedente1}
+One has
+\begin{align*}
+    \dist(Y,A_1) & \ge 
+    1+ \frac{\lambda} 2 
+    - \frac{\lambda^2(1+2\lambda)}{2(1-\lambda^2)}\\
+    \dist(A_1,A_2) & 
+    \ge 
+    \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}.
+\end{align*}
+\end{lemma}
+\begin{proof}
+  \begin{align*}
+  \dist(Y,A_1) &\ge 1+ \frac \lambda 2 
+     - \enclose{\frac{\lambda^2}{2} 
+      + \lambda^3 
+      + \frac{\lambda^4 }{2}
+      + \lambda^5
+      + \frac{\lambda^6}{4} + \dots}\\
+      &= 1 + \frac \lambda 2 
+      - \frac{1}{2}\frac{\lambda^2}{1-\lambda^2}
+      - \frac{\lambda^3}{1-\lambda^2}\\
+      &= 1+ \frac{\lambda} 2 
+      - \frac{\lambda^2(1+2\lambda)}{2(1-\lambda^2)}
+  \end{align*}
+  while 
+  \begin{align*}
+    \dist(A_1,A_2)
+    &\ge 2\enclose{\frac{\sqrt 3}{2} \lambda 
+      -\frac{\sqrt 3}{2}\enclose{\lambda^3 + \lambda^4 + \dots}
+     }\\
+    &= \sqrt 3 \lambda -\sqrt 3 \frac{\lambda^3}{1-\lambda}.
+  \end{align*}
+\end{proof}
+
+\begin{lemma}\label{lm:branching}
+Let $S\in \M(Y\cup A)$
+and $\lambda < \frac 1 {25}$ then $S$ 
+there is a branching point $T\in S$ 
+such that $S\setminus T$ is composed of 
+three connected sets $S_0$, $S_1$ and $S_2$ 
+where $S_0 = [H,T]$ with $H\in Y$ and  
+$S_i \in \M(T\cup A_i)$ for $i=1,2$.
+Moreover $S_0$ is perpendicular to $Y$.
+\end{lemma}
+\begin{proof}
+We first claim that $S$ cannot contain 
+two compact connected sets 
+$\sigma$ and $\gamma$
+with $\H^1(\sigma\cap \gamma)=0$
+such that $\sigma$ touches both $Y$ and $A_1$ 
+while $\gamma$ touches both $A_1$ and $A_2$.
+In fact, otherwise
+\begin{equation}
+\label{eq:43747}
+\begin{aligned}
+  \H^1(S)
+  &\ge \dist(Y, A_1) + \dist(A_1, A_2)
+  \\
+  &\ge 
+  1+ \frac{\lambda} 2 
+    - \frac{\lambda^2}{2}\frac{1}{1-\lambda^2}
+    - \frac{\lambda^3}{2}\frac{1}{1-\lambda^2} 
+   +
+   \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}
+\end{aligned}
+\end{equation}
+by Lemma~\ref{lm:precedente1}.
+But 
+\begin{equation}\label{eq:44321}
+  \H^1(\Sigma) 
+  = 1 + 2 \lambda + 4 \lambda^2 + \dots 
+  = \frac{1}{1-2\lambda}
+\end{equation}
+and one can check that the rhs of \eqref{eq:43747} is
+strictly greater than the rhs of \eqref{eq:44321}
+for $\lambda < \frac 1 {25}$,
+so that $\H^1(S) > \H^1(\Sigma)$ contrary 
+to the optimality of $S$.
+
+By \cite{PaoSte} we know that $S$ touches $Y$ in a single point $H$.
+Consider an arc which connects $H$ to any point of $A$ 
+and consider the longest arc $S_0$, along such a curve, 
+with endpoints $H\in Y$ and $T\in S$
+such that $(S\setminus S_0) \cup \ENCLOSE{T}$ is connected.
+
+\emph{Case 1.} Suppose $T$ is a point of $A$. 
+Without loss of generality suppose $T\in A_1$.
+The set $(S\setminus S_0)\cup\ENCLOSE{T}$ 
+is connected and contains points of both $A_1$ 
+and $A_2$ hence there exists an arc $\gamma$ in $S\setminus \sigma\cup\ENCLOSE{T}$.
+The claim above with $\sigma:=S_0$ implies that this cannot happen.
+
+\emph{Case 2.} Suppose $T\not \in A$.
+In this case $S\setminus S_0$ has two connected components 
+$S_1'$ and $S_2'$ (recall that $S$ contains no loops). 
+Let $S_i:=S_i'\cup \ENCLOSE{T}$.
+Each $S_i$ must contain at least one point of $A$ otherwise 
+$S\setminus S_i\in \St(Y\cup A)$ will be 
+strictly shorter than $S\in \M(Y\cup A)$.
+Moreover each point of $A$ is contained in either $S_1$ or $S_2$.
+Without loss of generality suppose that $S_1$ 
+contains at least one point of $A_1$.
+
+\emph{Case 2a.} Suppose that $S_1$ contains also points of $A_2$.
+Then we can apply the claim above with 
+$\sigma:= S_0 \cup S_2$ and 
+$\gamma:= S_1$ and exclude that this case can happen.
+
+\emph{Case 2b.} If $S_2$ contains points of both $A_1$ and $A_2$ we proceed 
+as in Case 2a with $S_1$ and $S_2$ interchanged.
+
+The only remaining possibility is that $S_1$ only touches points of $A_1$ 
+and $S_2$ only touches points of $A_2$. 
+Hence $S_1\supset A_1$ and $S_2\supset A_2$ since $A\subset S$.
+So $S_0\in \M(\ENCLOSE{H,T})$  
+and $S_i \in \M(\ENCLOSE{T} \cup A_i)$ for $i=1,2$
+otherwise we could construct a better competitor \textbf{[dire meglio]} to $S\in \St(Y\cup A)$.
+
+Clearly $S_0\in \M(\Enclose{H,T})$ implies that $S_0$ is the straight 
+line segment $[H,T]$ perpendicular to $Y$.
+\end{proof}
+
+\begin{lemma}
+  Let $S\in \M(Y\cup A)$ and $\lambda<\frac 1 {25}$.
+  Let $S_0$, $S_1$ and $S_2$ be given as in the statement 
+  of Lemma~\ref{lemma}
+  
+\end{lemma}
+
+\begin{lemma}\label{lm:iteration}
+  Let $S\in\M(Y\cup A)$ and suppose $S_0=[H,T]$, $S_1$ and $S_2$
+  be as in Lemma~\ref{lm:branching}.
+  Let $Y_1$ (and $Y_2$) be the line(s) obtained by rotating 
+  $Y$ by $\pi/3$ counter-clockwise (clockwise)
+  and passing through $T$. 
+\end{lemma}
+
+\begin{lemma}
+  Let $S\in \M(Y\cup A)$ and let $H$ be the single point 
+  in $H\cap 
+\end{lemma}
+
+\begin{lemma}
+  If $S\in \M(Y\cup A)$ then $S\cap Y$ is composed by a single 
+  point $H$ which lies on the symmetry axis of $A$.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+\end{document}
