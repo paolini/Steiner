@@ -203,6 +203,23 @@ otherwise we could construct a better competitor \textbf{[dire meglio]} to $S\in
 
 Clearly $S_0\in \M(\Enclose{H,T})$ implies that $S_0$ is the straight 
 line segment $[H,T]$ perpendicular to $Y$.
+
+Let $Y_i:=f_i(Y)$ be the two lines with 60 degrees angles
+with $Y$ and define $Y_i'$ as the line 
+parallel to $Y_i$ and passing through $T$.
+
+We are going to prove that $S_i\in \M(Y_i'\cup A_i)$ 
+and then $S_i\in \M(Y_i,\cup A_i)$.
+
+To prove that $S_j\in \M(Y_j'\cup A_j)$ we consider 
+any minimizer $S_j' \in \M(Y_j'\cup A_1)$ 
+and note that $S_j'$ touches $Y_j'$ with a perpendicular
+segment. One can build a competitor $S\in \St(Y\cup A)$
+by taking $S:= S_0' \cup S_1' \cup S_2'$ where $S_0'$ is 
+a suitable triple junction.
+An easy check shows that $\H^1(S_0') = \H^1(S_0)$.
+
+Finally bla bla.....
 \end{proof}
 
 \begin{lemma}
@@ -215,14 +232,38 @@ line segment $[H,T]$ perpendicular to $Y$.
 \begin{lemma}\label{lm:iteration}
   Let $S\in\M(Y\cup A)$ and suppose $S_0=[H,T]$, $S_1$ and $S_2$
   be as in Lemma~\ref{lm:branching}.
-  Let $Y_1$ (and $Y_2$) be the line(s) obtained by rotating 
-  $Y$ by $\pi/3$ counter-clockwise (clockwise)
-  and passing through $T$. 
+  Let $Y_j= f(Y)$ where $f(z) = 1+\lambda e^{(-1)^{j-1} i \frac \pi 3} z$ 
+  for $j=1,2$.
+  Let $T$ be the branching point of $S$ 
+  and let $H_j$ be the projection of $T$ on $Y_j$, 
+  for $j=1,2$. 
+  Let $\tilde S_j = S_j\cup [H_j,T]$ 
+  or $S_j \setminus [H_j,T]$
+  depending on whether $T$ is on one side or 
+  the other of $Y_j$.
+  Then $\tilde S_j \in \M(Y_j\cup A_j)$ for $j=1,2$.
 \end{lemma}
+%
+\begin{proof}
+  Consider any $S_1'\in \M(Y_1\cup A_1)$ and $S_2'$ be the symmetric 
+  of $S_1'$ with respect to symmetry axis of $A$.
+  Let $[H_j',T_j']$ be the segment in $S_j'$ touching $Y_j$ in $H_j'$.
+  Clearly $[H_j',T_j']$ is perpendicular to $Y_j$.
+  Let $T'$ be the intersection of the line containing $[H_j',T_j']$
+  with the line containing $Y$.
+  If $T'$ is not a point of $S_1'$ then we consider the 
+  triple junction $S_0'\in \M(\ENCLOSE{H_1',H_2',H})$ and
+  define the competitor set 
+  \[
+    S' = S_0' \cup S_1' \cup S_2'.
+  \]
+  Otherwise we consider the segment 
+  $S_0'=[T,T']$
+\end{proof}
 
 \begin{lemma}
   Let $S\in \M(Y\cup A)$ and let $H$ be the single point 
-  in $H\cap 
+  in $H\cap $
 \end{lemma}
 
 \begin{lemma}
