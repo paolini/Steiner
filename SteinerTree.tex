@@ -69,6 +69,23 @@ Dire che dati due punti di $S$ esiste un unico arco che li connette.
 Dire cos'è un arco. }
 
 \begin{lemma}
+  Let $P=(1+\frac\lambda 2,0)$. Let $\lambda<\frac 1 {25}$, $R=\frac{2\lambda}{\sqrt 3}$.
+  Then $A\subset B_\lambda(P)$ and if $S\in \M(Y\cup A)$ then 
+  $S\setminus B_R(P)$ is a straight line segment.
+\end{lemma}
+
+\begin{lemma}\label{lm:tripod}
+  Let $Y_1,Y_2,Y_3$ be three lines in $\RR^2$
+  forming angles of $60$ degrees so that 
+  the three pairwise intersections identify
+  an equilateral triangle with sides of length $\ell$.
+  Let $T$ be any point and let $d_i(T)$ be 
+  the signed distance of $T$ from $Y_i$
+  with positive sign when $T$ is inside the triangle.
+  Then $d_1(T) + d_2(T) + d_3(T) = \frac{\sqrt 3}{2}\ell$.
+\end{lemma}
+
+\begin{lemma}
 Let $P=(d,0)$, $X$ compact subset of $\overline{B_\rho(P)}$.
 Let $r=2\rho/\sqrt 3$ and suppose that $r<d$.
 Let $S \in \M(Y\cup X)$.
@@ -119,13 +136,26 @@ One has
 
 \begin{lemma}\label{lm:branching}
 Let $S\in \M(Y\cup A)$
-and $\lambda < \frac 1 {25}$ then $S$ 
+and $\lambda < \frac 1 {25}$ then
 there is a branching point $T\in S$ 
 such that $S\setminus T$ is composed of 
-three connected sets $S_0$, $S_1$ and $S_2$ 
-where $S_0 = [H,T]$ with $H\in Y$ and  
-$S_i \in \M(T\cup A_i)$ for $i=1,2$.
-Moreover $S_0$ is perpendicular to $Y$.
+three connected sets $[HT]$, $\tilde S_1$ and $\tilde S_2$ 
+with $H\in Y$ and  
+$\tilde S_j \in \M(T\cup A_j)$ for $j=1,2$.
+Moreover $HT$ is perpendicular to $Y$.
+Moreover $T\in B_r(T_0)$
+where $T_0=(1,0)$ and $r={\frac{\sqrt{3}}2\lambda^2}$
+and $\tilde S_j$, inside the triangle delimited by the lines 
+$Y,\tilde Y_1,\tilde Y_2$ is a straight line segment $\sigma_j$ perpendicular to 
+$Y_1$ (or $\tilde Y_1$ which is parallel to $Y_1$).
+Construct $S_j$ by adding or removing from $\tilde S_j$ 
+a suitable line segment so that $S_j$ has an endpoint in $H_j$ 
+which is the intersection of $Y_j$ with the line containing 
+$\sigma_j$.
+Then $S_j \in \M(Y_j\cup A_j)$ and 
+\[
+  \H^1(S) = 1 + \H^1(S_1) + \H^1(S_2).
+\]
 \end{lemma}
 \begin{proof}
 We first claim that $S$ cannot contain 
@@ -212,11 +242,25 @@ We are going to prove that $S_i\in \M(Y_i'\cup A_i)$
 and then $S_i\in \M(Y_i,\cup A_i)$.
 
 To prove that $S_j\in \M(Y_j'\cup A_j)$ we consider 
-any minimizer $S_j' \in \M(Y_j'\cup A_1)$ 
-and note that $S_j'$ touches $Y_j'$ with a perpendicular
-segment. One can build a competitor $S\in \St(Y\cup A)$
-by taking $S:= S_0' \cup S_1' \cup S_2'$ where $S_0'$ is 
-a suitable triple junction.
+any minimizer $S_j' \in \M(Y_j'\cup A_j)$ 
+and note that $S_j'$ has a terminal line segment
+which touches $Y_j'$ orthogonally 
+in a point $H_j'$. 
+Let $T'$ be the intersection of the two lines 
+containing the terminal line segments.
+One can build a competitor $S'\in \St(Y\cup A)$
+obtained by adding to $S_1'$ and $S_2'$ the triple 
+junction composed by the three line segments joining 
+$T'$ to the lines $Y$, $Y_1'$ and $Y_2'$.
+By Lemma~\ref{lm:tripod} such a tripod 
+has signed length equal to $\H^1(S_0)$
+so that it turns out that 
+$H^1(S') = \H^1(S_0) + \H^1(S_1') + \H^1(S_2')$.
+
+By Lemma~\ref{lm:tripod} we know that 
+$\H^1(S_0') = \H^1(S)$
+
+
 An easy check shows that $\H^1(S_0') = \H^1(S_0)$.
 
 Finally bla bla.....
