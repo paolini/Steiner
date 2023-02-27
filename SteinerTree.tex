@@ -26,6 +26,7 @@
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\H}{\mathcal{H}}
 \newcommand{\dist}{\mathrm{dist}}
+\newcommand{\co}{\mathrm{co}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -73,6 +74,20 @@ Dire che non importa se $Y$ non è limitato.
 Dire che dati due punti di $S$ esiste un unico arco che li connette.
 Dire cos'è un arco. }
 
+\begin{lemma}\label{lm:base}
+  Let $P=(d,0)$, $X$ compact subset of $\overline{B_\rho(P)}$.
+  Let $r=2\rho/\sqrt 3$ and suppose that $r<d$.
+  Let $S \in \M(Y\cup X)$.
+  Then there exists $Q\in \partial B_r(P)$ and $H\in Y$
+  such that $S\setminus B_r(P) = [H,Q]$.
+  Moreover $[H,Q]$ is perpendicular to $Y$.
+\end{lemma}
+\begin{proof}
+    Otherwise $S$ has a triple point outside $B_r(P)$.
+    So the 120 degree angle encloses the whole ball $B_\rho(P)$ 
+    and a projection would decrease the length.
+\end{proof}
+  
 \begin{lemma}\label{lm:01}
   Let $P$ and $A$ be defined as above,
   $R=\frac{2\lambda}{\sqrt 3}$.
@@ -92,20 +107,6 @@ Dire cos'è un arco. }
   with positive sign when $T$ is inside the triangle.
   Then $d_1(T) + d_2(T) + d_3(T) = \frac{\sqrt 3}{2}\ell$.
 \end{lemma}
-
-\begin{lemma}
-Let $P=(d,0)$, $X$ compact subset of $\overline{B_\rho(P)}$.
-Let $r=2\rho/\sqrt 3$ and suppose that $r<d$.
-Let $S \in \M(Y\cup X)$.
-Then there exists $Q\in \partial B_r(P)$ and $H\in Y$
-such that $S\setminus B_r(P) = [H,Q]$.
-Moreover $[H,Q]$ is perpendicular to $Y$.
-\end{lemma}
-\begin{proof}
-    Otherwise $S$ has a triple point outside $B_r(P)$.
-    So the 120 degree angle encloses the whole ball $B_\rho(P)$ 
-    and a projection would decrease the length.
-\end{proof}
 
 \begin{lemma}\label{lm:precedente1}
 One has
@@ -142,267 +143,218 @@ One has
   \end{align*}
 \end{proof}
 
-\begin{lemma}\label{lm:branching}
-Let $S\in \M(Y\cup A)$
-and $\lambda < \frac 1 {25}$ then
-there is a branching point $T\in S$ 
-such that $S\setminus T$ is composed of 
-three connected sets the closures of which are
- $[HT]$, $\tilde S_1$ and $\tilde S_2$ 
-with $H\in Y$ and  
-$\tilde S_j \in \M(T\cup A_j)$ for $j=1,2$.
-Moreover
-\begin{enumerate}
-  \item
- $[HT]$ is perpendicular to $Y$.
-\item
-$T\in B_{\lambda^2}(T_0)$
-where $T_0=(1,0)$
-and 
-\item $\tilde S_j$, inside the triangle delimited by the lines 
-$Y,\tilde Y_1,\tilde Y_2$ (see notation) is a straight line segment $\sigma_j$ 
-perpendicular to 
-$Y_j$ (or $\tilde Y_j$ which is parallel to $Y_j$).
-\end{enumerate}
-Construct $S_j$ by adding or removing from $\tilde S_j$ 
-a suitable line segment so that $S_j$ has an endpoint in $H_j$ 
-which is the intersection of $Y_j$ with the line containing 
-$\sigma_j$.
-Then $S_j \in \M(Y_j\cup A_j)$.
-\end{lemma}
-\begin{proof}
-We first claim that $S$ cannot contain 
-two compact connected sets 
-$\sigma$ and $\gamma$
-with $\H^1(\sigma\cap \gamma)=0$
-such that $\sigma$ touches both $Y$ and $A_1$ 
-while $\gamma$ touches both $A_1$ and $A_2$.
-In fact, otherwise
-\begin{equation}
-\label{eq:43747}
-\begin{aligned}
-  \H^1(S)
-  &\ge \dist(Y, A_1) + \dist(A_1, A_2)
-  \\
-  &\ge 
-  1+ \frac{\lambda} 2 
-    - \frac{\lambda^2}{2}\frac{1}{1-\lambda^2}
-    - \frac{\lambda^3}{2}\frac{1}{1-\lambda^2} 
-   +
-   \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}
-\end{aligned}
-\end{equation}
-by Lemma~\ref{lm:precedente1}.
-But 
-\begin{equation}\label{eq:44321}
-  \H^1(\Sigma) 
-  = 1 + 2 \lambda + 4 \lambda^2 + \dots 
-  = \frac{1}{1-2\lambda}
-\end{equation}
-and one can check that the rhs of \eqref{eq:43747} is
-strictly greater than the rhs of \eqref{eq:44321}
-for $\lambda < \frac 1 {25}$,
-so that $\H^1(S) > \H^1(\Sigma)$ contrary 
-to the optimality of $S$.
-
-By \cite{PaoSte} we know that $S$ touches $Y$ in a single point $H$.
-Consider an arc which connects $H$ to any point of $A$
-and consider the longest (injective) arc $S_0$, along such a curve,
-with endpoints $H\in Y$ and $T\in S$
-such that $(S\setminus S_0) \cup \ENCLOSE{T}$ is connected.
-
-\emph{Case 1.} Suppose $T$ is a point of $A$.
-Without loss of generality suppose $T\in A_1$.
-The set $(S\setminus S_0)\cup\ENCLOSE{T}$
-is connected and contains points of both $A_1$
-and $A_2$ hence there exists an arc $\gamma$ in $S\setminus \sigma\cup\ENCLOSE{T}$.
-The claim above with $\sigma:=S_0$ implies that this cannot happen.
-
-\emph{Case 2.} Suppose $T\not \in A$.
-In this case $S\setminus S_0$ has two connected components 
-$S_1'$ and $S_2'$ (recall that $S$ contains no loops). 
-Let $\tilde S_j:=S_j'\cup \ENCLOSE{T}$.
-Each $\tilde S_j$ must contain at least one point of $A$ otherwise 
-$S\setminus \tilde S_j\in \St(Y\cup A)$ will be 
-strictly shorter than $S\in \M(Y\cup A)$.
-Moreover each point of $A$ is contained in either $\tilde S_1$ or $\tilde S_2$.
-Without loss of generality suppose that $\tilde S_1$ 
-contains at least one point of $A_1$.
-
-\emph{Case 2a.} Suppose that $\tilde S_1$ contains also points of $A_2$.
-Then we can apply the claim above with 
-$\sigma:= S_0 \cup \tilde S_2$ and 
-$\gamma:= \tilde S_1$ and exclude that this case can happen.
-
-\emph{Case 2b.} If $\tilde S_2$ contains points of both 
-$A_1$ and $A_2$ we proceed 
-as in Case 2a with $\tilde S_1$ and $\tilde S_2$ interchanged.
-
-The only remaining possibility is that $\tilde S_1$ 
-only touches points of $A_1$ 
-and $\tilde S_2$ only touches points of $A_2$. 
-Hence $\tilde S_1\supset A_1$ and $\tilde S_2\supset A_2$ since $A\subset S$.
-So $S_0\in \M(\ENCLOSE{H,T})$  
-and $S_j \in \M(\ENCLOSE{T} \cup A_j)$ for $j=1,2$
-otherwise we could construct a better competitor 
-\textbf{[dire meglio]} to $S\in \St(Y\cup A)$.
-
-\emph{Step 1.} 
-Clearly $S_0\in \M(\Enclose{H,T})$ implies that $S_0$ is the straight 
-line segment $[HT]$ perpendicular to $Y$.
-
-\emph{Step 2.}
-By Lemma~\ref{lm:01} we have $A\subset B_\lambda(P)$,
-hence $A_j = f_j(A) \subset B_{\lambda^2}(f_j(P))$
-for $j=1,2$.
-Since $\tilde S_j \in \M(\ENCLOSE{T}\cup A_j)$, $\tilde S_j$ is contained 
-in the convex envelope of $\ENCLOSE{T}\cup A_1$, in particular $T$ 
-is contained in the strip perpendicular to $Y_1$, centered in $T_0$
-containing $B_{\lambda^2}(f_j(P))$ with width $\lambda^2$ 
-(notice that $f_j(P)$ lies on the line passing through $T_0$ and perpendicular 
-to $Y_j$).
-
-The intersection between the two strips is the union of two equilateral 
-triangles each with height $\lambda^2$. 
-Hence $T$ is contained in the ball 
-$B_{\lambda^2}(T_0)$ proving claim 2 of the lemma.
-
-\emph{Step 3.} 
-By Lemma~\ref{lm:01} we have that $A_j=f_j(A)\subset B_{\lambda^2}(f_j(P))$
-and $\tilde S_j \in \M(\ENCLOSE{T}\cup A_j)$
-hence $\tilde S_j \setminus B_{\lambda R}(f_j(P))$ is a
-straight line segment.
-To prove claim 3 of the lemma it is enough to note that 
-$B_{\lambda R}(f_j(P)) = B_{\frac{2}{\sqrt 3}\lambda^2}(f_j(P))$
-is outside of the triangle formed by the lines $Y$, $\tilde Y_1$ 
-and $\tilde Y_2$ if $\lambda\le \frac{1}{25}$.
-
-\emph{Step 4: conclusion.}
-Let $S_j$, $j=1,2$ be as announced in the statement.
-Notice that inside the triangle delimited by the lines 
-$Y$, $Y_1$ and $Y_2$ the set $S$ is a regular tripod with edges
-perpendicular to the sides of the triangle.
-The sets $S_j$ are constructed so that $H^1(\tilde S_j) - H^1(S_j)$ 
-is equal to the signed distance of $T$ from $Y_j$.
-Notice also that the height of the triangle is equal to $1$.
-So, by Lemma~\ref{lm:tripod} (with $Y$ in place of $Y_3$) 
-we have
-\[
-\H^1(S) 
-  =  \H^1([HT]) + \H^1(\tilde S_1) + \H^1(\tilde S_2) 
-  = 1 + \H^1(S_1) + \H^1(S_2).
-\]
-Let us prove that $S_j\in \M(Y_j\cup A_j)$ for $j=1,2$.
-Take any $\hat S_j\in \M(Y_j\cup A_j)$ 
-for $j=1,2$ and consider $\hat S = \hat S_0 \cup \hat S_1 \cup \hat S_2$
-where $\hat S_0$ is the tripod connecting $\hat S_1$ and $\hat S_2$ 
-to $Y$ inside the triangle delimited by $Y$, $Y_1$ and $Y_2$.
-We know that $\hat S_j$ touches $Y_j$ orthogonally hence,
-again by Lemma~\ref{lm:tripod}, we have
-$\H^1(\hat S_0) = 1$. Hence
-\[
-    \H^1(\hat S) 
-    = 1 + \H^1(\hat S_1) + \H^1(\hat S_2)
-    \le 1 + \H^1(S_1) + \H^1(S_2) = \H^1(S).
-\]
-Since $S\in \M(Y\cup A)$ while $\hat S \in \St(Y\cup A)$ we 
-have $\H^1(S) \le \H^1(\hat S)$ hence the above inequalities 
-are all equalities and $S_j\in M(Y_j\cup A_j)$ for $j=1,2$ as claimed.
-\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Let $Y_j:=f_j(Y)$ be the two lines with 60 degrees angles
-with $Y$ and define $Y_i'$ as the line 
-parallel to $Y_i$ and passing through $T$.
-
-We are going to prove that $S_i\in \M(Y_i'\cup A_i)$ 
-and then $S_i\in \M(Y_i,\cup A_i)$.
-
-To prove that $S_j\in \M(Y_j'\cup A_j)$ we consider 
-any minimizer $S_j' \in \M(Y_j'\cup A_j)$ 
-and note that $S_j'$ has a terminal line segment
-which touches $Y_j'$ orthogonally 
-in a point $H_j'$. 
-Let $T'$ be the intersection of the two lines 
-containing the terminal line segments.
-One can build a competitor $S'\in \St(Y\cup A)$
-obtained by adding to $S_1'$ and $S_2'$ the triple 
-junction composed by the three line segments joining 
-$T'$ to the lines $Y$, $Y_1'$ and $Y_2'$.
-By Lemma~\ref{lm:tripod} such a tripod 
-has signed length equal to $\H^1(S_0)$
-so that it turns out that 
-$H^1(S') = \H^1(S_0) + \H^1(S_1') + \H^1(S_2')$.
-
-By Lemma~\ref{lm:tripod} we know that 
-$\H^1(S_0') = \H^1(S)$
-
-An easy check shows that $\H^1(S_0') = \H^1(S_0)$.
-
-Finally bla bla.....
-\end{proof}
-
-\begin{lemma}
-  Let $S\in \M(Y\cup A)$ and $\lambda<\frac 1 {25}$.
-  Let $S_0$, $S_1$ and $S_2$ be given as in the statement 
-  of Lemma~\ref{lemma}
-  
-\end{lemma}
-
-\begin{lemma}\label{lm:iteration}
-  Let $S\in\M(Y\cup A)$ and suppose $S_0=[H,T]$, $S_1$ and $S_2$
-  be as in Lemma~\ref{lm:branching}.
-  Let $Y_j= f(Y)$ where $f(z) = 1+\lambda e^{(-1)^{j-1} i \frac \pi 3} z$ 
-  for $j=1,2$.
-  Let $T$ be the branching point of $S$ 
-  and let $H_j$ be the projection of $T$ on $Y_j$, 
-  for $j=1,2$. 
-  Let $\tilde S_j = S_j\cup [H_j,T]$ 
-  or $S_j \setminus [H_j,T]$
-  depending on whether $T$ is on one side or 
-  the other of $Y_j$.
-  Then $\tilde S_j \in \M(Y_j\cup A_j)$ for $j=1,2$.
+\begin{lemma}\label{lm:envelope}
+Let $\Sigma\in \M(\ENCLOSE{T}\cup X)$
+for some compact set $X$ contained in a horizontal strip 
+$E=\ENCLOSE{(x,y)\colon \abs{y}\le d}$ of width $2d>0$.
+Suppose also that there is some $T'\in \Sigma$, $T'\neq T$ 
+such that $[T,T']$ is horizontal.
+Then $T\subset E$.
 \end{lemma}
 %
 \begin{proof}
-  Consider any $S_1'\in \M(Y_1\cup A_1)$ and $S_2'$ be the symmetric 
-  of $S_1'$ with respect to symmetry axis of $A$.
-  Let $[H_j',T_j']$ be the segment in $S_j'$ touching $Y_j$ in $H_j'$.
-  Clearly $[H_j',T_j']$ is perpendicular to $Y_j$.
-  Let $T'$ be the intersection of the line containing $[H_j',T_j']$
-  with the line containing $Y$.
-  If $T'$ is not a point of $S_1'$ then we consider the 
-  triple junction $S_0'\in \M(\ENCLOSE{H_1',H_2',H})$ and
-  define the competitor set 
-  \[
-    S' = S_0' \cup S_1' \cup S_2'.
-  \]
-  Otherwise we consider the segment 
-  $S_0'=[T,T']$
+  Suppose by contradiction that $T=(x_T,y_T)$ is outside $E$.
+  For example $y_T>d$. 
+  Then the convex hull of $\ENCLOSE{T}\cup X$ has a single 
+  point, which is $T$, on the line $\ENCLOSE{y=y_T}$. 
+  This is in contradiction with the fact that $T'\in \Sigma$ 
+  has the same $y$-coordinate as $T$.
 \end{proof}
 
-\begin{lemma}
-  Let $S\in \M(Y\cup A)$ and let $H$ be the single point 
-  in $H\cap $
-\end{lemma}
-
-\begin{lemma}
-  If $S\in \M(Y\cup A)$ then $S\cap Y$ is composed by a single 
-  point $H$ which lies on the symmetry axis of $A$.
+\begin{lemma}\label{lm:branching}
+  Let $Y'=\ENCLOSE{x=d}$ for some $d<1$,
+  be a line parallel to $Y=\ENCLOSE{x=0}$.
+  If $S\in \M(Y'\cup A)$
+  and $\lambda < \frac 1 {25}$ then
+  there is a branching point $T\in S$ 
+  such that $S\setminus T$ is composed of 
+  three connected sets the closures of which are
+   $[HT]$, $S_1$ and $S_2$ 
+  with $H\in Y'$ and $[HT]$ perpendicular to $Y'$.  
+  Also: $T\in B_{\lambda^2}(T_0)$ where $T_0=(1,0)$.
+  Finally if $Y_j'$ is the line parallel to $Y_j=f_j(Y)$ 
+  passing through $T$ 
+  then $S_j \in \M(Y_j'\cup A_j)$ for $j=1,2$.
+  Also $Y_j'\subset f_j(\ENCLOSE{x<1})$.
 \end{lemma}
 \begin{proof}
+  We first claim that $S$ cannot contain 
+  two compact connected sets 
+  $\sigma$ and $\gamma$
+  with $\H^1(\sigma\cap \gamma)=0$
+  such that $\sigma$ touches both $Y'$ and $A_1$ 
+  while $\gamma$ touches both $A_1$ and $A_2$.
+  In fact, otherwise
+  \begin{equation}
+  \label{eq:43747}
+  \begin{aligned}
+    \H^1(S)
+    &\ge \dist(Y', A_1) + \dist(A_1, A_2)
+    \\
+    &\ge 
+    1 - d + \frac{\lambda} 2 
+      - \frac{\lambda^2}{2}\frac{1}{1-\lambda^2}
+      - \frac{\lambda^3}{2}\frac{1}{1-\lambda^2} 
+     +
+     \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}
+  \end{aligned}
+  \end{equation}
+  by Lemma~\ref{lm:precedente1}.
+  Let $O'=(d,0)$ and $\Sigma':=[O',T_0] \cup f_1(\Sigma) \cup f_2(\Sigma)$ 
+  be the tree obtained by adding or removing a segment of length 
+  $\abs{d}$ from $\Sigma$ so that $\Sigma'\in \St(Y'\cup A)$.
+  We have  
+  \begin{equation}\label{eq:44321}
+    \H^1(\Sigma')
+    = \H^1(\Sigma) - d 
+    = 1 - d + 2 \lambda + 4 \lambda^2 + \dots 
+    = \frac{1}{1-2\lambda}-d
+  \end{equation}
+  and one can check that the rhs of \eqref{eq:43747} is
+  strictly greater than the rhs of \eqref{eq:44321}
+  for $\lambda < \frac 1 {25}$.
+  Hence $\H^1(S) > \H^1(\Sigma')$ contrary 
+  to the optimality of $S$.
+  
+  By \cite{PaoSte} we know that $S$ touches $Y'$ in a single point $H$.
+  Consider an arc which connects $H$ to any point of $A$
+  and consider the longest (injective) arc $S_0$, along such a curve,
+  with endpoints $H\in Y'$ and $T\in S$
+  such that $(S\setminus S_0) \cup \ENCLOSE{T}$ is connected.
+  
+  \emph{Case 1.} 
+  Suppose $T$ is a point of $A$.
+  Without loss of generality suppose $T\in A_1$.
+  The set $(S\setminus S_0)\cup\ENCLOSE{T}$
+  is connected and contains points of both $A_1$
+  and $A_2$ hence there exists an arc $\gamma$ 
+  in $S\setminus \sigma\cup\ENCLOSE{T}$.
+  The claim above with $\sigma:=S_0$ implies that this cannot happen.
+  
+  \emph{Case 2.} Suppose $T\not \in A$.
+  In this case $S\setminus S_0$ has two connected components 
+  $S_1'$ and $S_2'$ (recall that $S$ contains no loops).
+  Let $S_j:=S_j'\cup \ENCLOSE{T}$.
+  Each $S_j$ must contain at least one point of $A$ otherwise 
+  $S\setminus S_j\in \St(Y\cup A)$ will be 
+  strictly shorter than $S\in \M(Y\cup A)$.
+  Moreover each point of $A$ is contained in either $S_1$ or $S_2$.
+  Without loss of generality suppose that $S_1$ 
+  contains at least one point of $A_1$.
+  
+  \emph{Case 2a.} 
+  Suppose that $S_1$ contains also points of $A_2$.
+  Then we can apply the claim above with 
+  $\sigma:= S_0 \cup S_2$ and 
+  $\gamma:= S_1$ and exclude that this case can happen.
+  
+  \emph{Case 2b.} If $S_2$ contains points of both 
+  $A_1$ and $A_2$ we proceed 
+  as in Case 2a with $S_1$ and $S_2$ interchanged.
+  
+  The only remaining possibility is that $S_1$ 
+  only touches points of $A_1$ 
+  and $S_2$ only touches points of $A_2$. 
+  Hence $S_1\supset A_1$ and $S_2\supset A_2$ since $A\subset S$.
+  So $S_0\in \M(\ENCLOSE{H,T})$  
+  and $S_j \in \M(\ENCLOSE{T} \cup A_j)$ for $j=1,2$
+  otherwise, by substituting $S_0$ with an element of $\M(\ENCLOSE{H,T})$
+  and $S_j$ with an element of $\M(\ENCLOSE{T}\cup A_j)$,
+  we could construct a better competitor 
+  to $S\in \St(Y\cup A)$.
+  
+  \emph{Step 1.} 
+  Clearly $S_0\in \M(\ENCLOSE{H,T})$ implies that $S_0$ is the straight 
+  line segment $[HT]$ perpendicular to $Y$.
+  
+  \emph{Step 2.}
+  By Lemma~\ref{lm:01} we have $A\subset B_\lambda(P)$,
+  hence $A_j = f_j(A) \subset B_{\lambda^2}(f_j(P))$
+  for $j=1,2$.
+  Since $S_j \in \M(\ENCLOSE{T}\cup A_j)$
+  contains a small segment perpendicular to $Y_j$,
+  by Lemma~\ref{lm:envelope} applied to $f_j^{-1}(S_j)$
+  we obtain that $S_j$ is contained in the strip perpendicular 
+  to $Y_1$, centered in $T_0$
+  containing $A_j$. 
+  Since $A_j\subset B_{\lambda^2}(f_j(P))$
+  such a strip has width $\lambda^2$.
+  (notice that $f_j(P)$ lies on the line passing through $T_0$ and perpendicular 
+  to $Y_j$).
+  
+  The intersection between the two strips for $j=1,2$ 
+  is the union of two equilateral 
+  triangles each with height $\lambda^2$. 
+  Hence $T$ is contained in the ball
+  $B_{\lambda^2}(T_0)$ proving the respective claim of the Lemma.
+  Moreover the distance of the line $Y_j'$ from $T_0$ is less than 
+  $\lambda^2$ hence $Y_j\subset f_j(\ENCLOSE{x<\lambda})
+  \subset f_j(\ENCLOSE{x<1})$.
+  
+  \emph{Step 3.}
+  We claim that each $S_j$, $j=1,2$ has no branching points inside the triangle 
+  delimited by $Y$, $Y_1$ and $Y_2$ 
+  (to avoid confusion, notice that $T$ is not a branching point of $S_j$).
+ 
+  If $T$ is itself outside of this triangle there is nothing to prove
+  because $S_j\subset \overline{\co}(\ENCLOSE{T}\cup A_j)$ 
+  is itself outside the triangle.
+  Otherwise, 
+  since $A_j=f_j(A)\subset B_{\lambda^2}(f_j(P))$
+  then by Lemma~\ref{lm:01} all branching points of $S_j$ 
+  are inside $B_{\frac{2}{\sqrt 3}\lambda^2}(f_j(P))$ while 
+  $d(f_j(P),Y_j)=\lambda d(P,Y)
+  = \lambda \enclose{1+\frac{\lambda} 2 }
+  > \frac{2}{\sqrt 3}\lambda^2$.
+  
+  \emph{Step 4: conclusion.}
+  We now show the last claim $S_j \in \M(Y_j'\cup A_j)$, $j=1,2$.
+
+  Take any $S_j'\in \M(Y_j'\cup A_j)$ and let $H_j'$ be the 
+  endpoint of $S_j'$ on the line $Y_j'$. 
+  Clearly $S_j'\in \M(\ENCLOSE{H_j'}\cup A_j)$.
+  Let $H_j''$ be the point on $Y_j$ such that $[H_j'' H_j']$ is perpendicular
+  to $Y_j$. 
+  Clearly $H_j''$ is on the boundary of $\Delta$ since the orthogonal 
+  projection of $A_j$ on $Y_j$ is contained in the boundary of $\Delta$.
+  By Lemma~\ref{lm:base} we know that $S_j'$ has no branching points
+  inside the triangle $\Delta$ delimited by $Y$, $Y_1$ and $Y_2$.
+  So we can define a set $S_j''$ which is obtained by adding or removing 
+  the segment $[H_j'' H_j']$ from $S_j'$ so that $S_j''\in \St(Y_j\cup A_j)$.
+  In particular $H^1(S_j') = H^1(S_j'') + d_j(T)$,
+  where $d_j$ is the signed distance of $T$ from the line $Y_j$ (positive 
+  when $T$ is inside $\Delta$).
+  Let $\Gamma\in \M(Y\cup\ENCLOSE{H_1'',H_2''})$ 
+  be a tripod with endpoints on $H_1''$, $H_2''$ and a 
+  point on $Y$. 
+  By Lemma~\ref{lm:tripod} $H^1(\Gamma) = 1$.
+  And hence, for 
+  \[
+   S'' := \Gamma \cup S_1'' \cup S_2''  
+  \]
+  one has 
+  \begin{align*}
+    \H^1(S'')
+    &= 1 + \H^1(S_1'') + \H^1(S_2'') \\
+    &= 1 + (\H^1(S_1') - d_1(T)) + (\H^1(S_2') - d_2(T)) \\
+    &= (1-d_1(T) - d_2(T)) + \H^1(S_1') + \H^1(S_2') \\
+    &= d_3(T) + \H^1(S_1') + \H^1(S_2') \\
+    &= \abs{HT} + \H^1(S_1') + \H^1(S_2') \\
+    &\le \abs{HT} + \H^1(S_1) + \H^1(S_2)
+    = \H^1(S).
+  \end{align*}
+  Since $S\in \M(Y\cup A)$ while $S''\in \St(Y\cup A)$ the above 
+  inequalities are actually equalities.
+  In particular the inequalities $\H^1(S_j') \le \H^(S_j)$ are 
+  also equalities hence $S_j\in \M(Y_j'\cup A_j)$ as claimed.
+\end{proof}
+
+\begin{theorem}\label{th:main}
+Let $S\in \M(Y\cup A)$. 
+Then $S$ is the standard bifurcation tree.
+\end{theorem}
+\begin{proof}
+We know that $S$ touches $Y$ in a single point $H$.
 
 \end{proof}
 
