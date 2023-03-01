@@ -27,6 +27,7 @@
 \renewcommand{\H}{\mathcal{H}}
 \newcommand{\dist}{\mathrm{dist}}
 \newcommand{\co}{\mathrm{co}}
+\renewcommand{\S}{\mathcal{S}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -98,7 +99,16 @@ Dire cos'è un arco. }
 \end{lemma}
 
 \begin{lemma}\label{lm:tripod}
-  Let $Y_1,Y_2,Y_3$ be three lines in $\RR^2$
+  Let $\nu_1,\nu_2,\nu_3$ be three unit vectors $\RR^2$
+  with $\nu_1+\nu_2+\nu_3=0$. 
+  Let $Y_j$ be a line perpendicular to $\nu_j$ for $j=1,2,3$.
+  Let $T$ be any point in $\RR^2$ and let $H_j$ be the orthogonal 
+  projection of $T$ on $Y_j$.
+  Define $d_j(T) = (T-H_j)\cdot \nu_j$
+  be the signed distance of $T$ from $Y_j$.
+  Then $d_1(T) + d_2(T) + d_3(T)$ is constant (independent of $T$).
+
+  In paarticular if $Y_1,Y_2,Y_3$ are three lines in $\RR^2$
   forming angles of $60$ degrees so that 
   the three pairwise intersections identify
   an equilateral triangle with sides of length $\ell$.
@@ -107,6 +117,22 @@ Dire cos'è un arco. }
   with positive sign when $T$ is inside the triangle.
   Then $d_1(T) + d_2(T) + d_3(T) = \frac{\sqrt 3}{2}\ell$.
 \end{lemma}
+\begin{proof}
+  If we move one of the lines parallel to itself by an amount $\delta$ 
+  then the sum $d_1(T)+d_2(T)+d_3(T)$ changes by $\delta$, independent 
+  of $T$.
+  Therefore, without loss of generality, we may assume that the three lines 
+  intersect in the origin.
+  In this case $d_j(T) = T\cdot \nu_j$ and hence 
+  $d_1(T)+d_2(T)+d_3(T) = T\cdot (\nu_1+\nu_2+\nu_3) = 0$
+  concluding the proof of the first claim.
+
+  For the second claim just notice that $d_1(T)+d_2(T)+d_3(T)$
+  is constant (by the first claim) and hence is equal to the value 
+  obtained when $T$ is one of vertices of the triangle, in which case 
+  two distances are $0$ and the third one is equal to the height of the 
+  triangle which is the claimed value.
+\end{proof}
 
 \begin{lemma}\label{lm:precedente1}
 One has
@@ -171,7 +197,8 @@ Then $T\subset E$.
   three connected sets the closures of which are
    $[HT]$, $S_1$ and $S_2$ 
   with $H\in Y'$ and $[HT]$ perpendicular to $Y'$.  
-  Also: $T\in B_{\lambda^2}(T_0)$ where $T_0=(1,0)$.
+  Also: $T\in B_{\lambda^2}(T_0)$ where $T_0=(1,0)$
+  and $d(H,\ENCLOSE{y=0})\le \lambda$.
   Finally if $Y_j'$ is the line parallel to $Y_j=f_j(Y)$ 
   passing through $T$ 
   then $S_j \in \M(Y_j'\cup A_j)$ for $j=1,2$.
@@ -319,8 +346,11 @@ Then $T\subset E$.
   projection of $A_j$ on $Y_j$ is contained in the boundary of $\Delta$.
   By Lemma~\ref{lm:base} we know that $S_j'$ has no branching points
   inside the triangle $\Delta$ delimited by $Y$, $Y_1$ and $Y_2$.
-  So we can define a set $S_j''$ which is obtained by adding or removing 
-  the segment $[H_j'' H_j']$ from $S_j'$ so that $S_j''\in \St(Y_j\cup A_j)$.
+  So we can define a set $S_j''$ which is obtained by adding
+  (in case $d_j(T)<0$)
+  or removing (in case $d_j(T)>0$)
+  the segment $[H_j'' H_j']$ to (resp. from) $S_j'$ 
+  so that $S_j''\in \St(Y_j\cup A_j)$.
   In particular $H^1(S_j') = H^1(S_j'') + d_j(T)$,
   where $d_j$ is the signed distance of $T$ from the line $Y_j$ (positive 
   when $T$ is inside $\Delta$).
@@ -354,8 +384,57 @@ Let $S\in \M(Y\cup A)$.
 Then $S$ is the standard bifurcation tree.
 \end{theorem}
 \begin{proof}
-We know that $S$ touches $Y$ in a single point $H$.
+Given any $S\in \M(\ENCLOSE{x=d}\cup A)$ with $d<1$, 
+by Lemma~\ref{lm:branching} we are able to define $S_1$ and $S_2$, 
+$H$, $T$
+ such that 
+$S=[H T] \cup S_1 \cup S_2$, $HT$ is perpendicular to $Y$.
+If we define the sets $b_1(S)$ and $b_2(S)$ 
+by $b_j(S) := f_j^{-1}(S_j)$, $j=1,2$.
+We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_1,d_2<1$.
+Let $d(S)$ and $\delta(S)$ be the two coordinates of the point $H$ 
+so that $d(S)$ is the distance of $H$ from the line $Y$ 
+and $\delta(S)$ is the distance of the point $T$ from the line $X=\ENCLOSE{y=0}$.
+Hence Lemma~\ref{lm:branching} can be applied inductively on the two 
+rescaled branches $b_1(S)$ and $b_2(S)$.
 
+Define $\S^0:=\ENCLOSE{S}$ where $S\in \M(\ENCLOSE{x=0}\cup A)$ is given
+and define inductively $\S^k$ as the family of the rescaled branches of $S$ 
+at level $k$:
+\[
+  \S^{k+1} := \bigcup_{S\in \S^k}\ENCLOSE{b_1(S),b_2(S)}.
+\]
+
+We claim that for all $S\in \S^k$, $\delta(S)\le 2^k \lambda^k$.
+In fact we know that $S$ touches the vertical line $\ENCLOSE{x=d}$ 
+in a single point $H$.
+By Lemma~\ref{lm:branching} we know that $S$ is composed 
+by a segment $[H T]$ and two trees $S_1$, $S_2$
+with $S_j\in \M(Y_j'\cup A_j)$, $j=1,2$
+where $Y_j'$ is the line passing through $T$ and parallel to $Y_j$
+and we know that $\abs{T T_0} \le \lambda^2$. 
+Let $\delta_j$ be the distance of $T$ from $f_j(X)$, $j=1,2$.
+Since $T_0\in f_j(X)$ we have $\delta_j\le \abs{T T_0} \le \lambda^2$
+(as stated in Lemma~\ref{lm:branching}).
+By Lemma~\ref{tripod} applied to the three lines $X$, $f_1(X)$ and $f_3(X)$
+we know that the sum of the signed distances of $T$ from the three lines 
+passing through $T_0$ is equal to $0$.
+Hence
+\begin{align*}
+  \delta(S) &\le \delta_1 + \delta_2 
+    \le 2\max\ENCLOSE{\delta_1,\delta_2}\\
+    &= 2\lambda\max\ENCLOSE{\delta(b_1(S)),\delta(b_2(S))}.
+\end{align*}
+This gives 
+\[
+  \Delta_k 
+  := \max\ENCLOSE{\delta(S)\colon S\in \S^k}
+   \le 2\lambda \max\ENCLOSE{\delta(S)\colon S\in \S^{k+1}}
+   = 2 \lambda \Delta_{k+1}.
+\]
+If by contradiction, $\Delta_0>0$ we would have 
+$\Delta_k\to +\infty$ while we know,
+by Lemma~\ref{lm:branching}, that $\Delta_k \le \lambda$
+for all $k$.
 \end{proof}
-
 \end{document}
