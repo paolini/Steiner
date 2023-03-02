@@ -4,6 +4,9 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{comment}
 \usepackage{hyperref}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
 
 \newcommand{\RR}{\mathbb R}
 \newcommand{\NN}{\mathbb N}
@@ -48,6 +51,7 @@
 \author{Paolini Stepanov}
 
 \begin{document}
+
 \maketitle
 Let $\St(A)$ be the family of all compact sets $S$ such that 
 $S\cup A$ is connected.
@@ -186,7 +190,69 @@ Then $T\subset E$.
   This is in contradiction with the fact that $T'\in \Sigma$ 
   has the same $y$-coordinate as $T$.
 \end{proof}
-
+\begin{figure}
+  \begin{center}
+  \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=4.0cm,y=4.0cm]
+    \clip(-0.2,-0.7) rectangle (1.84,0.92);
+    \draw (1.0,0.57) node[anchor=north west] {\includegraphics[width=1cm]{blob1.png}};
+    \draw (1.19,0.4) node[anchor=north west] {$A_1$};
+    \draw (1.05,-0.12) node[anchor=north west] {\includegraphics[width=1cm]{blob2.png}};
+    \draw (1.22,-0.28) node[anchor=north west] {$A_2$};
+    \draw (1.2,0.35)-- (1,0);
+    \draw (1,0)-- (1.2,-0.35);
+    \draw [line width=1.2pt] (0,0)-- (1,0);
+    \draw (0,0.58)-- (0,-0.58);
+    \draw [domain=-0.2:1.84] plot(\x,{(-0.58--0.58*\x)/1});
+    \draw [domain=-0.2:1.84] plot(\x,{(-0.58--0.58*\x)/-1});
+    \draw (0,0)-- (1,0);
+    \draw [line width=1.2pt] (1.2,0.35)-- (1,0);
+    \draw [line width=1.2pt](1,0)-- (1.2,-0.35);
+    \draw (0.1,-0.7) -- (0.1,0.92);
+    \draw [line width=1.2pt,color=blue] (1.15,0.37)-- (1,0.1);
+    \draw [line width=1.2pt,color=blue] (1,0.1)-- (1.21,-0.27);
+    \draw [line width=1.2pt,color=blue] (1,0.1)-- (0.1,0.1);
+    \draw [dash pattern=on 1pt off 1pt,domain=-0.2:1.84] plot(\x,{(-0.68--0.58*\x)/-1});
+    \draw [dash pattern=on 1pt off 1pt,domain=-0.2:1.84] plot(\x,{(-0.47--0.58*\x)/1});
+    \draw (0.25,0.1)-- (0.25,0);
+    \draw (0.1,0.22)-- (0,0.22);
+    \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (0,0.22) -- (0.1,0.22);
+    \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (0.25,0.1) -- (0.25,0);
+    \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (0.67,0.29) -- (0.63,0.22);
+    \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (0.65,-0.1) -- (0.7,-0.18);
+    \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (1.05,0.2) -- (1.1,0.17);
+    \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (1.09,-0.07) -- (1.05,-0.09);
+    \draw [domain=-0.2:1.84] plot(\x,{(-0-0*\x)/1});
+    \draw (0,-0.7) -- (0,0.92);
+    \begin{scriptsize}
+    \fill (0,0) circle (1.5pt);
+    \draw (0,0) node[anchor=north east] {$O$};
+    \fill (1,0) circle (1.5pt);
+    \draw (0.995,-0.00) node[anchor=north] {$T_0$};
+    \fill (1.2,0) circle (1.5pt);
+    \draw (1.21,0.0) node[anchor=south] {$P$};
+    \draw (0,0.4) node[anchor=east] {$Y$};
+    \draw (-0.17,-0.63) node {$Y_2$};
+    \draw (-0.17,0.63) node {$Y_1$};
+    \fill [color=blue] (0.1,0.1) circle (1.5pt);
+    \draw (0.1,0.1) node[anchor=south west] {$H$};
+    \fill [color=blue] (1,0.1) circle (1.5pt);
+    \draw (1.01,0.12) node[anchor=south] {$T$};
+    \draw (-0.17,0.72) node {$Y'_1$};
+    \draw (-0.17,-0.51) node {$Y'_2$};
+    \draw (0.36,0.05) node {$\delta=\delta_0$};
+    \draw (0.12,0.26) node {$d=d_0$};
+    \draw (0.61,0.28) node {$d_1$};
+    \draw (0.71,-0.12) node {$d_2$};
+  \end{scriptsize}
+  \begin{tiny}
+    \draw (1.09,0.21) node {$\delta_{\!1}$};
+    \draw (1.1,-0.12) node {$\delta_{\!2}$};
+  \end{tiny}
+    \end{tikzpicture}
+    \caption{Constructions and notation in the proof of 
+    Lemma~\ref{lm:branching} and Theorem~\ref{th:main}.}
+  \end{center}
+\end{figure}
 \begin{lemma}\label{lm:branching}
   Let $Y'=\ENCLOSE{x=d}$ for some $d<1$,
   be a line parallel to $Y=\ENCLOSE{x=0}$.
@@ -388,10 +454,11 @@ Given any $S\in \M(\ENCLOSE{x=d}\cup A)$ with $d<1$,
 by Lemma~\ref{lm:branching} we are able to define $S_1$ and $S_2$, 
 $H$, $T$
  such that 
-$S=[H T] \cup S_1 \cup S_2$, $HT$ is perpendicular to $Y$.
+$S=[H T] \cup S_1 \cup S_2$, $[HT]$ is perpendicular to $Y$.
 If we define the sets $b_1(S)$ and $b_2(S)$ 
 by $b_j(S) := f_j^{-1}(S_j)$, $j=1,2$.
-We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_1,d_2<1$.
+We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_1<1$, 
+$d_2<1$ (as claimed in the Lemma~\ref{lm:branching}).
 Let $d(S)$ and $\delta(S)$ be the two coordinates of the point $H$ 
 so that $d(S)$ is the distance of $H$ from the line $Y$ 
 and $\delta(S)$ is the distance of the point $T$ from the line $X=\ENCLOSE{y=0}$.
@@ -416,7 +483,7 @@ and we know that $\abs{T T_0} \le \lambda^2$.
 Let $\delta_j$ be the distance of $T$ from $f_j(X)$, $j=1,2$.
 Since $T_0\in f_j(X)$ we have $\delta_j\le \abs{T T_0} \le \lambda^2$
 (as stated in Lemma~\ref{lm:branching}).
-By Lemma~\ref{tripod} applied to the three lines $X$, $f_1(X)$ and $f_3(X)$
+By Lemma~\ref{lm:tripod} applied to the three lines $X$, $f_1(X)$ and $f_3(X)$
 we know that the sum of the signed distances of $T$ from the three lines 
 passing through $T_0$ is equal to $0$.
 Hence
