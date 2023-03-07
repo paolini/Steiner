@@ -5,6 +5,8 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
+\usepackage{showkeys}
+
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
 
@@ -53,9 +55,9 @@
 \begin{document}
 
 \maketitle
-Let $\St(A)$ be the family of all compact sets $S$ such that 
-$S\cup A$ is connected.
-Let $\M(A)$ be the the subsets of $\St(A)$ of sets $S$ 
+Let $\St(C)$ be the family of all compact sets $S$ such that 
+$S\cup C$ is connected.
+Let $\M(C)$ be the subset of $\St(C)$ of sets $S$ 
 with minimal length $\H^1(S)$.
 
 Let $A$ be the Cantor-like set you know which one: 
@@ -72,25 +74,126 @@ passing through $P$.
 
 Let $\Sigma\in \St(Y\cup A)$ be the binary self-similar 
 tree you know which one.
-We claim that $\ENCLOSE{\Sigma} = \M(Y\cup A)$.
+We claim that $\M(Y\cup A)=\ENCLOSE{\Sigma}$.
 
 \textbf{Ricordare. Dire che $S$ è connesso. 
 Dire che non importa se $Y$ non è limitato.
 Dire che dati due punti di $S$ esiste un unico arco che li connette.
 Dire cos'è un arco. }
 
-\begin{lemma}\label{lm:base}
-  Let $P=(d,0)$, $X$ compact subset of $\overline{B_\rho(P)}$.
-  Let $r=2\rho/\sqrt 3$ and suppose that $r<d$.
-  Let $S \in \M(Y\cup X)$.
-  Then there exists $Q\in \partial B_r(P)$ and $H\in Y$
-  such that $S\setminus B_r(P) = [H,Q]$.
-  Moreover $[H,Q]$ is perpendicular to $Y$.
+\begin{lemma}\label{lm:exists}
+  If $C$ be a compact subset of $\RR^2$ and $\ell$ be a line.
+  Then $\M(\ell\cup C)\neq \emptyset$.
+  
+  If $C$ is also totally disconnected, $C\cap \ell=\emptyset$ 
+  and $S\in \M(\ell\cup C)$  
+  then $\bar S \supset C$.
+
+  If moreover $\H^1(S)<+\infty$ and $\H^1(C)=0$ 
+  then $\bar S\in \M(\ell\cup C)$.
 \end{lemma}
 \begin{proof}
-    Otherwise $S$ has a triple point outside $B_r(P)$.
-    So the 120 degree angle encloses the whole ball $B_\rho(P)$ 
-    and a projection would decrease the length.
+  Take a compact connected segment $\sigma\subset \ell$ such that 
+  the orthogonal projection of $C$ on $\ell$ is contained 
+  in $\sigma$. 
+  Then $\sigma\cup C$ is compact and by 
+  \cite{PaoSte} we know that 
+  $\M(\sigma \cup C)\neq \emptyset$.
+  For all $\Sigma \in \St(\ell\cup C)$ we have that its projection 
+  $\tilde \Sigma$ 
+  onto the convex hull of $\sigma\cup C$ is in $\St(\sigma\cup C)$
+  and $\H^1(\tilde \Sigma)\le \H^1(\Sigma)$.
+  Hence $\M(\ell\cup C)\supset \M(\sigma\cup C)\neq \emptyset$ as claimed.
+
+  To prove the second part note that if $C$ is totally disconnected 
+  then for every $x\in C$ one has $x\in \bar S$ otherwise 
+  $S\cup C\cup \ell$ cannot be connected. 
+  Therefore $C\subset \bar S$. 
+  
+  For the last claim notice that $\bar S\cap \ell$ is a finite set.
+  In fact the number of connected components of $S$ arriving at $\ell$ 
+  is finite since every such component must touch also points of $C$ 
+  and hence has length at least $\dist(C,\ell)$.  
+  Hence they cannot be infinitely many otherwise 
+  we would have $\H^1(S)=+\infty$.
+  By \cite{PaoSte}) the closure of every connected component 
+  of $S\in\M(C\cup \sigma)$ 
+  has at most one point on $\sigma$, showing that the set 
+  $W:=\bar S\cap \sigma = \bar S \cap \ell$ 
+  is finite.
+
+  Moreover $\bar S \setminus S \subset C\cup W$ because 
+  $S\cup C\cup \sigma$ is compact by~\cite{PaoSte}.
+  When $H^1(C)=0$ this implies $\H^1(\bar S)=\H^(S)$ and hence 
+  $\bar S\in \M(\ell\cup C)$.
+\end{proof}
+
+\begin{lemma}\label{lm:angle}
+Let $S\in \M(\ENCLOSE{H} \cup C)$ with $C$ a compact set, $H\not \in C$.
+Then there exists a point $T$ such that $[HT]\subset \bar S$ 
+and either $T\in C$ or $S$ is a triple point in a neighbourhood of $T$.
+
+Moreover if $C\subset B_\rho(P)$ for some point $P$ and radius $\rho > 0$
+then $\bar S\setminus B_r(P) = [HT]\setminus B_r(P)$ 
+for $r = 2\rho/\sqrt 3$.
+\end{lemma}
+
+\begin{lemma}\label{lm:base}
+  Let $\ell$ be a line, $\rho>0$, 
+  $r=2\rho/\sqrt 3$.
+  Let $P$ be a point such that $\dist(P,\ell)>2\rho$
+  and let $C$ be a compact subset of $\overline{B_\rho(P)}$.
+  Let $S \in \M(\ell\cup C)$ 
+  (such $S$ exists in view of Lemma~\ref{lm:exists}).
+  Then there exists a point $Q\in \partial B_r(P)$ 
+  and a point $H\in \ell$
+  such that $\bar S\setminus B_r(P) = [H,Q]$.
+  Moreover $[H,Q]$ is perpendicular to $\ell$.
+\end{lemma}
+\begin{proof}
+  \emph{Step 1.} We claim that for any $H\in \ell$ for any $S\in \M(\ENCLOSE{H} \cup C)$
+  one has that $\bar S\setminus B_r(P)$ is a straight line segment $[H,Q]$ 
+  for some $Q\in \partial B_r(P)$.
+
+  In fact let $S_1$ be the only connected component of $S$ such that 
+  $H\in \bar S_1$ (see \cite{PaoSte}).
+  By \cite{PaoSte} we know that $\bar S_1\setminus B_\rho(P)$ is locally 
+  a finite Steiner tree composed by straight line segments possibly joined 
+  by triple points.
+  If the claim were false, there would be a triple point $T$
+  in $\bar S_1\setminus B_r(P)$ with branchings at 120 degrees dividing 
+  the plane in three angles.
+  Since $\abs{TP}>r$ we have that $B_r(P)$ is in one of those angles 
+  which we call $\alpha$.
+
+
+
+   
+
+
+  We know (see \cite{PaoSte}) that $S$ is locally a finite Steiner tree 
+  outside of any small neighbourhood of $\ell\cup C$.
+  
+  We claim that $S\setminus B_\rho(P)$ belongs to 
+  a single connected component of $S$. 
+  In fact, if not, there are two different connected components 
+  $S_1$ and $S_2$ of $S$ which have some points outside $B_\rho(P)$. 
+  We know (see \cite{PaoSte}) that $\bar S_1$ and $\bar S_2$ have 
+  at most a single end-point on $\ell$. 
+  Let $\tilde S_1$ be the connected component of
+  
+  In fact suppose by contradiction that there are two different 
+  points $H_1$ and $H_2$ in $\bar S\cap \ell$. 
+  If $H_1$ and $H_2$ are in the closure of the same connected component 
+  of $S$, then removing from $S$ a small neighbourhood of $H_2$ 
+  consider the connected components $S_1$ and $S_2$ 
+  of $S$ such that $H_1\in \bar S_1$ and $H_2\in \bar S_2$.
+
+  Hence, if $S\setminus B_r(P)$ is not a line segment,
+  there is a triple point $T$ 
+  Otherwise $S$ has a triple point outside $B_r(P)$.
+  So the 120 degree angle encloses the whole ball $B_\rho(P)$ 
+  and a projection would decrease the length.
 \end{proof}
   
 \begin{lemma}\label{lm:01}
@@ -100,6 +203,14 @@ Dire cos'è un arco. }
   given any $S\in \M(\ENCLOSE{T}\cup A)$ 
   for some $T\not \in B_R(P)$
   we have that $S\setminus B_R(P)$ is a straight line segment.
+\end{lemma}
+\begin{proof}
+  Follows from Lemma \ref{lm:base} with $C:=A$.
+\end{proof}
+
+\begin{lemma} 
+  For every $\Sigma \in \M(Y\cup A)$ one has that $\bar\Sigma\in \M(Y\cup A)$.
+  Moreover, $\bar\Sigma$ is connected and contains $A$.
 \end{lemma}
 
 \begin{lemma}\label{lm:tripod}
