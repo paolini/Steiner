@@ -1,16 +1,17 @@
-\documentclass{article}
+\documentclass{amsart}
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-\usepackage{showkeys}
+%\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
 
 \newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
 \newcommand{\NN}{\mathbb N}
 \newcommand{\ZZ}{\mathbb Z}
 
@@ -48,44 +49,203 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
 
+\author[Paolini]{Emanuele Paolini} 
+\address[Emanuele Paolini]{Dipartimento di Matematica, Universit\`a di Pisa \\
+	Largo Bruno Pontecorvo 5 \\ I-56127, Pisa}
+\email[Emanuele Paolini]{emanuele.paolini@unipi.it}
 
-\title{Solution to the Steiner problem on an infinite self-similar set}
-\author{Paolini Stepanov}
+\author[Stepanov]{Eugene Stepanov}
+\address[Eugene Stepanov]{%
+  Scuola Normale Superiore, Piazza dei Cavalieri 6, Pisa, Italy
+  \and 
+  St.Petersburg Branch of the Steklov Mathematical Institute of the Russian Academy of Sciences,
+	St.Petersburg, Russia
+	%\and
+	%Department of Mathematical Physics, Faculty of Mathematics and Mechanics,
+	%St. Petersburg State University, Universitetskij pr.~28, Old Peterhof,
+	%198504 St.Petersburg, Russia%, email: stepanov.eugene@gmail.com
+	%\and ITMO University
+	\and
+	Faculty of Mathematics, Higher School of Economics, Moscow
+}
+\email[Eugene Stepanov]{stepanov.eugene@gmail.com}
+
+\thanks{
+	%Data sharing not applicable to this article as no datasets were generated or analysed during the current study.
+	The first author is member of the INDAM/GNAMPA 
+  and is supported by the PRIN Project 2019/24.
+%	The work of the third author has been partially financed by the 
+%  RFBR grant \#20-01-00630 A
+}
+\subjclass[2010]{Primary 49Q20, 49Q05, 49Q10. Secondary 05C63.}
+\keywords{Steiner problem, Steiner tree, fractal set}
+\date{\today}
+
+\title{On a Steiner tree connecting a fractal set 
+  with positive Hausdorff dimension}
 
 \begin{document}
 
+\begin{abstract}
+We construct an example of a planar embedded self-similar binary tree  
+which is the unique solution to the Steiner problem of finding 
+the shortest connection of a given planar self-similar fractal set 
+of positive Hausdorff dimension.
+The latter set can be considered the set of \emph{leaves} of the tree.
+\end{abstract}
+
 \maketitle
+
+\section{Introduction}
+
+Let $C$ be a compact subset of $\RR^2$.
+The Steiner problem with datum $C$ consists of finding a set $S\subset \RR^2$ 
+such that $S\cup C$ is connected and $\H^1(S)$ is minimal where $\H^1$ stands 
+for the $1$-dimensional Hausdorff measure (i.e.\ the length of the set).
+Usually this problem is considered for the case when $C$ is the finite 
+set and in this setting it becomes a problem of combinatorial geometry. 
+The Steiner problem goes back to Jarník and Kössler \cite{JarKos34} 
+(altough some of its particular cases are much more ancient, for instance 
+when $C$ is the set of the three vertices of a triangle the problem was 
+stated already by Fermat and solved by Torricelli).
+The problem is computationally hard and relatively few explicit solutions 
+are known, especially in the cases when the number of points is large.
+
+However the problem is important for the more general setting of possibly infinite 
+sets $C$. 
+Moreover finding explicit solutions for an infinite set $C$ may shed light on 
+the solutions to finite sets with an arbitrarily large number of points.
+One natural question that has arosen in this context is 
+whether there exists a planar irreducible Steiner tree $S$ connecting an uncountable 
+and possibly fractal set of points $C$ 
+(we say that $S$ is irreducible if $S\setminus C$ is 
+connected).
+A very similar question,
+that of existence of irreducible Steiner sets with the topology 
+of a binary tree for a finite set of points $C$ with arbitrarily 
+large number of points, has been answered positively by Ivanov and 
+Tuzhilin \cite{IvaTuz94} by means of an abstract construction.
+Further an explicit construction of such a tree has been suggested 
+in \cite{PaoSteTep15}.
+Namely, the set $C$ consists of a \emph{root} $H$ and uncountably many
+points (\emph{leaves}) which together give a totally disconnected perfect set 
+(i.e.\ every connected component is a point, but the points are not isolated).
+No segment of $S$
+touches the leaves, while every leaf is an accumulation point of
+segments of $S$.
+The infinite tree $S$ is composed by a \emph{trunk} of
+some length $\ell$ which splits at angles of 120 degrees 
+into two branches of length $\lambda_1 \ell$ 
+both of which split further at the same angles into two branches of length
+$\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}).
+\begin{figure}
+
+  \centering 
+  \includegraphics[height=4cm]{tree.png}
+  \label{fig:tree}
+  \caption{The picture is not in scale. **********}
+\end{figure}
+% Our proof requires that the sequence $\{\lambda_j\}$ vanish rather quickly (in fact, al least be summable).
+% It is an open question if in the case of a
+% constant sequence $\lambda_j=\lambda$ (with $\lambda>0$ small enough) the same construction
+% still provides a Steiner tree. This seems to be quite interesting
+% since the resulting tree would be, in that case, a \emph{self-similar}
+% fractal.
+
+In \cite{PaoSteTep15} it has been proven that 
+the suggested tree is in fact the solution (and even the unique one) 
+to the Steiner problem when the sequence of coefficients 
+is not only small but also rapidly decreasing (in particular summable).
+In such a situation the set $C$ though being uncountable 
+has zero Hausdorff dimension.
+The natural original question, whether this construction is also valid 
+for fractal self-similar $C$ (i.e.\ when the coefficients are constant,
+i.e.\ $\lambda_j=\lambda$ for all $j$)
+was left open.
+In the attempt to solve it, in \cite{MarMas16a} a 
+completely new and different method, based on special group valued calibrations,
+to check whether the given set $S$ is a solution to the Steiner problem,
+has been developed.
+In \cite{MarMas16b} the authors also show an example 
+of an infinite \emph{irrigation} tree which is a solution to
+a ramified transportation problem similar to the Steiner problem.
+The method itself is very useful and can be applied in many situations.
+However it failed in this particular problem.
+A breakthrough has been provided by the recent preprint \cite{CheTep23}
+where the authors provide a much simpler symmetry based argument to show that for 
+sufficiently small but constant coefficients the above construction 
+gives in fact an irreducible Steiner tree for a set $C$ 
+of positive Hausdorff dimension.
+However this construction unfortunately does not provide uniqueness of 
+the minimizer leaving open the possibility of having other solutions 
+different from the conjectured one.
+In this paper we further simplify and generalize the method of \cite{CheTep23}
+to close the question of both existence and uniqueness. 
+Moreover since we do not use the symmetry argument anymore our method 
+could be applied even to non symmetric trees.
+
+To be more precise, 
+let $\RR^2$ be identified with the complex plane $\CC$
+and given $\lambda>0$, 
+consider $f_j(z) = 1 + \theta_j z$,
+where $\theta = \lambda e^{(-1)^j i \frac \pi 3}$,
+for $j=1,2$. 
+The affine map $f_j$ is the composition of a rotation
+rescaling, and translation. 
+Let $A$ be the only non-empty compact set such that 
+\[
+  A = f_1(A) \cup f_2(A).  
+\]
+More explicitly $A$ is composed by the limit points of the 
+iterations of $f_1$ and $f_2$ starting from $0$.
+We are going to prove that if $\lambda$ is sufficiently 
+small then 
+for $C:=\ENCLOSE{H}\cup A$, with $H=0$, the closure $\bar S$ of any solution 
+$S$ to the Steiner problem 
+is connected and it is equal to the binary self-similar 
+tree $\Sigma$ defined by the recurrence equation
+\[
+  \Sigma = [0,1] \cup f_1(\Sigma) \cup f_2(\Sigma).
+\]
+
+\section{Notation and preliminaries}
+
 Let $\St(C)$ be the family of all sets $S$ such that 
-$S\cup C$ is connected.
-Let $\M(C)$ be the subset of $\St(C)$ of sets $S$ 
-with minimal length $\H^1(S)$.
+$S\cup C$ is connected and 
+let $\M(C)$ be the subset of $\St(C)$ of sets $S$ 
+with minimal (possibly infinite) length $\H^1(S)$.
 
-Let $A$ be the Cantor-like set you know which one: 
-$f_j(z) = 1 + \theta z$,
-$\theta = \lambda e^{i \frac \pi 3}$.
-$A=A_1\cup A_2$ 
-with $A_j = f_j(A)$.
 
-Let $Y=\ENCLOSE{(x,y)\colon x=0}$ be the $y$-axis,
-let $Y_j = f_j(Y)$.
-Consider the point $P=(1+\frac\lambda 2,0)$ 
-and the lines $\tilde Y_j$ parallel to $Y_j$ 
-passing through $P$.
+% \subsection{Construction}
+% 
+% \begin{conjecture}
+%   The result is valid for any $\lambda$ smaller than 
+%   the solution to the following equation:
+%   \[
+%     1+\frac\lambda 2 
+%     - \frac {\lambda^2} 2 \frac{1+2\lambda}{1-\lambda^2}
+%     +\sqrt 3 \lambda \frac{1 - \frac{\lambda^2}{1-\lambda}}{1-2\lambda}
+%     = \frac{1}{1-2\lambda}.
+%   \]
+%   Which is (maybe) equivalent to
+%   \[
+%   (6-2\sqrt 3)\lambda^3 + (3-4\sqrt 3)\lambda^2 - 3\lambda + 2\sqrt 3 - 1 =0  
+%   \]
+%   which has solution $\lambda\approx 0.43276$.
+% 
+% \end{conjecture}
 
-Let $\Sigma\in \St(Y\cup A)$ be the binary self-similar 
-tree you know which one.
-We claim that $\M(Y\cup A)=\ENCLOSE{\Sigma}$.
+\subsection{Auxiliary lemmata}
 
-\textbf{Ricordare. Dire che $S$ è connesso. 
-Dire che non importa se $Y$ non è limitato.
-Dire che dati due punti di $S$ esiste un unico arco che li connette.
-Dire cos'è un arco. }
+In the following proposition we state some known facts about 
+solutions to the Steiner problem collected from \cite{PaoSte12}
+and \cite{IvaTuz94}.
 
 \begin{proposition}[known facts about minimizers]\label{prop:PaoSte}
   Let $C\subset \RR^n$ be a compact set.
   Then $\M(C)\neq \emptyset$. If $S\in \M(C)$
-  with $H^1(S)<+\infty$
-  then:
+  with $\H^1(S)<+\infty$
+  then the following assertions hold.
   \begin{itemize}
     \item[(i)] $S\cup C$ is compact hence 
     $\bar S \setminus S \subset C$;
@@ -99,16 +259,18 @@ Dire cos'è un arco. }
     is the union of a finite number of straight line 
     segments which meet in triple points with equal 
     angles of 120 degrees and have endpoints in 
-    $\partial B_\rho(x)$;
+    $\partial B_\rho(x)$.
   \end{itemize}
 \end{proposition}
 
+The following lemma is also taken from~\cite[lemma~2.6]{PaoSte12}.
+
 \begin{lemma}\label{lm:connected}
-If $S$ is connected and $\H^1(S)<+\infty$ then $H^1(S) = \H^1(\bar S)$.
+If $S$ is connected and $\H^1(S)<+\infty$ then $\H^1(S) = \H^1(\bar S)$.
 \end{lemma}
-\begin{proof}
-  See~\cite[lemma~2.6]{PaoSte}.
-\end{proof}
+
+We also need the following lemmata for the case when the set to 
+be connected is not compact but contains a line.
 
 \begin{lemma}\label{lm:exists}
   Let $C$ be a compact subset of $\RR^2$ and $\ell$ be a line.
@@ -125,7 +287,7 @@ If $S$ is connected and $\H^1(S)<+\infty$ then $H^1(S) = \H^1(\bar S)$.
   the orthogonal projection of $C$ on $\ell$ is contained 
   in $\sigma$. 
   Then $\sigma\cup C$ is compact and by 
-  \cite{PaoSte} we know that 
+  \cite{PaoSte12} we know that 
   $\M(\sigma \cup C)\neq \emptyset$.
   For all $\Sigma \in \St(\ell\cup C)$ we have that its projection 
   $\tilde \Sigma$ 
@@ -144,71 +306,17 @@ If $S$ is connected and $\H^1(S)<+\infty$ then $H^1(S) = \H^1(\bar S)$.
   and hence has length at least $\dist(C,\ell)$.  
   Hence they cannot be infinitely many otherwise 
   we would have $\H^1(S)=+\infty$.
-  By \cite{PaoSte}) the closure of every connected component 
+  By \cite{PaoSte12} the closure of every connected component 
   of $S\in\M(C\cup \sigma)$ 
   has at most one point on $\sigma$, showing that the set 
   $W:=\bar S\cap \sigma = \bar S \cap \ell$ 
   is finite.
 
   Moreover $\bar S \setminus S \subset C\cup W$ because 
-  $S\cup C\cup \sigma$ is compact by~\cite{PaoSte}.
+  $S\cup C\cup \sigma$ is compact by~\cite{PaoSte12}.
   When $H^1(C)=0$ this implies $\H^1(\bar S)=\H^(S)$ and hence 
   $\bar S\in \M(\ell\cup C)$.
 \end{proof}
-
-\begin{lemma}\label{lm:angle}
-Let $S\in \M(\ENCLOSE{H} \cup C)$ with $C$ a compact set, $H\not \in C$.
-Then there exists a point $Q$ such that $[HQ]\subset \bar S$ 
-and either $Q\in C$ or $Q$ is a triple point of $S$
-and there are no other branching points of $S$ on $[HQ]$.
-
-Moreover if $C\subset \bar B_\rho(P)$ for some point $P$ and radius $\rho > 0$
-then for any $r\ge 2\rho/\sqrt 3$ there exists a point 
-$T\in [HQ]\cap \partial B_r(P)$ such that 
-$\bar S\setminus B_r(P) = [HT]$.
-\end{lemma}
-%
-\begin{proof}
-Consider the connected component $S_1$ of $S$ such that $\bar S_1\supset C$
-(see Proposition~\ref{prop:PaoSte}(ii)).
-We have two cases depending on whether $S_1$ has branching points or not.
-
-\emph{Case 1.} Suppose $\bar S_1$ has no branching points. 
-Then it is itself a line 
-segment $[HQ]$, and thus, necessarily $Q\in C$ 
-(again by Proposition~\ref{prop:PaoSte}(ii)).
-The second claim is then also obvious because every connected component 
-of $S$ different from $S_1$ touches only connected components of $C$ 
-but not $H$
-and hence is contained in the convex hull of $C$ hence in $B_\rho(P)\subset B_r(P)$.
-Therefore $\bar S\setminus B_r(P) = \bar S_1\setminus B_r(P) = [HT]$
-where $T$ is the intersection point of $\partial B_r(P)$ and $[HQ]$.
-
-\emph{Case 2.} If $\bar S_1$ has branching points
-then let $Q$ be the branching point closest to $H$ 
-in the intrinsic (geodesic) distance on $\bar S_1$.
-Such a point exists. In fact otherwise there would exist a sequence of 
-branching points in $\bar S_1$ converging to $H$
-but to each of such branching points there would correspond at least 
-one branch of $\bar S_1$ containing an endpoint on $C$ 
-(i.e.\ different from $H$) and hence having length at least $\dist(H,C)>0$.
-Since $H^1(\bar S_1)=\H^1(S_1)$, by Lemma~\ref{lm:connected}, 
-we would have $\H^(S)\ge \H^1(S_1)= +\infty$, contrary to the assumption.
-Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
-(by Proposition~\ref{prop:PaoSte}(iii)).
-
-To prove the second claim in this case, 
-it is enough to show that $Q\in \bar B_r(P)$.
-If not, for $S':=S\setminus [HQ]$ one clearly has $S'\in \M(\ENCLOSE{Q} \cup C)$
-and hence $S'$ is contained in the convex hull of $\ENCLOSE{Q}\cup C$
-hence in the convex hull of $\ENCLOSE{Q}\cup \bar B_rho(P)$.
-Since by contradiction $\abs{QP}> r = 2\rho/\sqrt 3$ 
-we notice that the latter convex 
-hull is contained in an angle of less than 120 degrees with vertex in $Q$.
-This is in contradiction with the fact that $Q$ was a triple point 
-which defines equal angles of 120 degrees as claimed in Proposition~\ref{PaoSte}(iii).
-\end{proof}
-
 
 \begin{lemma}\label{lm:base}
   Let $\ell$ be a line, $\rho>0$, 
@@ -224,22 +332,6 @@ which defines equal angles of 120 degrees as claimed in Proposition~\ref{PaoSte}
   Moreover $[HQ]$ is perpendicular to $\ell$.
 \end{lemma}
 \begin{proof}
-  
-%  \emph{Step 1.} We claim that for any $H\in \ell$ for any $S\in \M(\ENCLOSE{H} \cup C)$
-%  one has that $\bar S\setminus B_r(P)$ is a straight line segment $[HQ]$ 
-%  for some $Q\in \partial B_r(P)$.
-%
-%  In fact let $S_1$ be the only connected component of $S$ such that 
-%  $H\in \bar S_1$ (see \cite{PaoSte}).
-%  By \cite{PaoSte} we know that $\bar S_1\setminus B_\rho(P)$ is locally 
-%  a finite Steiner tree composed by straight line segments possibly joined 
-%  by triple points.
-%  If the claim were false, there would be a triple point $T$
-%  in $\bar S_1\setminus B_r(P)$ with branchings at 120 degrees dividing 
-%  the plane in three angles.
-%  Since $\abs{TP}>r$ we have that $B_r(P)$ is in one of those angles 
-%  which we call $\alpha$.
-
   \emph{Step 1.} 
   We claim that $S\setminus B_r(P)$ belongs to 
   a single connected component of $S$. 
@@ -274,6 +366,73 @@ which defines equal angles of 120 degrees as claimed in Proposition~\ref{PaoSte}
   of $S$.
 \end{proof}
   
+In the proof of the above Lemma~\ref{lm:base} we used the following statement.
+
+\begin{lemma}\label{lm:angle}
+  Let $S\in \M(\ENCLOSE{H} \cup C)$ with $C$ a compact set, $H\not \in C$.
+  Then there exists a point $Q$ such that $[HQ]\subset \bar S$ 
+  and either $Q\in C$ or $Q$ is a triple point of $S$
+  and there are no other branching points of $S$ on $[HQ]$.
+  
+  Moreover if $C\subset \bar B_\rho(P)$ for some point $P$ and radius $\rho > 0$
+  then for any $r\ge 2\rho/\sqrt 3$ there exists a point 
+  $T\in [HQ]\cap \partial B_r(P)$ such that 
+  $\bar S\setminus B_r(P) = [HT]$.
+  \end{lemma}
+  %
+  \begin{proof}
+  Consider the connected component $S_1$ of $S$ such that $\bar S_1\supset C$
+  (see Proposition~\ref{prop:PaoSte}(ii)).
+  We have two cases depending on whether $S_1$ has branching points or not.
+  
+  \emph{Case 1.} Suppose $\bar S_1$ has no branching points. 
+  Then it is itself a line 
+  segment $[HQ]$, and thus, necessarily $Q\in C$ 
+  (again by Proposition~\ref{prop:PaoSte}(ii)).
+  The second claim is then also obvious because every connected component 
+  of $S$ different from $S_1$ touches only connected components of $C$ 
+  but not $H$
+  and hence is contained in the convex hull of $C$ hence in $B_\rho(P)\subset B_r(P)$.
+  Therefore $\bar S\setminus B_r(P) = \bar S_1\setminus B_r(P) = [HT]$
+  where $T$ is the intersection point of $\partial B_r(P)$ and $[HQ]$.
+  
+  \emph{Case 2.} If $\bar S_1$ has branching points
+  then let $Q$ be the branching point closest to $H$ 
+  in the intrinsic (geodesic) distance on $\bar S_1$.
+  Such a point exists. In fact otherwise there would exist a sequence of 
+  branching points in $\bar S_1$ converging to $H$
+  but to each of such branching points there would correspond at least 
+  one branch of $\bar S_1$ containing an endpoint on $C$ 
+  (i.e.\ different from $H$) and hence having length at least $\dist(H,C)>0$.
+  Since $H^1(\bar S_1)=\H^1(S_1)$, by Lemma~\ref{lm:connected}, 
+  we would have $\H^(S)\ge \H^1(S_1)= +\infty$, contrary to the assumption.
+  Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
+  (by Proposition~\ref{prop:PaoSte}(iii)).
+  
+  To prove the second claim in this case, 
+  it is enough to show that $Q\in \bar B_r(P)$.
+  If not, for $S':=S\setminus [HQ]$ one clearly has $S'\in \M(\ENCLOSE{Q} \cup C)$
+  and hence $S'$ is contained in the convex hull of $\ENCLOSE{Q}\cup C$
+  hence in the convex hull of $\ENCLOSE{Q}\cup \bar B_rho(P)$.
+  Since by contradiction $\abs{QP}> r = 2\rho/\sqrt 3$ 
+  we notice that the latter convex 
+  hull is contained in an angle of less than 120 degrees with vertex in $Q$.
+  This is in contradiction with the fact that $Q$ was a triple point 
+  which defines equal angles of 120 degrees as claimed in 
+  Proposition~\ref{prop:PaoSte}(iii).
+  \end{proof}
+  
+  \section{Main result}
+\label{sec:main}
+
+Let $\lambda>0$ be fixed, let $f_j$ ($j=1,2$), 
+$A$ and $\Sigma$ be as defined in the Introduction.
+
+Let $Y=\ENCLOSE{(x,y)\colon x=0}$ be the $y$-axis,
+let $Y_j = f_j(Y)$ for $j=1,2$.
+Consider the point $P=(1+\frac\lambda 2,0)$.
+Clearly $\Sigma\in \St(Y\cup A)$.
+
 \begin{lemma}\label{lm:01}
   Let $P$ and $A$ be defined as above,
   $R=\frac{2\lambda}{\sqrt 3}$.
@@ -498,7 +657,7 @@ Then $T\subset E$.
   Hence $\H^1(S) > \H^1(\Sigma')$ contrary 
   to the optimality of $S$.
   
-  By \cite{PaoSte} we know that $S$ touches $Y'$ in a single point $H$.
+  By \cite{PaoSte12} we know that $S$ touches $Y'$ in a single point $H$.
   Consider an arc which connects $H$ to any point of $A$
   and consider the longest (injective) arc $S_0$, along such a curve,
   with endpoints $H\in Y'$ and $T\in S$
@@ -635,14 +794,23 @@ Then $T\subset E$.
 \end{proof}
 
 \begin{theorem}\label{th:main}
-Let $S\in \M(Y\cup A)$. 
-Then $S$ is the standard bifurcation tree.
+If $\lambda < \frac 1{25}$ then $\M(Y\cup A)$ is nonempty 
+and, moreover, if $S\in \M(Y\cup A)$
+then $S$ is connected and $\bar S=\Sigma$.
+Moreover $\M(\ENCLOSE{0}\cup A) = \M(Y\cup A)$.
 \end{theorem}
+%
 \begin{proof}
-Given any $S\in \M(\ENCLOSE{x=d}\cup A)$ with $d<1$, 
-by Lemma~\ref{lm:branching} we are able to define $S_1$ and $S_2$, 
-$H$, $T$
- such that 
+By Lemma~\ref{lm:exists} we know that $\M(\ENCLOSE{x=d}\cup A)$
+is nonempty for every $d\in \RR$.
+Again by Lemma~\ref{lm:exists} for any $S\in \M(\ENCLOSE{x=d}\cup A)$ 
+one has that $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and, moreover,
+$\bar S$ is connected and $\bar S\supset A$.
+Thus we may consider an arbitrary closed $S\in \M(\ENCLOSE{x=d}\cup A)$.
+If $d<1$, 
+by Lemma~\ref{lm:branching}, 
+we are able to define $S_1$ and $S_2$, $H$, $T$
+such that 
 $S=[H T] \cup S_1 \cup S_2$, $[HT]$ is perpendicular to $Y$.
 If we define the sets $b_1(S)$ and $b_2(S)$ 
 by $b_j(S) := f_j^{-1}(S_j)$, $j=1,2$.
@@ -688,9 +856,17 @@ This gives
    \le 2\lambda \max\ENCLOSE{\delta(S)\colon S\in \S^{k+1}}
    = 2 \lambda \Delta_{k+1}.
 \]
-If by contradiction, $\Delta_0>0$ we would have 
+We have $\Delta_0 = 0$ since otherwise for 
+$\Delta_0>0$ we would have 
 $\Delta_k\to +\infty$ while we know,
 by Lemma~\ref{lm:branching}, that $\Delta_k \le \lambda$
 for all $k$.
+But $\Delta_0 =0$ implies $\Delta_k=0$ for all $k$.
+In particular for $d=0$ this implies $S=\Sigma$ 
+(recall that $S$ has been choosen to be closed).
 \end{proof}
+
+\bibliographystyle{plain}
+\bibliography{../share/math/biblio}
+
 \end{document}
