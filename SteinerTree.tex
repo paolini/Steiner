@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-%\usepackage{showkeys}
+\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -81,8 +81,7 @@
 \keywords{Steiner problem, Steiner tree, fractal set}
 \date{\today}
 
-\title{On a Steiner tree connecting a fractal set 
-  with positive Hausdorff dimension}
+\title{On the Steiner tree connecting a fractal set}
 
 \begin{document}
 
@@ -133,17 +132,20 @@ points (\emph{leaves}) which together give a totally disconnected perfect set
 No segment of $S$
 touches the leaves, while every leaf is an accumulation point of
 segments of $S$.
-The infinite tree $S$ is composed by a \emph{trunk} of
+The infinite tree $S$ 
+is composed by a \emph{trunk} of
 some length $\ell$ which splits at angles of 120 degrees 
 into two branches of length $\lambda_1 \ell$ 
 both of which split further at the same angles into two branches of length
 $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}).
 \begin{figure}
-
   \centering 
-  \includegraphics[height=4cm]{tree.png}
+  \includegraphics[height=6cm]{tree.pdf}
   \label{fig:tree}
-  \caption{The picture is not in scale. **********}
+  \caption{The self-similar tree $S$ with a countable 
+  number of triple junctions and an uncountable number 
+  of leaves which are the limit points of the triple 
+  junctions.}
 \end{figure}
 % Our proof requires that the sequence $\{\lambda_j\}$ vanish rather quickly (in fact, al least be summable).
 % It is an open question if in the case of a
@@ -179,8 +181,11 @@ of positive Hausdorff dimension.
 However this construction unfortunately does not provide uniqueness of 
 the minimizer leaving open the possibility of having other solutions 
 different from the conjectured one.
-In this paper we further simplify and generalize the method of \cite{CheTep23}
-to close the question of both existence and uniqueness. 
+In this paper 
+we close the original question of both existence and uniqueness.
+To do so we develop a method which in particular uses 
+also a further simplification and a generalization of 
+the idea developed in \cite{CheTep23}.
 Moreover since we do not use the symmetry argument anymore our method 
 could be applied even to non symmetric trees.
 
@@ -425,13 +430,14 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
   \section{Main result}
 \label{sec:main}
 
-Let $\lambda>0$ be fixed, let $f_j$ ($j=1,2$), 
+Let $\lambda>0$ be fixed,
+$f_j$ ($j=1,2$), 
 $A$ and $\Sigma$ be as defined in the Introduction.
-
-Let $Y=\ENCLOSE{(x,y)\colon x=0}$ be the $y$-axis,
-let $Y_j = f_j(Y)$ for $j=1,2$.
-Consider the point $P=(1+\frac\lambda 2,0)$.
+Let $Y:=\ENCLOSE{(x,y)\colon x=0}$ be the $y$-axis,
+and $Y_j := f_j(Y)$ for $j=1,2$.
+Consider the point $P:=(1+\frac\lambda 2,0)$.
 Clearly $\Sigma\in \St(Y\cup A)$.
+We need the following lemmata.
 
 \begin{lemma}\label{lm:01}
   Let $P$ and $A$ be defined as above,
@@ -445,10 +451,17 @@ Clearly $\Sigma\in \St(Y\cup A)$.
   Follows from Lemma \ref{lm:base} with $C:=A$.
 \end{proof}
 
-\begin{lemma} 
-  For every $\Sigma \in \M(Y\cup A)$ one has that $\bar\Sigma\in \M(Y\cup A)$.
-  Moreover, $\bar\Sigma$ is connected and contains $A$.
+\begin{lemma}\label{lm:existsA} 
+  For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
+  Moreover if $S \in \M(\ENCLOSE{x=d}\cup A)$ one has that 
+  $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and, if $\lambda < \frac 1 2$ then 
+  $\bar S$ is connected and contains $A$.
 \end{lemma}
+\begin{proof}
+  Follows from Lemma~\ref{lm:exists} with $C:=A$
+  minding that $A$ is totally disconnected and if $\lambda < \frac 1 2$ 
+  then $\H^1(A)=0$.
+\end{proof}
 
 \begin{lemma}\label{lm:tripod}
   Let $\nu_1,\nu_2,\nu_3$ be three unit vectors $\RR^2$
@@ -801,9 +814,9 @@ Moreover $\M(\ENCLOSE{0}\cup A) = \M(Y\cup A)$.
 \end{theorem}
 %
 \begin{proof}
-By Lemma~\ref{lm:exists} we know that $\M(\ENCLOSE{x=d}\cup A)$
+By Lemma~\ref{lm:existsA} we know that $\M(\ENCLOSE{x=d}\cup A)$
 is nonempty for every $d\in \RR$.
-Again by Lemma~\ref{lm:exists} for any $S\in \M(\ENCLOSE{x=d}\cup A)$ 
+Again by Lemma~\ref{lm:existsA} for any $S\in \M(\ENCLOSE{x=d}\cup A)$ 
 one has that $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and, moreover,
 $\bar S$ is connected and $\bar S\supset A$.
 Thus we may consider an arbitrary closed $S\in \M(\ENCLOSE{x=d}\cup A)$.
