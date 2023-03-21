@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-\usepackage{showkeys}
+%\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -195,8 +195,8 @@ and given $\lambda>0$,
 consider $f_j(z) = 1 + \theta_j z$,
 where $\theta = \lambda e^{(-1)^j i \frac \pi 3}$,
 for $j=1,2$. 
-The affine map $f_j$ is the composition of a rotation
-rescaling, and translation. 
+The affine map $f_j$ is the composition of a rotation,
+rescaling and translation. 
 Let $A$ be the only non-empty compact set such that 
 \[
   A = f_1(A) \cup f_2(A).  
@@ -207,7 +207,7 @@ We are going to prove that if $\lambda$ is sufficiently
 small then 
 for $C:=\ENCLOSE{H}\cup A$, with $H=0$, the closure $\bar S$ of any solution 
 $S$ to the Steiner problem 
-is connected and it is equal to the binary self-similar 
+is connected and is equal to the binary self-similar 
 tree $\Sigma$ defined by the recurrence equation
 \[
   \Sigma = [0,1] \cup f_1(\Sigma) \cup f_2(\Sigma).
@@ -220,6 +220,14 @@ $S\cup C$ is connected and
 let $\M(C)$ be the subset of $\St(C)$ of sets $S$ 
 with minimal (possibly infinite) length $\H^1(S)$.
 
+For a set $S\subset \RR^2$ we denote by $\bar S$ 
+its closure and by $\partial S$ its topological boundary.
+If $x\in \RR^2$ and $\rho>0$ then we let $B_\rho(x)\subset \RR^2$ 
+be the open ball of radius 
+$\rho$ centered at $x$.
+We also define $\dist(x,S):=\inf\{\abs{x-y}:y\in S\}$.
+For $P,Q\in \RR^2$ we denote by $[PQ]$ the closed straight line 
+segment with endpoints $P$ and $Q$ and by $\abs{PQ}$ its length.
 
 % \subsection{Construction}
 % 
@@ -252,12 +260,15 @@ and \cite{IvaTuz94}.
   with $\H^1(S)<+\infty$
   then the following assertions hold.
   \begin{itemize}
-    \item[(i)] $S\cup C$ is compact hence 
-    $\bar S \setminus S \subset C$;
+    \item[(i)] $S\cup C$ is compact, 
+    hence $\bar S \setminus S \subset C$;
     \item[(ii)] the closure of every connected component of $S$     
     is a topological tree 
     (contains no subset homeomorphic to $\mathbb S^1$)
-    with endpoints on $C$ and with at most one endpoint 
+    with endpoints\footnote{%
+    When $S$ is a compact topological tree, then $x\in S$ is an endpoint 
+    of $S$ if and only if $S\setminus \ENCLOSE{x}$ is connected.} 
+    on $C$ and with at most one endpoint 
     on each connected component of $C$;
     \item[(iii)] for all $x\in S\setminus C$ and all 
     $\rho < \dist(x,C)$ the set $S\cap \bar B_\rho(x)$ 
@@ -278,12 +289,11 @@ We also need the following lemmata for the case when the set to
 be connected is not compact but contains a line.
 
 \begin{lemma}\label{lm:exists}
-  Let $C$ be a compact subset of $\RR^2$ and $\ell$ be a line.
+  Let $C$ be a compact subset of $\RR^2$ and $\ell$ be a straight line.
   Then $\M(\ell\cup C)\neq \emptyset$.
   If $C$ is also totally disconnected, $C\cap \ell=\emptyset$ 
   and $S\in \M(\ell\cup C)$  
   then $\bar S \supset C$.
-
   If moreover $\H^1(S)<+\infty$ and $\H^1(C)=0$ 
   then $\bar S\in \M(\ell\cup C)$.
 \end{lemma}
@@ -309,17 +319,18 @@ be connected is not compact but contains a line.
   In fact the number of connected components of $S$ arriving at $\ell$ 
   is finite since every such component must touch also points of $C$ 
   and hence has length at least $\dist(C,\ell)$.  
-  Hence they cannot be infinitely many otherwise 
-  we would have $\H^1(S)=+\infty$.
-  By \cite{PaoSte12} the closure of every connected component 
+  Hence these components cannot be infinitely many,
+  since otherwise we would have $\H^1(S)=+\infty$.
+  In view of Proposition~\ref{prop:PaoSte}(ii) 
+  the closure of every connected component 
   of $S\in\M(C\cup \sigma)$ 
   has at most one point on $\sigma$, showing that the set 
   $W:=\bar S\cap \sigma = \bar S \cap \ell$ 
   is finite.
 
   Moreover $\bar S \setminus S \subset C\cup W$ because 
-  $S\cup C\cup \sigma$ is compact by~\cite{PaoSte12}.
-  When $H^1(C)=0$ this implies $\H^1(\bar S)=\H^(S)$ and hence 
+  $S\cup C\cup \sigma$ is compact by Proposition~\ref{prop:PaoSte}(i).
+  When $\H^1(C)=0$ this implies $\H^1(\bar S)=\H^1(S)$ and hence 
   $\bar S\in \M(\ell\cup C)$.
 \end{proof}
 
@@ -337,34 +348,40 @@ be connected is not compact but contains a line.
   Moreover $[HQ]$ is perpendicular to $\ell$.
 \end{lemma}
 \begin{proof}
-  \emph{Step 1.} 
   We claim that $S\setminus B_r(P)$ belongs to 
   a single connected component of $S$. 
   In fact, if not, there are two different connected components 
-  $S_1$ and $S_2$ of $S$ which have some points outside $B_r(P)$. 
+  $S_1$ and $S_2$ of $S$ which have some points outside of 
+  $B_r(P)$. 
+  Their closures must have points in $\ell$ otherwise 
+  they would be contained in the convex hull of $C\subset B_r(P)$.
   By Proposition~\ref{prop:PaoSte}(ii) we know  
   that $\bar S_1$ and $\bar S_2$ each have 
-  at most one endpoint on $\ell$.
+  at most one endpoint on $\ell$ (hence exactly one).
   Let $H_1$ and $H_2$ be such endpoints.
-  Not that $S_j\in \M(\ENCLOSE{H_j}\cup C_j)$ 
-  for some compact $C_j\subset C$, $j=1,2$. 
-  By Lemma~\ref{lm:angle} 
-  set $S_j\setminus B_r(P)$ is a straight line segment $[H_j T_j]$
+  Note that $S_j\in \M(\ENCLOSE{H_j}\cup C_j)$ 
+  with $C_j:=\bar S_j\cap C$, $j=1,2$, compact subsets of $C$. 
+  By Lemma~\ref{lm:angle} below
+  with $C_j$ and $H_j$ in place of $C$ and $H$ respectively,
+  one has that
+  the set $S_j\setminus B_r(P)$ is a straight line segment $[H_j T_j]$
   with $T_j\in \partial B_r(P)$, $j=1,2$.
   Since $\bar S_1\cap \bar S_2\subset \ell\cup C$ 
-  the $[H_1T_1]$ and $[H_2T_2]$ may only intersect at their endpoints.
-  
+  the line segments $[H_1T_1]$ and $[H_2T_2]$ may only intersect at their endpoints.
   Let $S':=(S\setminus [H_2T_2])\cup[T_1T_2])$ so that 
+  $S'\in \St(\ell\cup C)$ and
   \[
     \H^1(S) - \H^1(S')
     = \abs{H_2 T_2} - \abs{T_1T_2}
     \ge (d(P,\ell)-r) - 2r 
-    > (3r-r) - 2r > 0. 
+    > (3r-r) - 2r = 0. 
   \]
   Hence we would have $\H^1(S')<\H^1(S)$ contrary to the minimality of $S$.
 
-  Having proven that $S\setminus B_r(P)$ belongs to a single connected 
-  component of $S$, by Lemma~\ref{lm:angle} we have that 
+  Having proven that $S\setminus B_r(P)$ belongs to a single 
+  connected component of $S$, 
+  denoting by $H$ its endpoint on $\ell$,
+  and applying Lemma~\ref{lm:angle}, we have that 
   $S\setminus B_r(P)$ is a straight line segment $[HT]$.
   Finally, if $[HT]$ were not perpendicular to $\ell$ by moving $H$ along $\ell$ 
   we could decrease the length of $[HT]$ contrary to the minimality 
@@ -382,11 +399,42 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
   Moreover if $C\subset \bar B_\rho(P)$ for some point $P$ and radius $\rho > 0$
   then for any $r\ge 2\rho/\sqrt 3$ there exists a point 
   $T\in [HQ]\cap \partial B_r(P)$ such that 
-  $\bar S\setminus B_r(P) = [HT]$.
+  $\bar S\setminus B_r(P) = [HT]$
+  (see Figure~\ref{fig:angle}).
   \end{lemma}
   %
-  \begin{proof}
-  Consider the connected component $S_1$ of $S$ such that $\bar S_1\supset C$
+  \begin{figure}
+    \begin{center}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+      %\clip(-4.3,-1.06) rectangle (17.96,6.3);
+      \draw (4.2,4.44) node {\includegraphics[scale=0.6]{blob1.png}};    
+      \draw(4.48,4.38) circle (1.05cm);
+      \draw(4.48,4.38) circle (1.54cm);
+      \draw [line width=1.6pt] (3.32,4.36)-- (3.76,4.88);
+      \draw [line width=1.6pt] (3.32,4.36)-- (3.7,3.8);
+      \draw [line width=1.6pt] (3.32,4.36)-- (-0.64,4.44);
+      \draw [->] (4.48,4.38) -- (5.35,3.8);
+      \draw [->] (4.48,4.38) -- (6.02,4.34);
+      \draw (4.16,4.1) node[anchor=north west] {C};
+      \draw (1.18,4.86) node[anchor=north west] {S};
+      \fill (4.48,4.38) circle (1.5pt);
+      \draw (4.64,4.64) node {$P$};
+      \fill (3.32,4.36) circle (1.5pt);
+      \draw (3.22,4.36) node[anchor=north] {$Q$};
+      \fill (-0.64,4.44) circle (1.5pt);
+      \draw (-0.48,4.7) node {$H$};
+      \fill (2.94,4.37) circle (1.5pt);
+      \draw (3.1,4.62) node {$T$};
+      \draw (5.08,4.1) node {$\rho$};
+      \draw (5.28,4.58) node {$r$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{The situation in Lemma~\ref{lm:angle}.}
+    \label{fig:angle}
+  \end{figure}
+  
+\begin{proof}
+  Consider the connected component $S_1$ of $S$ such that $H\in \bar S_1$
   (see Proposition~\ref{prop:PaoSte}(ii)).
   We have two cases depending on whether $S_1$ has branching points or not.
   
@@ -406,11 +454,13 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
   in the intrinsic (geodesic) distance on $\bar S_1$.
   Such a point exists. In fact otherwise there would exist a sequence of 
   branching points in $\bar S_1$ converging to $H$
+  (branching points can only accumulate on $\ENCLOSE{H}\cup C$ 
+  by Proposition~\ref{prop:PaoSte}(ii)).
   but to each of such branching points there would correspond at least 
   one branch of $\bar S_1$ containing an endpoint on $C$ 
   (i.e.\ different from $H$) and hence having length at least $\dist(H,C)>0$.
-  Since $H^1(\bar S_1)=\H^1(S_1)$, by Lemma~\ref{lm:connected}, 
-  we would have $\H^(S)\ge \H^1(S_1)= +\infty$, contrary to the assumption.
+  Since $\H^1(\bar S_1)=\H^1(S_1)$, by Lemma~\ref{lm:connected}, 
+  we would have $\H^1(S)\ge \H^1(S_1)= +\infty$, contrary to the assumption.
   Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
   (by Proposition~\ref{prop:PaoSte}(iii)).
   
@@ -418,7 +468,7 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
   it is enough to show that $Q\in \bar B_r(P)$.
   If not, for $S':=S\setminus [HQ]$ one clearly has $S'\in \M(\ENCLOSE{Q} \cup C)$
   and hence $S'$ is contained in the convex hull of $\ENCLOSE{Q}\cup C$
-  hence in the convex hull of $\ENCLOSE{Q}\cup \bar B_rho(P)$.
+  hence in the convex hull of $\ENCLOSE{Q}\cup \bar B_\rho(P)$.
   Since by contradiction $\abs{QP}> r = 2\rho/\sqrt 3$ 
   we notice that the latter convex 
   hull is contained in an angle of less than 120 degrees with vertex in $Q$.
@@ -432,35 +482,43 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
 
 Let $\lambda>0$ be fixed,
 $f_j$ ($j=1,2$), 
-$A$ and $\Sigma$ be as defined in the Introduction.
-Let $Y:=\ENCLOSE{(x,y)\colon x=0}$ be the $y$-axis,
+$A$ and $\Sigma$ be defined as in the Introduction.
+Let $Y:=\ENCLOSE{(x,y)\in\RR^2\colon x=0}$ be the $y$-axis,
 and $Y_j := f_j(Y)$ for $j=1,2$.
 Consider the point $P:=(1+\frac\lambda 2,0)$.
 Clearly $\Sigma\in \St(Y\cup A)$.
 We need the following lemmata.
 
+\begin{lemma}\label{lm:existsA} 
+  For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
+  Moreover if $\lambda < \frac 1 2$ and $S \in \M(\ENCLOSE{x=d}\cup A)$ 
+  one has that $\H^1(S)<\infty$,
+  $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and
+  $\bar S$ contains $A$.
+\end{lemma}
+\begin{proof}
+  Follows from Lemma~\ref{lm:exists} with $C:=A$
+  minding that 
+  if $\lambda < \frac 1 2$ 
+  then $\H^1(A)=0$ 
+  hence $A$ is totally disconnected, 
+  and $\H^1(S)\le \H^1(\Sigma) = \frac{1}{1-2\lambda}<+\infty$.
+\end{proof}
+
 \begin{lemma}\label{lm:01}
   Let $P$ and $A$ be defined as above,
   $R=\frac{2\lambda}{\sqrt 3}$.
   Then $A\subset B_\lambda(P)$ and 
-  given any $S\in \M(\ENCLOSE{T}\cup A)$ 
-  for some $T\not \in B_R(P)$
-  we have that $S\setminus B_R(P)$ is a straight line segment.
+  there exists $T\in \partial B_R(P)$ such that
+  given any $d<1$ and any
+  $S\in \M(\ENCLOSE{x=d}\cup A)$ 
+  we have that $S\setminus B_R(P)$ is a straight line segment
+  $[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
+  with $H\in \ENCLOSE{x=d}$.
+  In particular $\bar S$ is connected.
 \end{lemma}
 \begin{proof}
   Follows from Lemma \ref{lm:base} with $C:=A$.
-\end{proof}
-
-\begin{lemma}\label{lm:existsA} 
-  For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
-  Moreover if $S \in \M(\ENCLOSE{x=d}\cup A)$ one has that 
-  $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and, if $\lambda < \frac 1 2$ then 
-  $\bar S$ is connected and contains $A$.
-\end{lemma}
-\begin{proof}
-  Follows from Lemma~\ref{lm:exists} with $C:=A$
-  minding that $A$ is totally disconnected and if $\lambda < \frac 1 2$ 
-  then $\H^1(A)=0$.
 \end{proof}
 
 \begin{lemma}\label{lm:tripod}
