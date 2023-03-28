@@ -201,8 +201,10 @@ Let $A$ be the only non-empty compact set such that
 \[
   A = f_1(A) \cup f_2(A).  
 \]
-More explicitly $A$ is composed by the limit points of the 
-iterations of $f_1$ and $f_2$ starting from $0$.
+One can check that $A$ is the limit, 
+in the sense of Hausdorff distance,
+of the finite sets $A_N$ where $A_N:=\ENCLOSE{f_{j_1}(f_{j_2}(\dots f_{j_N}(0)))\colon 
+j_1,j_2, \dots, j_N \in \ENCLOSE{1,2}}$.
 We are going to prove that if $\lambda$ is sufficiently 
 small then 
 for $C:=\ENCLOSE{H}\cup A$, with $H=0$, the closure $\bar S$ of any solution 
@@ -211,6 +213,12 @@ is connected and is equal to the binary self-similar
 tree $\Sigma$ defined by the recurrence equation
 \[
   \Sigma = [0,1] \cup f_1(\Sigma) \cup f_2(\Sigma).
+\]
+Equivalently one can define $\Sigma$ as
+\[
+  \Sigma := \overline{\bigcup_{N \in \NN}  
+  \bigcup\ENCLOSE{f_{j_1}\circ \dots \circ f_{j_N}([0,1])\colon 
+  j_1, \dots, j_N \in \ENCLOSE{1,2}}}.
 \]
 
 \section{Notation and preliminaries}
@@ -225,7 +233,14 @@ its closure and by $\partial S$ its topological boundary.
 If $x\in \RR^2$ and $\rho>0$ then we let $B_\rho(x)\subset \RR^2$ 
 be the open ball of radius 
 $\rho$ centered at $x$.
-We also define $\dist(x,S):=\inf\{\abs{x-y}:y\in S\}$.
+When $x\in \RR^2$, $S,S_1,S_2$ subsets of $\RR^2$
+we also write
+\begin{align*}
+  \dist(x,S)
+    &:=\inf\ENCLOSE{\abs{x-y}:y\in S},\\
+  \dist(S_1,S_2) 
+    &:= \inf\ENCLOSE{\abs{x-y}\colon x\in S_1, y\in S_2}.
+\end{align*}
 For $P,Q\in \RR^2$ we denote by $[PQ]$ the closed straight line 
 segment with endpoints $P$ and $Q$ and by $\abs{PQ}$ its length.
 
@@ -491,22 +506,51 @@ We need the following lemmata.
 
 \begin{lemma}\label{lm:existsA} 
   For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
-  Moreover if $\lambda < \frac 1 2$ and $S \in \M(\ENCLOSE{x=d}\cup A)$ 
+  Moreover if $\lambda < 2\sqrt 3- 3 \approx 0.46$ 
+  and $S \in \M(\ENCLOSE{x=d}\cup A)$ 
   one has that $\H^1(S)<\infty$,
   $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and
   $\bar S$ contains $A$.
 \end{lemma}
 \begin{proof}
-  Follows from Lemma~\ref{lm:exists} with $C:=A$
+  Recall that $A$ is a self-similar set 
+  satisfying the recurrence relation
+  $A = f_1(A) \cup f_2(A)$
+  with $f_1$ and $f_2$ being compositions of euclidean isometries 
+  with a rescaling of factor $\lambda$. 
+  The \emph{fractal dimension} of $A$ is hence 
+  $D$ such that $1 = 2 \lambda^D$ i.e.\ $D=-1/\log_2\lambda$.
+  By \cite[theorem 5.3(1)]{Hut81} the Hausdorff dimension 
+  of $A$ equals $D$ if it is possible to find an open set $U$ 
+  such that 
+  \begin{equation}\label{eq:open}
+    U \supset f_1(U) \cup f_2(U) 
+    \qquad\text{and}\qquad 
+    f_1(U)\cap f_2(U) = \emptyset.
+  \end{equation}
+  We can choose $U:=B_R(T)$ with $T=(1,0)$ and 
+  $R:=\lambda+\lambda^2+\lambda^3+\dots = \frac{\lambda}{1-\lambda}$.
+  Using the identity $f_j(B_R(T)) = B_{\lambda R}(f_j(T))$
+  one finds that $f_j(U)\subset U$ for any $\lambda<1$ since
+  $\abs{f_j(T)-T} = \lambda$ and $\lambda + \lambda R = R$.
+  For the second requirement in~\eqref{eq:open} we observe 
+  that $\abs{f_1(T)-f_2(T)} = \lambda\sqrt 3 < 2\lambda R$
+  when $\lambda < 2\sqrt 3 - 3$.
+  Hence under this hypothesis we have that the Hausdorff 
+  dimension of $A$ equals $D$ and since 
+  also $\lambda < \frac 1 2$ we find $D<1$, so that 
+  $\H^1(A) = 0$ and in particular $A$ is totally disconnected.
+  
+  Now the conclusion follows from Lemma~\ref{lm:exists} with $C:=A$ 
   minding that 
-  if $\lambda < \frac 1 2$ 
-  then $\H^1(A)=0$ 
-  hence $A$ is totally disconnected, 
-  and $\H^1(S)\le \H^1(\Sigma) = \frac{1}{1-2\lambda}<+\infty$.
+  \[
+    \H^1(S)\le \H^1(\Sigma) = \frac{1}{1-2\lambda}<+\infty.
+  \]
 \end{proof}
 
 \begin{lemma}\label{lm:01}
   Let $P$ and $A$ be defined as above,
+  $\lambda < 1/10$ and
   $R=\frac{2\lambda}{\sqrt 3}$.
   Then $A\subset B_\lambda(P)$ and 
   there exists $T\in \partial B_R(P)$ such that
@@ -518,20 +562,34 @@ We need the following lemmata.
   In particular $\bar S$ is connected.
 \end{lemma}
 \begin{proof}
-  Follows from Lemma \ref{lm:base} with $C:=A$.
+  The claim $A\subset B_\lambda(P)$ can be easily checked
+  by noticing that any point of $A$ has distance
+  from $P$ not larger than 
+  \[
+      \frac{\sqrt 3}{2}\lambda + \lambda^2 + \lambda^3 + \dots
+      = \frac{\sqrt 3}{2}\lambda + \frac{\lambda^2}{1-\lambda}
+  \]
+  and this is less than $\lambda$ if $\lambda < 1/10$.
+  Lemma \ref{lm:base} with $C:=A$ assures that 
+  $T$ exists with the desired properties and 
+  that $\bar S\cap \ENCLOSE{x=d} =\ENCLOSE{H}$.
+  Since, by Lemma~\ref{lm:existsA}, $\bar S \supset A$
+  it follows that $\bar S$ is connected.
 \end{proof}
 
 \begin{lemma}\label{lm:tripod}
-  Let $\nu_1,\nu_2,\nu_3$ be three unit vectors $\RR^2$
+  Let $\nu_1,\nu_2,\nu_3$ be three unit vectors in $\RR^2$
   with $\nu_1+\nu_2+\nu_3=0$. 
   Let $Y_j$ be a line perpendicular to $\nu_j$ for $j=1,2,3$.
   Let $T$ be any point in $\RR^2$ and let $H_j$ be the orthogonal 
   projection of $T$ on $Y_j$.
-  Define $d_j(T) = (T-H_j)\cdot \nu_j$
+  Define $d_j(T) := (T-H_j)\cdot \nu_j$
   be the signed distance of $T$ from $Y_j$.
-  Then $d_1(T) + d_2(T) + d_3(T)$ is constant (independent of $T$).
+  Then $d_1(T) + d_2(T) + d_3(T)$ is constant 
+  (i.e.\ independent of $T$).
 
-  In paarticular if $Y_1,Y_2,Y_3$ are three lines in $\RR^2$
+  In particular suppose that  
+  $Y_1,Y_2,Y_3$ are three lines in $\RR^2$
   forming angles of $60$ degrees so that 
   the three pairwise intersections identify
   an equilateral triangle with sides of length $\ell$.
@@ -553,24 +611,38 @@ We need the following lemmata.
   For the second claim just notice that $d_1(T)+d_2(T)+d_3(T)$
   is constant (by the first claim) and hence is equal to the value 
   obtained when $T$ is one of vertices of the triangle, in which case 
-  two distances are $0$ and the third one is equal to the height of the 
-  triangle which is the claimed value.
+  two distances are $0$ and the third one is equal to the height of the
+  triangle, which is the claimed value.
 \end{proof}
 
 \begin{lemma}\label{lm:precedente1}
 One has
 \begin{align*}
-    \dist(Y,A_1) & \ge 
+    \dist(Y,f_j(A)) 
+    &=\dist(Y,A)
+    \ge
     1+ \frac{\lambda} 2 
-    - \frac{\lambda^2(1+2\lambda)}{2(1-\lambda^2)}\\
-    \dist(A_1,A_2) & 
+    - \frac{\lambda^2(1+2\lambda)}{2(1-\lambda^2)},
+    \qquad j=1,2,
+    \\
+    \dist(f_1(A),f_2(A)) & 
     \ge 
     \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}.
 \end{align*}
 \end{lemma}
 \begin{proof}
+If we follow the tree $\Sigma$ starting from the root 
+at the origin and trying to get as close as possible 
+to the line $Y$ we first must follow the trunk of length 
+$1$ then at the first branching nothing changes if we
+turn left or right and then we go further along 
+the oblique branch of length $\lambda$ so that the distance 
+from $Y$ increases by $\lambda /2$. 
+After that the path leading towards $Y$ is made 
+of alternating branches with horizontal and oblique directions.
+The computation gives
   \begin{align*}
-  \dist(Y,A_1) &\ge 1+ \frac \lambda 2 
+  \dist(Y,f_j(A)) &\ge 1+ \frac \lambda 2 
      - \enclose{\frac{\lambda^2}{2} 
       + \lambda^3 
       + \frac{\lambda^4 }{2}
@@ -580,43 +652,58 @@ One has
       - \frac{1}{2}\frac{\lambda^2}{1-\lambda^2}
       - \frac{\lambda^3}{1-\lambda^2}\\
       &= 1+ \frac{\lambda} 2 
-      - \frac{\lambda^2(1+2\lambda)}{2(1-\lambda^2)}
+      - \frac{\lambda^2(1+2\lambda)}{2(1-\lambda^2)}.
   \end{align*}
-  while 
+  Analogously,  
   \begin{align*}
-    \dist(A_1,A_2)
+    \dist(f_1(A),f_2(A))
+    &\ge 2\, \dist(f_1(A),\ENCLOSE{y=0}) \\
     &\ge 2\enclose{\frac{\sqrt 3}{2} \lambda 
       -\frac{\sqrt 3}{2}\enclose{\lambda^3 + \lambda^4 + \dots}
-     }\\
-    &= \sqrt 3 \lambda -\sqrt 3 \frac{\lambda^3}{1-\lambda}.
+     }
+    = \sqrt 3 \lambda -\sqrt 3 \frac{\lambda^3}{1-\lambda},
   \end{align*}
+  as claimed.
 \end{proof}
 
+\begin{remark}
+  Notice that if the right hand side of the inequalities 
+  in the claim of Lemma~\ref{lm:precedente1}
+  are positive then in fact those equalities 
+  become equalities as it is easy to see from the proof.
+  This happens for $\lambda$ sufficiently small, 
+  for instance when $\lambda < \frac 1 2$.
+\end{remark}
+
 \begin{lemma}\label{lm:envelope}
-Let $\Sigma\in \M(\ENCLOSE{T}\cup X)$
-for some compact set $X$ contained in a horizontal strip 
-$E=\ENCLOSE{(x,y)\colon \abs{y}\le d}$ of width $2d>0$.
-Suppose also that there is some $T'\in \Sigma$, $T'\neq T$ 
+Let $S\in \M(\ENCLOSE{T}\cup C)$
+for some compact set $C$ contained in a horizontal strip 
+$E=\ENCLOSE{(x,y)\colon \abs{y}\le \delta}$ of width $2\delta>0$.
+Suppose also that there is some $T'\in S$, $T'\neq T$ 
 such that $[T,T']$ is horizontal.
-Then $T\subset E$.
+Then $T\in E$ and $S\subset E$.
 \end{lemma}
 %
 \begin{proof}
   Suppose by contradiction that $T=(x_T,y_T)$ is outside $E$.
-  For example $y_T>d$. 
-  Then the convex hull of $\ENCLOSE{T}\cup X$ has a single 
+  For example $y_T>\delta$. 
+  Then the convex hull of $\ENCLOSE{T}\cup C$ has a single 
   point, which is $T$, on the line $\ENCLOSE{y=y_T}$. 
-  This is in contradiction with the fact that $T'\in \Sigma$ 
+  This is in contradiction with the fact that $T'\in S$ 
   has the same $y$-coordinate as $T$.
+  This proves $T\in E$ and hence
+  shows that the whole convex hull of 
+  $\ENCLOSE{T}\cup C$ is contained in $E$. 
+  Therefore, $S$ must be contained in $E$ as well.
 \end{proof}
 \begin{figure}
   \begin{center}
   \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=4.0cm,y=4.0cm]
     \clip(-0.2,-0.7) rectangle (1.84,0.92);
     \draw (1.0,0.57) node[anchor=north west] {\includegraphics[width=1cm]{blob1.png}};
-    \draw (1.19,0.4) node[anchor=north west] {$A_1$};
+    \draw (1.19,0.5) node[anchor=north west] {$f_1(A)$};
     \draw (1.05,-0.12) node[anchor=north west] {\includegraphics[width=1cm]{blob2.png}};
-    \draw (1.22,-0.28) node[anchor=north west] {$A_2$};
+    \draw (1.22,-0.28) node[anchor=north west] {$f_2(A)$};
     \draw (1.2,0.35)-- (1,0);
     \draw (1,0)-- (1.2,-0.35);
     \draw [line width=1.2pt] (0,0)-- (1,0);
@@ -686,7 +773,7 @@ Then $T\subset E$.
   and $d(H,\ENCLOSE{y=0})\le \lambda$.
   Finally if $Y_j'$ is the line parallel to $Y_j=f_j(Y)$ 
   passing through $T$ 
-  then $S_j \in \M(Y_j'\cup A_j)$ for $j=1,2$.
+  then $S_j \in \M(Y_j'\cup f_j(A))$ for $j=1,2$.
   Also $Y_j'\subset f_j(\ENCLOSE{x<1})$.
 \end{lemma}
 \begin{proof}
@@ -694,14 +781,14 @@ Then $T\subset E$.
   two compact connected sets 
   $\sigma$ and $\gamma$
   with $\H^1(\sigma\cap \gamma)=0$
-  such that $\sigma$ touches both $Y'$ and $A_1$ 
-  while $\gamma$ touches both $A_1$ and $A_2$.
+  such that $\sigma$ touches both $Y'$ and $f_1(A)$ 
+  while $\gamma$ touches both $f_1(A)$ and $f_2(A)$.
   In fact, otherwise
   \begin{equation}
   \label{eq:43747}
   \begin{aligned}
     \H^1(S)
-    &\ge \dist(Y', A_1) + \dist(A_1, A_2)
+    &\ge \dist(Y', f_1(A)) + \dist(f_1(A), f_2(A))
     \\
     &\ge 
     1 - d + \frac{\lambda} 2 
@@ -736,10 +823,10 @@ Then $T\subset E$.
   
   \emph{Case 1.} 
   Suppose $T$ is a point of $A$.
-  Without loss of generality suppose $T\in A_1$.
+  Without loss of generality suppose $T\in f_1(A)$.
   The set $(S\setminus S_0)\cup\ENCLOSE{T}$
-  is connected and contains points of both $A_1$
-  and $A_2$ hence there exists an arc $\gamma$ 
+  is connected and contains points of both $f_1(A)$
+  and $f_2(A)$ hence there exists an arc $\gamma$ 
   in $S\setminus \sigma\cup\ENCLOSE{T}$.
   The claim above with $\sigma:=S_0$ implies that this cannot happen.
   
@@ -752,26 +839,26 @@ Then $T\subset E$.
   strictly shorter than $S\in \M(Y\cup A)$.
   Moreover each point of $A$ is contained in either $S_1$ or $S_2$.
   Without loss of generality suppose that $S_1$ 
-  contains at least one point of $A_1$.
+  contains at least one point of $f_1(A)$.
   
   \emph{Case 2a.} 
-  Suppose that $S_1$ contains also points of $A_2$.
+  Suppose that $S_1$ contains also points of $f_2(A)$.
   Then we can apply the claim above with 
   $\sigma:= S_0 \cup S_2$ and 
   $\gamma:= S_1$ and exclude that this case can happen.
   
   \emph{Case 2b.} If $S_2$ contains points of both 
-  $A_1$ and $A_2$ we proceed 
+  $f_1(A)$ and $f_2(A)$ we proceed 
   as in Case 2a with $S_1$ and $S_2$ interchanged.
   
   The only remaining possibility is that $S_1$ 
-  only touches points of $A_1$ 
-  and $S_2$ only touches points of $A_2$. 
-  Hence $S_1\supset A_1$ and $S_2\supset A_2$ since $A\subset S$.
+  only touches points of $f_1(A)$ 
+  and $S_2$ only touches points of $f_2(A)$. 
+  Hence $S_1\supset f_1(A)$ and $S_2\supset f_2(A)$ since $A\subset S$.
   So $S_0\in \M(\ENCLOSE{H,T})$  
-  and $S_j \in \M(\ENCLOSE{T} \cup A_j)$ for $j=1,2$
+  and $S_j \in \M(\ENCLOSE{T} \cup f_j(A))$ for $j=1,2$
   otherwise, by substituting $S_0$ with an element of $\M(\ENCLOSE{H,T})$
-  and $S_j$ with an element of $\M(\ENCLOSE{T}\cup A_j)$,
+  and $S_j$ with an element of $\M(\ENCLOSE{T}\cup f_j(A))$,
   we could construct a better competitor 
   to $S\in \St(Y\cup A)$.
   
@@ -781,15 +868,15 @@ Then $T\subset E$.
   
   \emph{Step 2.}
   By Lemma~\ref{lm:01} we have $A\subset B_\lambda(P)$,
-  hence $A_j = f_j(A) \subset B_{\lambda^2}(f_j(P))$
+  hence $f_j(A) = f_j(A) \subset B_{\lambda^2}(f_j(P))$
   for $j=1,2$.
-  Since $S_j \in \M(\ENCLOSE{T}\cup A_j)$
+  Since $S_j \in \M(\ENCLOSE{T}\cup f_j(A))$
   contains a small segment perpendicular to $Y_j$,
   by Lemma~\ref{lm:envelope} applied to $f_j^{-1}(S_j)$
   we obtain that $S_j$ is contained in the strip perpendicular 
   to $Y_1$, centered in $T_0$
-  containing $A_j$. 
-  Since $A_j\subset B_{\lambda^2}(f_j(P))$
+  containing $f_j(A)$. 
+  Since $f_j(A)\subset B_{\lambda^2}(f_j(P))$
   such a strip has width $\lambda^2$.
   (notice that $f_j(P)$ lies on the line passing through $T_0$ and perpendicular 
   to $Y_j$).
