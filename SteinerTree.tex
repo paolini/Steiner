@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-%\usepackage{showkeys}
+\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -760,45 +760,58 @@ Then $T\in E$ and $S\subset E$.
   \end{center}
 \end{figure}
 \begin{lemma}\label{lm:branching}
-  Let $Y'=\ENCLOSE{x=d}$ for some $d<1$,
+  Let $Y':=\ENCLOSE{x=d}$ for some $d<1$,
   be a line parallel to $Y=\ENCLOSE{x=0}$.
   If $S\in \M(Y'\cup A)$
   and $\lambda < \frac 1 {25}$ then
   there is a branching point $T\in S$ 
-  such that $S\setminus T$ is composed of 
-  three connected sets the closures of which are
-   $[HT]$, $S_1$ and $S_2$ 
+  such that $S\setminus \ENCLOSE{T}$ is composed of 
+  three connected sets, the closures of which are
+   $[HT]$, $S_1$ and $S_2$ respectively,
   with $H\in Y'$ and $[HT]$ perpendicular to $Y'$.  
-  Also: $T\in B_{\lambda^2}(T_0)$ where $T_0=(1,0)$
-  and $d(H,\ENCLOSE{y=0})\le \lambda$.
-  Finally if $Y_j'$ is the line parallel to $Y_j=f_j(Y)$ 
+  Moreover, 
+  \[
+    \dist(H,\ENCLOSE{y=0})\le \lambda
+    \qquad\text{and}\qquad 
+    T\in B_{\lambda^2}(T_0), 
+  \]  
+  where $T_0:=(1,0)$.
+  Finally if $Y_j'$ is the line parallel to $Y_j:=f_j(Y)$ 
   passing through $T$ 
-  then $S_j \in \M(Y_j'\cup f_j(A))$ for $j=1,2$.
-  Also $Y_j'\subset f_j(\ENCLOSE{x<1})$.
+  then $S_j \in \M(Y_j'\cup f_j(A))$ 
+  and $Y_j'\subset f_j(\ENCLOSE{x<1})$,
+  for $j=1,2$.
 \end{lemma}
 \begin{proof}
-  We first claim that $S$ cannot contain 
+  \emph{Step 1.}
+  We first claim that $\bar S$ cannot contain 
   two compact connected sets 
   $\sigma$ and $\gamma$
   with $\H^1(\sigma\cap \gamma)=0$
   such that $\sigma$ touches both $Y'$ and $f_1(A)$ 
   while $\gamma$ touches both $f_1(A)$ and $f_2(A)$.
-  In fact, otherwise
+  In fact, otherwise we would have
+  \[
+    \H^1(\bar S)
+    \ge \H^1(\sigma) + \H^1(\gamma)
+    \ge \dist(Y', f_1(A)) + \dist(f_1(A), f_2(A)),
+  \]
+  but $\dist(Y', f_1(A)) \ge \dist(Y,f_1(A)) - d$,
+  hence,
+  by Lemma~\ref{lm:precedente1},
+  we would get
   \begin{equation}
   \label{eq:43747}
   \begin{aligned}
-    \H^1(S)
-    &\ge \dist(Y', f_1(A)) + \dist(f_1(A), f_2(A))
-    \\
-    &\ge 
+    \H^1(\bar S)
+    \ge 
     1 - d + \frac{\lambda} 2 
       - \frac{\lambda^2}{2}\frac{1}{1-\lambda^2}
       - \frac{\lambda^3}{2}\frac{1}{1-\lambda^2} 
      +
-     \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}
+     \sqrt 3 \lambda - \sqrt 3 \frac{\lambda^3}{1-\lambda}.
   \end{aligned}
   \end{equation}
-  by Lemma~\ref{lm:precedente1}.
   Let $O'=(d,0)$ and $\Sigma':=[O',T_0] \cup f_1(\Sigma) \cup f_2(\Sigma)$ 
   be the tree obtained by adding or removing a segment of length 
   $\abs{d}$ from $\Sigma$ so that $\Sigma'\in \St(Y'\cup A)$.
@@ -812,30 +825,65 @@ Then $T\in E$ and $S\subset E$.
   and one can check that the rhs of \eqref{eq:43747} is
   strictly greater than the rhs of \eqref{eq:44321}
   for $\lambda < \frac 1 {25}$.
-  Hence $\H^1(S) > \H^1(\Sigma')$ contrary 
+  Hence $\H^1(S) =\H^1(\bar S) > \H^1(\Sigma')$ contrary 
   to the optimality of $S$.
   
-  By \cite{PaoSte12} we know that $S$ touches $Y'$ in a single point $H$.
-  Consider an arc which connects $H$ to any point of $A$
-  and consider the longest (injective) arc $S_0$, along such a curve,
-  with endpoints $H\in Y'$ and $T\in S$
-  such that $(S\setminus S_0) \cup \ENCLOSE{T}$ is connected.
+  \emph{Step 2.} 
+  By Proposition~\ref{prop:PaoSte}(ii) we know that $S$ touches $Y'$ in a single point $H$.
+  Recall that $\bar S$ is connected in view of Lemma~\ref{lm:01}.
+  Consider an injective arc $\theta\colon[0,1]\to \bar S$ 
+  such that $\theta(0)=H$, $\theta([0,1))\cap A=\emptyset$ 
+  and $\theta(1)\in A$.  
+  Let 
+  \[
+    t:= \sup\ENCLOSE{s\in[0,1]\colon \bar S\setminus \theta([0,s])
+  \text{ is connected}}
+  \] 
+  and let $T:=\theta(t)$, $S_0:=\theta([0,t])$. 
+  Observe that $(\bar S\setminus S_0)\cup \ENCLOSE{T}$ 
+  is compact and arcwise connected.
+  In fact for every pair of points $P,Q\in (\bar S\setminus S_0)\cup \ENCLOSE{T}$
+  there exists a unique injective arc $\Gamma$ in $\bar S$ 
+  connecting $P$ and $Q$ (this follows by Proposition~\ref{prop:PaoSte}(ii)
+  since $\bar S$ is connected and having finite length 
+  is an arcwise connected topological tree).
+  It is enough to note now that 
+  $\Gamma\cap \theta([0,s])=\emptyset$
+  for all $s<t$ and hence 
+  $\Gamma\subset \bar S\setminus \theta([0,t))
+  %\bigcap_{s<t}\theta([0,s]) 
+  = (S\setminus S_0)\cup\ENCLOSE{T}$.
   
+  \emph{Step 3.} 
+  We are going to define $S_1$ and $S_2$ closed connected 
+  subsets of $\bar S$ such that 
+  $\bar S = S_0\cup S_1 \cup S_2$ 
+  and $S_j$, $j=0,1,2$, have $T$ 
+  as the only common point, and moreover,
+  $S_j$ contains $f_j(A)$ for $j=1,2$.
+  To this aim we are going to consider two cases 
+  which will be excluded.
+
   \emph{Case 1.} 
   Suppose $T$ is a point of $A$.
   Without loss of generality suppose $T\in f_1(A)$.
-  The set $(S\setminus S_0)\cup\ENCLOSE{T}$
+  The set $(\bar S\setminus S_0)\cup\ENCLOSE{T}$
   is connected and contains points of both $f_1(A)$
-  and $f_2(A)$ hence there exists an arc $\gamma$ 
-  in $S\setminus \sigma\cup\ENCLOSE{T}$.
-  The claim above with $\sigma:=S_0$ implies that this cannot happen.
+  and $f_2(A)$ 
+  because $(S_0\setminus\ENCLOSE{T})\cap A = \emptyset$ 
+  by construction hence there exists an arc $\gamma$ 
+  in $\bar S\setminus S_0\cup\ENCLOSE{T}$.
+  The claim of Step~1 with $\sigma:=S_0$ implies that this cannot happen.
   
   \emph{Case 2.} Suppose $T\not \in A$.
-  In this case $S\setminus S_0$ has two connected components 
-  $S_1'$ and $S_2'$ (recall that $S$ contains no loops).
-  Let $S_j:=S_j'\cup \ENCLOSE{T}$.
-  Each $S_j$ must contain at least one point of $A$ otherwise 
-  $S\setminus S_j\in \St(Y\cup A)$ will be 
+  In this case $S$ is a finite tree in a neighbourhood of $T$
+  by Proposition~\ref{prop:PaoSte}(iii) 
+  and therefore $T$ is a triple point of $S$ 
+  and hence $\bar S\setminus S_0$ has two connected components 
+  $S_1'$ and $S_2'$ (recall that $\bar S$ contains no loops).
+  Let $S_j:=S_j'\cup \ENCLOSE{T}$, $j=1,2$.
+  Each $S_j$ must contain at least one point of $A$ because otherwise 
+  $\bar S\setminus S_j'\in \St(Y\cup A)$ will be 
   strictly shorter than $S\in \M(Y\cup A)$.
   Moreover each point of $A$ is contained in either $S_1$ or $S_2$.
   Without loss of generality suppose that $S_1$ 
@@ -843,7 +891,7 @@ Then $T\in E$ and $S\subset E$.
   
   \emph{Case 2a.} 
   Suppose that $S_1$ contains also points of $f_2(A)$.
-  Then we can apply the claim above with 
+  Then we can apply the claim of Step~1 with 
   $\sigma:= S_0 \cup S_2$ and 
   $\gamma:= S_1$ and exclude that this case can happen.
   
@@ -854,19 +902,19 @@ Then $T\in E$ and $S\subset E$.
   The only remaining possibility is that $S_1$ 
   only touches points of $f_1(A)$ 
   and $S_2$ only touches points of $f_2(A)$. 
-  Hence $S_1\supset f_1(A)$ and $S_2\supset f_2(A)$ since $A\subset S$.
+  Hence $S_1\supset f_1(A)$ and $S_2\supset f_2(A)$ since $A\subset \bar S$.
   So $S_0\in \M(\ENCLOSE{H,T})$  
-  and $S_j \in \M(\ENCLOSE{T} \cup f_j(A))$ for $j=1,2$
+  and $S_j \in \M(\ENCLOSE{T} \cup f_j(A))$ for $j=1,2$:
   otherwise, by substituting $S_0$ with an element of $\M(\ENCLOSE{H,T})$
   and $S_j$ with an element of $\M(\ENCLOSE{T}\cup f_j(A))$,
   we could construct a better competitor 
   to $S\in \St(Y\cup A)$.
   
-  \emph{Step 1.} 
+  \emph{Step 4.} 
   Clearly $S_0\in \M(\ENCLOSE{H,T})$ implies that $S_0$ is the straight 
   line segment $[HT]$ perpendicular to $Y$.
   
-  \emph{Step 2.}
+  \emph{Step 5.}
   By Lemma~\ref{lm:01} we have $A\subset B_\lambda(P)$,
   hence $f_j(A) = f_j(A) \subset B_{\lambda^2}(f_j(P))$
   for $j=1,2$.
@@ -890,7 +938,7 @@ Then $T\in E$ and $S\subset E$.
   $\lambda^2$ hence $Y_j\subset f_j(\ENCLOSE{x<\lambda})
   \subset f_j(\ENCLOSE{x<1})$.
   
-  \emph{Step 3.}
+  \emph{Step 6.}
   We claim that each $S_j$, $j=1,2$ has no branching points inside the triangle 
   delimited by $Y$, $Y_1$ and $Y_2$ 
   (to avoid confusion, notice that $T$ is not a branching point of $S_j$).
@@ -906,7 +954,7 @@ Then $T\in E$ and $S\subset E$.
   = \lambda \enclose{1+\frac{\lambda} 2 }
   > \frac{2}{\sqrt 3}\lambda^2$.
   
-  \emph{Step 4: conclusion.}
+  \emph{Step 7: conclusion.}
   We now show the last claim $S_j \in \M(Y_j'\cup A_j)$, $j=1,2$.
 
   Take any $S_j'\in \M(Y_j'\cup A_j)$ and let $H_j'$ be the 
