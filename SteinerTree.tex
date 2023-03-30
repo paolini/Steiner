@@ -872,14 +872,14 @@ Then $T\in E$ and $S\subset E$.
   and $f_2(A)$ 
   because $(S_0\setminus\ENCLOSE{T})\cap A = \emptyset$ 
   by construction hence there exists an arc $\gamma$ 
-  in $\bar S\setminus S_0\cup\ENCLOSE{T}$.
+  in $(\bar S\setminus S_0)\cup\ENCLOSE{T}$.
   The claim of Step~1 with $\sigma:=S_0$ implies that this cannot happen.
   
   \emph{Case 2.} Suppose $T\not \in A$.
   In this case $S$ is a finite tree in a neighbourhood of $T$
   by Proposition~\ref{prop:PaoSte}(iii) 
-  and therefore $T$ is a triple point of $S$ 
-  and hence $\bar S\setminus S_0$ has two connected components 
+  and therefore $T$ is a triple point of $S$. 
+  Hence $\bar S\setminus S_0$ has two connected components 
   $S_1'$ and $S_2'$ (recall that $\bar S$ contains no loops).
   Let $S_j:=S_j'\cup \ENCLOSE{T}$, $j=1,2$.
   Each $S_j$ must contain at least one point of $A$ because otherwise 
@@ -903,29 +903,33 @@ Then $T\in E$ and $S\subset E$.
   only touches points of $f_1(A)$ 
   and $S_2$ only touches points of $f_2(A)$. 
   Hence $S_1\supset f_1(A)$ and $S_2\supset f_2(A)$ since $A\subset \bar S$.
-  So $S_0\in \M(\ENCLOSE{H,T})$  
+  Therefore, $S_0\in \M(Y'\cup \ENCLOSE{T})$  
   and $S_j \in \M(\ENCLOSE{T} \cup f_j(A))$ for $j=1,2$:
-  otherwise, by substituting $S_0$ with an element of $\M(\ENCLOSE{H,T})$
+  otherwise, by substituting $S_0$ with an element of $\M(Y'\cup \ENCLOSE{T})$
   and $S_j$ with an element of $\M(\ENCLOSE{T}\cup f_j(A))$,
   we could construct a better competitor 
-  to $S\in \St(Y\cup A)$.
+  to $S\in \St(Y'\cup A)$.
   
   \emph{Step 4.} 
-  Clearly $S_0\in \M(\ENCLOSE{H,T})$ implies that $S_0$ is the straight 
-  line segment $[HT]$ perpendicular to $Y$.
+  Clearly $S_0\in \M(Y'\cup \ENCLOSE{T})$ implies that $S_0$ is the straight 
+  line segment $[HT]$ perpendicular to $Y'$.
   
   \emph{Step 5.}
   By Lemma~\ref{lm:01} we have $A\subset B_\lambda(P)$,
-  hence $f_j(A) = f_j(A) \subset B_{\lambda^2}(f_j(P))$
+  hence $f_j(A) \subset B_{\lambda^2}(f_j(P))$
   for $j=1,2$.
-  Since $S_j \in \M(\ENCLOSE{T}\cup f_j(A))$
-  contains a small segment perpendicular to $Y_j$,
-  by Lemma~\ref{lm:envelope} applied to $f_j^{-1}(S_j)$
+  As noticed in Step~3 we know that $S$ is a regular tripod in a small 
+  neighbourhood of $T$ composed by three straight line segments forming 
+  equal angles of 120 degrees. Since $S_0$ is perpendicular to $Y$ 
+  it follows that $S_j$ contains a small segment perpendicular to $Y_j=f_j(Y)$.
+  Since $S_j\in \M(\ENCLOSE{T}\cup f_j(A))$ for $j=1,2$,
+  by Lemma~\ref{lm:envelope} (applied to $S_j$ in place of $S$, 
+  $f(A_j)$ in place of $C$ and coordinate $y$ along the axis $Y_j$ 
+  and $x$ perpendicular to $Y_j$),
   we obtain that $S_j$ is contained in the strip perpendicular 
-  to $Y_1$, centered in $T_0$
-  containing $f_j(A)$. 
+  to $Y_j$, centered in $T_0$ and containing $f_j(A)$. 
   Since $f_j(A)\subset B_{\lambda^2}(f_j(P))$
-  such a strip has width $\lambda^2$.
+  such a strip has width $\lambda^2$
   (notice that $f_j(P)$ lies on the line passing through $T_0$ and perpendicular 
   to $Y_j$).
   
@@ -933,22 +937,22 @@ Then $T\in E$ and $S\subset E$.
   is the union of two equilateral 
   triangles each with height $\lambda^2$. 
   Hence $T$ is contained in the ball
-  $B_{\lambda^2}(T_0)$ proving the respective claim of the Lemma.
-  Moreover the distance of the line $Y_j'$ from $T_0$ is less than 
-  $\lambda^2$ hence $Y_j\subset f_j(\ENCLOSE{x<\lambda})
-  \subset f_j(\ENCLOSE{x<1})$.
+  $B_{\lambda^2}(T_0)$, proving the respective claim of the Lemma.
+  Moreover also the distance of the line $Y_j'$ from $T_0$ is less than 
+  $\lambda^2$ hence $Y_j'\subset f_j(\ENCLOSE{x<\lambda})
+  \subset f_j(\ENCLOSE{x<1})$, for $j=1,2$.
   
   \emph{Step 6.}
-  We claim that each $S_j$, $j=1,2$ has no branching points inside the triangle 
+  We claim that each $S_j$, $j=1,2$, has no branching points inside the triangle 
   delimited by $Y$, $Y_1$ and $Y_2$ 
   (to avoid confusion, notice that $T$ is not a branching point of $S_j$).
  
   If $T$ is itself outside of this triangle there is nothing to prove
   because $S_j\subset \overline{\co}(\ENCLOSE{T}\cup A_j)$ 
-  is itself outside the triangle.
+  is also outside of the triangle.
   Otherwise, 
-  since $A_j=f_j(A)\subset B_{\lambda^2}(f_j(P))$
-  then by Lemma~\ref{lm:01} all branching points of $S_j$ 
+  since $f_j(A)\subset B_{\lambda^2}(f_j(P))$,
+  then, by Lemma~\ref{lm:01} all branching points of $S_j$ 
   are inside $B_{\frac{2}{\sqrt 3}\lambda^2}(f_j(P))$ while 
   $d(f_j(P),Y_j)=\lambda d(P,Y)
   = \lambda \enclose{1+\frac{\lambda} 2 }
@@ -956,24 +960,23 @@ Then $T\in E$ and $S\subset E$.
   
   \emph{Step 7: conclusion.}
   We now show the last claim $S_j \in \M(Y_j'\cup A_j)$, $j=1,2$.
-
-  Take any $S_j'\in \M(Y_j'\cup A_j)$ and let $H_j'$ be the 
-  endpoint of $S_j'$ on the line $Y_j'$. 
-  Clearly $S_j'\in \M(\ENCLOSE{H_j'}\cup A_j)$.
+  To this aim take any $S_j'\in \M(Y_j'\cup f_j (A))$ and let $H_j'$ be the 
+  endpoint of $S_j'$ on the line $Y_j'$ (see Proposition~\ref{prop:PaoSte}(ii)). 
+  Obviously $S_j'\in \M(\ENCLOSE{H_j'}\cup f_j(A))$.
   Let $H_j''$ be the point on $Y_j$ such that $[H_j'' H_j']$ is perpendicular
   to $Y_j$. 
-  Clearly $H_j''$ is on the boundary of $\Delta$ since the orthogonal 
-  projection of $A_j$ on $Y_j$ is contained in the boundary of $\Delta$.
-  By Lemma~\ref{lm:base} we know that $S_j'$ has no branching points
-  inside the triangle $\Delta$ delimited by $Y$, $Y_1$ and $Y_2$.
-  So we can define a set $S_j''$ which is obtained by adding
+  *** By Lemma~\ref{lm:base} we know that $S_j'$ has no branching points
+  inside the triangle $\Delta$ delimited by $Y$, $Y_1$ and $Y_2$. ***
+  Let $d_j(T)$ be the signed distance of $T$ from the line $Y_j$,
+  $j=1,2$,
+  as defined in Lemma~\ref{lm:tripod} (positive 
+  when $T$ is inside $\Delta$).  
+  Now we can define a set $S_j''$ which is obtained by adding
   (in case $d_j(T)<0$)
   or removing (in case $d_j(T)>0$)
   the segment $[H_j'' H_j']$ to (resp. from) $S_j'$ 
   so that $S_j''\in \St(Y_j\cup A_j)$.
-  In particular $H^1(S_j') = H^1(S_j'') + d_j(T)$,
-  where $d_j$ is the signed distance of $T$ from the line $Y_j$ (positive 
-  when $T$ is inside $\Delta$).
+  In particular $\H^1(S_j') = \H^1(S_j'') + d_j(T)$.
   Let $\Gamma\in \M(Y\cup\ENCLOSE{H_1'',H_2''})$ 
   be a tripod with endpoints on $H_1''$, $H_2''$ and a 
   point on $Y$. 
@@ -995,7 +998,7 @@ Then $T\in E$ and $S\subset E$.
   \end{align*}
   Since $S\in \M(Y\cup A)$ while $S''\in \St(Y\cup A)$ the above 
   inequalities are actually equalities.
-  In particular the inequalities $\H^1(S_j') \le \H^(S_j)$ are 
+  In particular the inequalities $\H^1(S_j') \le \H^1(S_j)$ are 
   also equalities hence $S_j\in \M(Y_j'\cup A_j)$ as claimed.
 \end{proof}
 
