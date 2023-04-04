@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-\usepackage{showkeys}
+%\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -86,25 +86,28 @@
 \begin{document}
 
 \begin{abstract}
-We construct an example of a planar embedded self-similar binary tree  
-which is the unique solution to the Steiner problem of finding 
-the shortest connection of a given planar self-similar fractal set 
+We construct an example of an infinite planar embedded self-similar binary tree  
+$\Sigma$ which is the essentially unique solution to the Steiner problem of finding 
+the shortest connection of a given planar self-similar fractal set $C$
 of positive Hausdorff dimension.
-The latter set can be considered the set of \emph{leaves} of the tree.
+The set $C$ can be considered the set of \emph{leaves}, or the ``boundary``,
+of the tree $\Sigma$,
+so that $\Sigma$ is an \emph{irreducible} solution to the Steiner problem
+with datum $C$ (i.e.\ $\Sigma\setminus C$ is connected).
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
 
-Let $C$ be a compact subset of $\RR^2$.
+Let $C$ be a subset of $\RR^2$.
 The Steiner problem with datum $C$ consists of finding a set $S\subset \RR^2$ 
 such that $S\cup C$ is connected and $\H^1(S)$ is minimal where $\H^1$ stands 
 for the $1$-dimensional Hausdorff measure (i.e.\ the length of the set).
 Usually this problem is considered for the case when $C$ is the finite 
 set and in this setting it becomes a problem of combinatorial geometry. 
 The Steiner problem goes back to Jarník and Kössler \cite{JarKos34} 
-(altough some of its particular cases are much more ancient, for instance 
+(although some of its particular cases are much more ancient, for instance 
 when $C$ is the set of the three vertices of a triangle the problem was 
 stated already by Fermat and solved by Torricelli).
 The problem is computationally hard and relatively few explicit solutions 
@@ -112,7 +115,7 @@ are known, especially in the cases when the number of points is large.
 
 However the problem is important for the more general setting of possibly infinite 
 sets $C$. 
-Moreover finding explicit solutions for an infinite set $C$ may shed light on 
+Moreover finding explicit solutions for an infinite $C$ may shed light on 
 the solutions to finite sets with an arbitrarily large number of points.
 One natural question that has arosen in this context is 
 whether there exists a planar irreducible Steiner tree $S$ connecting an uncountable 
@@ -124,7 +127,7 @@ that of existence of irreducible Steiner sets with the topology
 of a binary tree for a finite set of points $C$ with arbitrarily 
 large number of points, has been answered positively by Ivanov and 
 Tuzhilin \cite{IvaTuz94} by means of an abstract construction.
-Further an explicit construction of such a tree has been suggested 
+Further an explicit construction of such a tree has been constructed 
 in \cite{PaoSteTep15}.
 Namely, the set $C$ consists of a \emph{root} $H$ and uncountably many
 points (\emph{leaves}) which together give a totally disconnected perfect set 
@@ -156,18 +159,18 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}).
 
 In \cite{PaoSteTep15} it has been proven that 
 the suggested tree is in fact the solution (and even the unique one) 
-to the Steiner problem when the sequence of coefficients 
-is not only small but also rapidly decreasing (in particular summable).
+to the Steiner problem when the sequence of coefficients $\lambda_k$
+is small and rapidly decreasing to zero (in particular summable).
 In such a situation the set $C$ though being uncountable 
 has zero Hausdorff dimension.
 The natural original question, whether this construction is also valid 
 for fractal self-similar $C$ (i.e.\ when the coefficients are constant,
 i.e.\ $\lambda_j=\lambda$ for all $j$)
 was left open.
-In the attempt to solve it, in \cite{MarMas16a} a 
+In the attempt to solve it, a 
 completely new and different method, based on special group valued calibrations,
 to check whether the given set $S$ is a solution to the Steiner problem,
-has been developed.
+has been developed in~\cite{MarMas16a}.
 In \cite{MarMas16b} the authors also show an example 
 of an infinite \emph{irrigation} tree which is a solution to
 a ramified transportation problem similar to the Steiner problem.
@@ -700,6 +703,7 @@ Then $T\in E$ and $S\subset E$.
   \begin{center}
   \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=4.0cm,y=4.0cm]
     \clip(-0.2,-0.7) rectangle (1.84,0.92);
+    \draw [color=yellow,line width=3](0,0.71334)--(1.24,0)--(0,-0.71334)--cycle;
     \draw (1.0,0.57) node[anchor=north west] {\includegraphics[width=1cm]{blob1.png}};
     \draw (1.19,0.5) node[anchor=north west] {$f_1(A)$};
     \draw (1.05,-0.12) node[anchor=north west] {\includegraphics[width=1cm]{blob2.png}};
@@ -719,6 +723,8 @@ Then $T\in E$ and $S\subset E$.
     \draw [line width=1.2pt,color=blue] (1,0.1)-- (0.1,0.1);
     \draw [dash pattern=on 1pt off 1pt,domain=-0.2:1.84] plot(\x,{(-0.68--0.58*\x)/-1});
     \draw [dash pattern=on 1pt off 1pt,domain=-0.2:1.84] plot(\x,{(-0.47--0.58*\x)/1});
+    \draw [dash pattern=on 2pt off 1pt,domain=-0.2:1.84] plot(\x,{(-0.71334--0.58*\x)/-1});
+    \draw [dash pattern=on 2pt off 1pt,domain=-0.2:1.84] plot(\x,{(-0.71334--0.58*\x)/1});
     \draw (0.25,0.1)-- (0.25,0);
     \draw (0.1,0.22)-- (0,0.22);
     \draw [{Latex[length=1mm]}-{Latex[length=1mm]}] (0,0.22) -- (0.1,0.22);
@@ -734,8 +740,8 @@ Then $T\in E$ and $S\subset E$.
     \draw (0,0) node[anchor=north east] {$O$};
     \fill (1,0) circle (1.5pt);
     \draw (0.995,-0.00) node[anchor=north] {$T_0$};
-    \fill (1.2,0) circle (1.5pt);
-    \draw (1.21,0.0) node[anchor=south] {$P$};
+    \fill (1.23,0) circle (1.5pt);
+    \draw (1.24,0.0) node[anchor=south] {$P$};
     \draw (0,0.4) node[anchor=east] {$Y$};
     \draw (-0.17,-0.63) node {$Y_2$};
     \draw (-0.17,0.63) node {$Y_1$};
@@ -743,8 +749,10 @@ Then $T\in E$ and $S\subset E$.
     \draw (0.1,0.1) node[anchor=south west] {$H$};
     \fill [color=blue] (1,0.1) circle (1.5pt);
     \draw (1.01,0.12) node[anchor=south] {$T$};
-    \draw (-0.17,0.72) node {$Y'_1$};
+    \draw (-0.16,0.715) node {$Y'_1$};
     \draw (-0.17,-0.51) node {$Y'_2$};
+    \draw (0.45,0.50) node {$Y''_1$};
+    \draw (0.45,-0.51) node {$Y''_2$};
     \draw (0.36,0.05) node {$\delta=\delta_0$};
     \draw (0.12,0.26) node {$d=d_0$};
     \draw (0.61,0.28) node {$d_1$};
@@ -756,7 +764,8 @@ Then $T\in E$ and $S\subset E$.
   \end{tiny}
     \end{tikzpicture}
     \caption{Constructions and notation in the proof of 
-    Lemma~\ref{lm:branching} and Theorem~\ref{th:main}.}
+    Lemma~\ref{lm:branching} and Theorem~\ref{th:main}.
+    The triangle $\Delta$ from the proof of Lemma~\ref{lm:branching} is highlighted.}
   \end{center}
 \end{figure}
 \begin{lemma}\label{lm:branching}
@@ -770,11 +779,11 @@ Then $T\in E$ and $S\subset E$.
    $[HT]$, $S_1$ and $S_2$ respectively,
   with $H\in Y'$ and $[HT]$ perpendicular to $Y'$.  
   Moreover, 
-  \[
-    \dist(H,\ENCLOSE{y=0})\le \lambda
+  \begin{equation}\label{eq:474947}
+    \dist(H,\ENCLOSE{y=0})\le \lambda^2
     \qquad\text{and}\qquad 
     T\in B_{\lambda^2}(T_0), 
-  \]  
+  \end{equation}
   where $T_0:=(1,0)$.
   Finally if $Y_j'$ is the line parallel to $Y_j:=f_j(Y)$ 
   passing through $T$ 
@@ -937,7 +946,12 @@ Then $T\in E$ and $S\subset E$.
   is the union of two equilateral 
   triangles each with height $\lambda^2$. 
   Hence $T$ is contained in the ball
-  $B_{\lambda^2}(T_0)$, proving the respective claim of the Lemma.
+  $B_{\lambda^2}(T_0)$, 
+  and thus, in particular, 
+  \[
+    \dist(H,\ENCLOSE{y=0})= \dist(T,\ENCLOSE{y=0})\le \abs{TT_0} \le \lambda^2,
+  \]
+  proving~\eqref{eq:474947}.
   Moreover also the distance of the line $Y_j'$ from $T_0$ is less than 
   $\lambda^2$ hence $Y_j'\subset f_j(\ENCLOSE{x<\lambda})
   \subset f_j(\ENCLOSE{x<1})$, for $j=1,2$.
@@ -957,64 +971,97 @@ Then $T\in E$ and $S\subset E$.
   $d(f_j(P),Y_j)=\lambda d(P,Y)
   = \lambda \enclose{1+\frac{\lambda} 2 }
   > \frac{2}{\sqrt 3}\lambda^2$.
-  
-  \emph{Step 7: conclusion.}
-  We now show the last claim $S_j \in \M(Y_j'\cup A_j)$, $j=1,2$.
-  To this aim take any $S_j'\in \M(Y_j'\cup f_j (A))$ and let $H_j'$ be the 
-  endpoint of $S_j'$ on the line $Y_j'$ (see Proposition~\ref{prop:PaoSte}(ii)). 
-  Obviously $S_j'\in \M(\ENCLOSE{H_j'}\cup f_j(A))$.
-  Let $H_j''$ be the point on $Y_j$ such that $[H_j'' H_j']$ is perpendicular
+
+  \emph{Step 7.}
+  Let $Y_j''$ be the line parallel to $Y_j$ and passing through $P$.
+  Denote with $\Delta$ be the triangle delimited by $Y$, $Y_1''$ and $Y_2''$,
+  and notice that $T$ is inside $\Delta$ because $T\in B_{\lambda^2}(T_0)$
+  (as proven in Step~5)
+  while $\dist(T_0, Y_j'') = \frac{\lambda}{4}>\lambda^2$ for $j=1,2$.
+  Let $T_j''$ be the point on $Y_j''$ such that $[T T_j'']$ is perpendicular
   to $Y_j$. 
-  *** By Lemma~\ref{lm:base} we know that $S_j'$ has no branching points
-  inside the triangle $\Delta$ delimited by $Y$, $Y_1$ and $Y_2$. ***
-  Let $d_j(T)$ be the signed distance of $T$ from the line $Y_j$,
-  $j=1,2$,
-  as defined in Lemma~\ref{lm:tripod} (positive 
-  when $T$ is inside $\Delta$).  
-  Now we can define a set $S_j''$ which is obtained by adding
-  (in case $d_j(T)<0$)
-  or removing (in case $d_j(T)>0$)
-  the segment $[H_j'' H_j']$ to (resp. from) $S_j'$ 
-  so that $S_j''\in \St(Y_j\cup A_j)$.
-  In particular $\H^1(S_j') = \H^1(S_j'') + d_j(T)$.
-  Let $\Gamma\in \M(Y\cup\ENCLOSE{H_1'',H_2''})$ 
-  be a tripod with endpoints on $H_1''$, $H_2''$ and a 
-  point on $Y$. 
-  By Lemma~\ref{lm:tripod} $H^1(\Gamma) = 1$.
-  And hence, for 
-  \[
-   S'' := \Gamma \cup S_1'' \cup S_2''  
-  \]
-  one has 
+  Recall that $S_j$ in a neighbourhood of $T$ is a segment perpendicular 
+  to $Y_j$ because $S$, in a neighbourhood of $T$, 
+  is a regular tripod with equal angles of 120 degrees 
+  and $S_0$ is perpendicular to $Y$.
+  We claim that $[T T_j'']$ is contained in $S_j$: otherwise there would 
+  be a branching point of $S_j$ on such segment, which is not the case because
+  $f_j(A)\subset B_{\lambda^2}(P)$ in view of Lemma~\ref{lm:01},
+  and hence by Lemma~\ref{lm:angle} with $f_j(A)$ in place of $C$, $\lambda^2$ in place 
+  of $\rho$ and $T$ in place of $H$, one has that   
+  all branching points of $S_j$ are inside 
+  the ball $B_{\frac{2}{\sqrt 3}\lambda^2}(f_j(P))$ while
   \begin{align*}
-    \H^1(S'')
-    &= 1 + \H^1(S_1'') + \H^1(S_2'') \\
-    &= 1 + (\H^1(S_1') - d_1(T)) + (\H^1(S_2') - d_2(T)) \\
-    &= (1-d_1(T) - d_2(T)) + \H^1(S_1') + \H^1(S_2') \\
-    &= d_3(T) + \H^1(S_1') + \H^1(S_2') \\
-    &= \abs{HT} + \H^1(S_1') + \H^1(S_2') \\
-    &\le \abs{HT} + \H^1(S_1) + \H^1(S_2)
-    = \H^1(S).
+    \dist(f_j(A), Y_j'') 
+    &\ge \dist(f_j(A), Y_j) - \dist(Y_j, Y_j'')
+    \ge \lambda \dist(A,Y) - \frac{\lambda}{4}  \\
+    & \ge \lambda \enclose{1 + \frac \lambda 2 + \frac{\lambda^2}{1-\lambda}} - \frac \lambda 4 \\ 
+    & \ge \frac 3 4 \lambda
+    > \frac 2 {\sqrt 3}\lambda^2
+    \qquad \text{for $\lambda < \frac 1 3$}. \\
   \end{align*}
-  Since $S\in \M(Y\cup A)$ while $S''\in \St(Y\cup A)$ the above 
-  inequalities are actually equalities.
-  In particular the inequalities $\H^1(S_j') \le \H^1(S_j)$ are 
-  also equalities hence $S_j\in \M(Y_j'\cup A_j)$ as claimed.
+  Hence $\tilde S_j:= S_j\setminus [T T_j'']$ is connected and 
+  $\H^1(\tilde S_j)=\H^1(S_j) - \dist(T,Y_j'')$.
+
+  \emph{Step 8: conclusion.}
+  We now show the last claim $S_j \in \M(Y_j'\cup f_j(A))$, $j=1,2$.
+  To this aim take any $S_j''\in \M(Y_j''\cup f_j (A))$ and let $H_j''$ be the 
+  endpoint of $S_j''$ on the line $Y_j''$ ($S_j''$ touches $Y_j''$ in a single point 
+  in view of Lemma~\ref{lm:angle}). 
+  Note that $H_j''$ is on the boundary of the triangle $\Delta$ 
+  in view of Lemma~\ref{lm:envelope} 
+  because the orthogonal 
+  projection of $f_j(A)$ onto $Y_j''$ belongs to the respective side of this triangle.
+  Define $S_j':= S_j''\cup [H_j'' H_j']$ where $H_j'$ is the projection of $H_j''$ 
+  onto the line $Y_j'$, $j=1,2$ and let $\Gamma\in \M(Y\cup \ENCLOSE{H_1'',H_2''})$
+  be the regular tripod with endpoints in $H_1''$, $H_2''$ and a third point on 
+  the side of $\Delta$ contained in $Y$.
+  Clearly $S_j'\in \M(Y_j'\cup f_j(A))$ and $\H^1(S_j')=\H^1(S_j'') + \abs{H_j H_j''}$
+  while $\H^1(\Gamma) = 1+\frac \lambda 2$ in view of Lemma~\ref{lm:tripod}.
+
+  Therefore, if we consider $\tilde S := \Gamma \cup S_1''\cup S_1''$ 
+  we have $\tilde S\in \St(Y\cup A)$ hence $\H^1(\tilde S)\ge \H^1(S)$.
+  On the other hand, we have 
+  \begin{align*}
+    \H^1(\tilde S) 
+    &= \H^1(\Gamma) + \H^1(S_1'') + \H^1(S_2'') \\
+    &\le 1 + \frac{\lambda}{2} 
+      + \H^1(S_1') - \abs{H_1' H_1''}
+      + \H^1(S_2') - \abs{H_2' H_2''} \\
+      &\le 1 + \frac \lambda 2 + \H^1(S_1) - \abs{H_1' H_1''} + \H^1(S_2) - \abs{H_2' H_2''}\\
+      &= 1  + \frac \lambda 2 + \H^1(S_1) - \abs{T T_1''} + \H^1(S_2) - \abs{T T_2''}\\
+    \end{align*}
+    but $\H^1(S_0)+\abs{T T_1''}+\abs{T T_2''} = 1+\frac \lambda 2$
+    by Lemma~\ref{lm:tripod}
+    and hence
+    \[
+      \H^1(\tilde S) 
+      \le \H^1(S_0) + \H^1(S_1) + \H^1(S_2)
+      = \H^1(S).
+    \]
+  Hence, all the above inequalities are, in fact, equalities,
+  which means in particular that $\H^1(S_j')=\H^1(S_j)$
+  and thus $S_j \in \M(Y_j'\cup f_j(A))$, $j=1,2$ as claimed.
 \end{proof}
 
+
+Finally we are in the position to prove the main result.
+
 \begin{theorem}\label{th:main}
-If $\lambda < \frac 1{25}$ then $\M(Y\cup A)$ is nonempty 
-and, moreover, if $S\in \M(Y\cup A)$
-then $S$ is connected and $\bar S=\Sigma$.
-Moreover $\M(\ENCLOSE{0}\cup A) = \M(Y\cup A)$.
+Suppose $\lambda < \frac 1{25}$.
+One has then $\Sigma \in \M(\ENCLOSE{0}\cup A) = \M(Y\cup A)$.
+Moreover $S\in \M(Y\cup A)$ if and only if 
+$\Sigma\setminus (\ENCLOSE{0}\cup A)\subset S\subset \Sigma$,
+which in particular implies $\bar S=\Sigma$.
 \end{theorem}
 %
 \begin{proof}
 By Lemma~\ref{lm:existsA} we know that $\M(\ENCLOSE{x=d}\cup A)$
-is nonempty for every $d\in \RR$.
-Again by Lemma~\ref{lm:existsA} for any $S\in \M(\ENCLOSE{x=d}\cup A)$ 
-one has that $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and, moreover,
-$\bar S$ is connected and $\bar S\supset A$.
+is nonempty for every $d\in \RR$ and
+that for any $S\in \M(\ENCLOSE{x=d}\cup A)$ 
+one has that $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and $\bar S\supset A$.
+Moreover, by Lemma~\ref{lm:01},
+$\bar S$ is connected.
 Thus we may consider an arbitrary closed $S\in \M(\ENCLOSE{x=d}\cup A)$.
 If $d<1$, 
 by Lemma~\ref{lm:branching}, 
@@ -1022,43 +1069,58 @@ we are able to define $S_1$ and $S_2$, $H$, $T$
 such that 
 $S=[H T] \cup S_1 \cup S_2$, $[HT]$ is perpendicular to $Y$.
 If we define the sets $b_1(S)$ and $b_2(S)$ 
+(the ``\emph{branches}'' of $S$) 
 by $b_j(S) := f_j^{-1}(S_j)$, $j=1,2$.
-We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_1<1$, 
-$d_2<1$ (as claimed in the Lemma~\ref{lm:branching}).
+We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_j<1$, 
+as claimed in the Lemma~\ref{lm:branching}, $j=1,2$.
 Let $d(S)$ and $\delta(S)$ be the two coordinates of the point $H$ 
 so that $d(S)$ is the distance of $H$ from the line $Y$ 
-and $\delta(S)$ is the distance of the point $T$ from the line $X=\ENCLOSE{y=0}$.
-Hence Lemma~\ref{lm:branching} can be applied inductively on the two 
-rescaled branches $b_1(S)$ and $b_2(S)$.
-
-Define $\S^0:=\ENCLOSE{S}$ where $S\in \M(\ENCLOSE{x=0}\cup A)$ is given
-and define inductively $\S^k$ as the family of the rescaled branches of $S$ 
+and $\delta(S)$ is the distance of the point $H$
+(or, which is the same, the point $T$) 
+from the line $X:=\ENCLOSE{y=0}$.
+Define $\S^0:=\ENCLOSE{\tilde S}$ where $\tilde S\in \M(\ENCLOSE{x=0}\cup A)$ 
+is fixed
+and define inductively $\S^k$ as the family of the rescaled branches of $\tilde S$ 
 at level $k$:
 \[
   \S^{k+1} := \bigcup_{S\in \S^k}\ENCLOSE{b_1(S),b_2(S)}.
 \]
+Notice that Lemma~\ref{lm:branching} can be applied to $\tilde S$ and 
+hence inductively on the two rescaled branches 
+$b_1(S)$ and $b_2(S)$ for every $S\in \S^k$
+since the properties 
+$S \in \M(\ENCLOSE{x=d(S)}\cup A)$ and $d(S)<1$
+are preserved by the operators $b_1$ and $b_2$
+as stated in Lemma~\ref{lm:branching} itself.
 
-We claim that for all $S\in \S^k$, $\delta(S)\le 2^k \lambda^k$.
-In fact we know that $S$ touches the vertical line $\ENCLOSE{x=d}$ 
+We claim that for all $S\in \S^k$, one has 
+\[
+  \delta(S)\le 2\lambda \max\ENCLOSE{\delta(b_1(S)),
+    \delta(b_2(S))}.
+\]
+We know that $S\in \S^k$ touches the vertical line $\ENCLOSE{x=d(S)}$ 
 in a single point $H$.
 By Lemma~\ref{lm:branching} we know that $S$ is composed 
 by a segment $[H T]$ and two trees $S_1$, $S_2$
-with $S_j\in \M(Y_j'\cup A_j)$, $j=1,2$
-where $Y_j'$ is the line passing through $T$ and parallel to $Y_j$
-and we know that $\abs{T T_0} \le \lambda^2$. 
+with $S_j\in \M(Y_j'\cup f_j(A))$, $j=1,2$
+where $Y_j'$ is the line passing through $T$ and parallel to $Y_j$.
 Let $\delta_j$ be the distance of $T$ from $f_j(X)$, $j=1,2$.
-Since $T_0\in f_j(X)$ we have $\delta_j\le \abs{T T_0} \le \lambda^2$
-(as stated in Lemma~\ref{lm:branching}).
-By Lemma~\ref{lm:tripod} applied to the three lines $X$, $f_1(X)$ and $f_3(X)$
-we know that the sum of the signed distances of $T$ from the three lines 
+By Lemma~\ref{lm:branching} one has $\delta_j \le \lambda^2$.
+By Lemma~\ref{lm:tripod} applied to the three lines $X$, $f_1(X)$ and $f_2(X)$
+(all lines passing through $T_0$) we know that the sum of the signed distances of $T$ from the three lines 
 passing through $T_0$ is equal to $0$.
-Hence
+The absolute values of these three distances
+are, respectively, $\delta(S)$, $\delta_1$ and $\delta_2$,
+so that
 \begin{align*}
   \delta(S) &\le \delta_1 + \delta_2 
     \le 2\max\ENCLOSE{\delta_1,\delta_2}\\
-    &= 2\lambda\max\ENCLOSE{\delta(b_1(S)),\delta(b_2(S))}.
-\end{align*}
-This gives 
+    &= 2\max\ENCLOSE{\lambda\delta(b_1(S)),\lambda\delta(b_2(S))}
+  \end{align*}
+because $b_j(S)=f_j^{-1}(S_j)$,
+showing the claim.
+
+The proven claim now gives 
 \[
   \Delta_k 
   := \max\ENCLOSE{\delta(S)\colon S\in \S^k}
@@ -1067,12 +1129,27 @@ This gives
 \]
 We have $\Delta_0 = 0$ since otherwise for 
 $\Delta_0>0$ we would have 
-$\Delta_k\to +\infty$ while we know,
-by Lemma~\ref{lm:branching}, that $\Delta_k \le \lambda$
+$\Delta_k\to +\infty$ (because $2\lambda <1$), while we know,
+by Lemma~\ref{lm:branching}, that $\Delta_k \le \lambda^2$
 for all $k$.
 But $\Delta_0 =0$ implies $\Delta_k=0$ for all $k$.
-In particular for $d=0$ this implies $S=\Sigma$ 
-(recall that $S$ has been choosen to be closed).
+In particular for $d=0$ this implies $\tilde S=\Sigma$ 
+(recall that $\tilde S$ has been choosen to be closed).
+
+Note that we have proven that for any arbitrary $S\in \M(Y\cup A)$ 
+one has $\bar S= \Sigma$ and in particular $S\in \M(\ENCLOSE 0 \cup A)$. 
+But we also have that $\bar S \setminus S \subset \ENCLOSE{0}\cup A$
+by Proposition~\ref{prop:PaoSte}(i),
+that is $\Sigma\setminus S \subset \ENCLOSE 0 \cup A$.
+This implies that $S\supset \Sigma\setminus(\ENCLOSE 0 \cup A)$.
+
+It remains to prove that $\M(\ENCLOSE 0 \cup A) = \M(Y\cup A)$.
+To this aim note that we have already proven 
+that $\M(Y\cup A) \subset \M(\ENCLOSE 0 \cup A)$
+but for every $S\in \M(\ENCLOSE 0 \cup A)$ one necessarily has 
+$S\in \St(Y\cup A)$ and $\H^1(S)=\H^1(\Sigma)$ while
+$\Sigma \in \M(Y\cup A)$ which implies the claim.
+
 \end{proof}
 
 \bibliographystyle{plain}
