@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-%\usepackage{showkeys}
+\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -557,7 +557,7 @@ We need the following lemmata.
   $R=\frac{2\lambda}{\sqrt 3}$.
   Then $A\subset B_\lambda(P)$ and 
   there exists $T\in \partial B_R(P)$ such that
-  given any $d<1$ and any
+  given any $d<\frac 1 2$ and any
   $S\in \M(\ENCLOSE{x=d}\cup A)$ 
   we have that $S\setminus B_R(P)$ is a straight line segment
   $[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
@@ -769,7 +769,7 @@ Then $T\in E$ and $S\subset E$.
   \end{center}
 \end{figure}
 \begin{lemma}\label{lm:branching}
-  Let $Y':=\ENCLOSE{x=d}$ for some $d<1$,
+  Let $Y':=\ENCLOSE{x=d}$ for some $d<\frac 1 2$,
   be a line parallel to $Y=\ENCLOSE{x=0}$.
   If $S\in \M(Y'\cup A)$
   and $\lambda < \frac 1 {25}$ then
@@ -788,7 +788,7 @@ Then $T\in E$ and $S\subset E$.
   Finally if $Y_j'$ is the line parallel to $Y_j:=f_j(Y)$ 
   passing through $T$ 
   then $S_j \in \M(Y_j'\cup f_j(A))$ 
-  and $Y_j'\subset f_j(\ENCLOSE{x<1})$,
+  and $Y_j'\subset f_j(\ENCLOSE{x<\frac 1 2})$,
   for $j=1,2$.
 \end{lemma}
 \begin{proof}
@@ -954,7 +954,7 @@ Then $T\in E$ and $S\subset E$.
   proving~\eqref{eq:474947}.
   Moreover also the distance of the line $Y_j'$ from $T_0$ is less than 
   $\lambda^2$ hence $Y_j'\subset f_j(\ENCLOSE{x<\lambda})
-  \subset f_j(\ENCLOSE{x<1})$, for $j=1,2$.
+  \subset f_j(\ENCLOSE{x<\frac 1 2})$, for $j=1,2$.
   
   \emph{Step 6.}
   We claim that each $S_j$, $j=1,2$, has no branching points inside the triangle 
@@ -1063,7 +1063,7 @@ one has that $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and $\bar S\supset A$.
 Moreover, by Lemma~\ref{lm:01},
 $\bar S$ is connected.
 Thus we may consider an arbitrary closed $S\in \M(\ENCLOSE{x=d}\cup A)$.
-If $d<1$, 
+If $d<\frac 1 2$, 
 by Lemma~\ref{lm:branching}, 
 we are able to define $S_1$ and $S_2$, $H$, $T$
 such that 
