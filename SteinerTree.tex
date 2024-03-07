@@ -123,13 +123,12 @@ and possibly fractal set of points $C$
 (we say that $S$ is irreducible if $S\setminus C$ is 
 connected).
 A very similar question,
-that of existence of irreducible Steiner sets with the topology 
+namely the existence of irreducible Steiner sets with the topology 
 of a binary tree for a finite set of points $C$ with arbitrarily 
 large number of points, has been answered positively by Ivanov and 
 Tuzhilin \cite{IvaTuz94} by means of an abstract construction.
-Further an explicit construction of such a tree has been constructed 
-in \cite{PaoSteTep15}.
-Namely, the set $C$ consists of a \emph{root} $H$ and uncountably many
+Further an explicit construction of such a tree has been developed
+in \cite{PaoSteTep15} were the set $C$ consists of a \emph{root} $H$ and uncountably many
 points (\emph{leaves}) which together give a totally disconnected perfect set 
 (i.e.\ every connected component is a point, but the points are not isolated).
 No segment of $S$
@@ -161,7 +160,7 @@ In \cite{PaoSteTep15} it has been proven that
 the suggested tree is in fact the solution (and even the unique one) 
 to the Steiner problem when the sequence of coefficients $\lambda_k$
 is small and rapidly decreasing to zero (in particular summable).
-In such a situation the set $C$ though being uncountable 
+In such a situation the set $C$, though being uncountable,
 has zero Hausdorff dimension.
 The natural original question, whether this construction is also valid 
 for fractal self-similar $C$ (i.e.\ when the coefficients are constant,
@@ -176,27 +175,28 @@ of an infinite \emph{irrigation} tree which is a solution to
 a ramified transportation problem similar to the Steiner problem.
 The method itself is very useful and can be applied in many situations.
 However it failed in this particular problem.
-A breakthrough has been provided by the recent preprint \cite{CheTep23}
+A breakthrough has been provided by the recent paper \cite{CheTep23}
 where the authors provide a much simpler symmetry based argument to show that for 
 sufficiently small but constant coefficients the above construction 
 gives in fact an irreducible Steiner tree for a set $C$ 
 of positive Hausdorff dimension.
-However this construction unfortunately does not provide uniqueness of 
-the minimizer leaving open the possibility of having other solutions 
+However this construction does not provide uniqueness of 
+the minimizer leaving open the possibility of having other solutions, 
 different from the conjectured one.
 In this paper 
 we close the original question of both existence and uniqueness.
 To do so we develop a method which in particular uses 
-also a further simplification and a generalization of 
+a further simplification and a generalization of 
 the idea developed in \cite{CheTep23}.
 Moreover since we do not use the symmetry argument anymore our method 
-could be applied even to non symmetric trees.
+could be applied even to non symmetric trees and to a full fractal tree 
+without root.
 
 To be more precise, 
 let $\RR^2$ be identified with the complex plane $\CC$
 and given $\lambda>0$, 
 consider $f_j(z) = 1 + \theta_j z$,
-where $\theta = \lambda e^{(-1)^j i \frac \pi 3}$,
+where $\theta_j = \lambda e^{(-1)^j i \frac \pi 3}$,
 for $j=1,2$. 
 The affine map $f_j$ is the composition of a rotation,
 rescaling and translation. 
@@ -973,7 +973,7 @@ Then $T\in E$ and $S\subset E$.
 
   \emph{Step 7.}
   Let $Y_j''$ be the line parallel to $Y_j$ and passing through $P$.
-  Denote with $\Delta$ be the triangle delimited by $Y$, $Y_1''$ and $Y_2''$,
+  Denote with $\Delta$ the triangle delimited by $Y$, $Y_1''$ and $Y_2''$,
   and notice that $T$ is inside $\Delta$ because $T\in B_{\lambda^2}(T_0)$
   (as proven in Step~5)
   while $\dist(T_0, Y_j'') = \frac{\lambda}{4}>\lambda^2$ for $j=1,2$.
@@ -1003,7 +1003,7 @@ Then $T\in E$ and $S\subset E$.
   $\H^1(\tilde S_j)=\H^1(S_j) - \dist(T,Y_j'')$.
 
   \emph{Step 8: conclusion.}
-  We now show the last claim $S_j \in \M(Y_j'\cup f_j(A))$, $j=1,2$.
+  We now show the last claim, $S_j \in \M(Y_j'\cup f_j(A))$, $j=1,2$.
   To this aim take any $S_j''\in \M(Y_j''\cup f_j (A))$ and let $H_j''$ be the 
   endpoint of $S_j''$ on the line $Y_j''$ ($S_j''$ touches $Y_j''$ in a single point 
   in view of Lemma~\ref{lm:angle}). 
@@ -1048,7 +1048,7 @@ Finally we are in the position to prove the main result.
 
 \begin{theorem}\label{th:main}
 Suppose $\lambda < \frac 1{25}$.
-One has then $\Sigma \in \M(\ENCLOSE{0}\cup A) = \M(Y\cup A)$.
+Then one has $\Sigma \in \M(\ENCLOSE{0}\cup A) = \M(Y\cup A)$.
 Moreover $S\in \M(Y\cup A)$ if and only if 
 $\Sigma\setminus (\ENCLOSE{0}\cup A)\subset S\subset \Sigma$,
 which in particular implies $\bar S=\Sigma$.
