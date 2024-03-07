@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-\usepackage{showkeys}
+%\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -496,6 +496,66 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
   which defines equal angles of 120 degrees as claimed in 
   Proposition~\ref{prop:PaoSte}(iii).
   \end{proof}
+
+  \begin{lemma}\label{lm:tripod}
+    Let $\nu_1,\nu_2,\nu_3$ be three unit vectors in $\RR^2$
+    with $\nu_1+\nu_2+\nu_3=0$. 
+    Let $Y_j$ be a line perpendicular to $\nu_j$ for $j=1,2,3$.
+    Let $T$ be any point in $\RR^2$ and let $H_j$ be the orthogonal 
+    projection of $T$ on $Y_j$.
+    Define $d_j(T) := (T-H_j)\cdot \nu_j$
+    be the signed distance of $T$ from $Y_j$.
+    Then $d_1(T) + d_2(T) + d_3(T)$ is constant 
+    (i.e.\ independent of $T$).
+  
+    In particular suppose that  
+    $Y_1,Y_2,Y_3$ are three lines in $\RR^2$
+    forming angles of $60$ degrees so that 
+    the three pairwise intersections identify
+    an equilateral triangle with sides of length $\ell$.
+    Let $T$ be any point and let $d_i(T)$ be 
+    the signed distance of $T$ from $Y_i$
+    with positive sign when $T$ is inside the triangle.
+    Then $d_1(T) + d_2(T) + d_3(T) = \frac{\sqrt 3}{2}\ell$.
+  \end{lemma}
+  \begin{proof}
+    If we move one of the lines parallel to itself by an amount $\delta$ 
+    then the sum $d_1(T)+d_2(T)+d_3(T)$ changes by $\delta$, independent 
+    of $T$.
+    Therefore, without loss of generality, we may assume that the three lines 
+    intersect in the origin.
+    In this case $d_j(T) = T\cdot \nu_j$ and hence 
+    $d_1(T)+d_2(T)+d_3(T) = T\cdot (\nu_1+\nu_2+\nu_3) = 0$
+    concluding the proof of the first claim.
+  
+    For the second claim just notice that $d_1(T)+d_2(T)+d_3(T)$
+    is constant (by the first claim) and hence is equal to the value 
+    obtained when $T$ is one of vertices of the triangle, in which case 
+    two distances are $0$ and the third one is equal to the height of the
+    triangle, which is the claimed value.
+  \end{proof}
+  
+  \begin{lemma}\label{lm:envelope}
+  Let $S\in \M(\ENCLOSE{T}\cup C)$
+  for some $T\in \RR^2$ and a compact set $C$ contained in a horizontal strip 
+  $E=\ENCLOSE{(x,y)\colon \abs{y}\le \delta}$ of width $2\delta>0$.
+  Suppose also that there is some $T'\in S$, $T'\neq T$ 
+  such that $[T,T']$ is horizontal.
+  Then $T\in E$ and $S\subset E$.
+  \end{lemma}
+  %
+  \begin{proof}
+    Suppose by contradiction that $T=(x_T,y_T)$ is outside $E$.
+    For example $y_T>\delta$. 
+    Then the convex hull of $\ENCLOSE{T}\cup C$ has a single 
+    point, which is $T$, on the line $\ENCLOSE{y=y_T}$. 
+    This is in contradiction with the fact that $T'\in S$ 
+    has the same $y$-coordinate as $T$.
+    This proves $T\in E$ and hence
+    shows that the whole convex hull of 
+    $\ENCLOSE{T}\cup C$ is contained in $E$. 
+    Therefore, $S$ must be contained in $E$ as well.
+  \end{proof}
   
   \section{Main result}
 \label{sec:main}
@@ -511,7 +571,7 @@ We need the following lemmata.
 
 \begin{lemma}\label{lm:existsA} 
   For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
-  Moreover if $\lambda < \frac 1 2$
+  If $\lambda < \frac 1 2$
   one has $\H^1(\Sigma)<+\infty$, $\H^1(A)=0$, $A$ is totally disconnected.
   Moreover for any $S \in \M(\ENCLOSE{x=d}\cup A)$ 
   one has that $\H^1(S)<\infty$,
@@ -543,70 +603,34 @@ We need the following lemmata.
 \end{proof}
 
 \begin{lemma}\label{lm:01}
-  Let $P$ and $A$ be defined as above,
-  $\lambda < 1/10$ and
-  $R=\frac{2\lambda}{\sqrt 3}$.
-  Then $A\subset B_\lambda(P)$ and 
-  there exists $T\in \partial B_R(P)$ such that
+  Let $T_0=(1,0)$ and $A$ be defined as above,
+  $\lambda < \frac 2 5$,
+  $\rho= \frac{\lambda}{1-\lambda}$,
+  $r=\frac{2\rho}{\sqrt 3}$
+  Then $A\subset B_\rho(T_0)$ and 
   given any $d<\frac 1 2$ and any
   $S\in \M(\ENCLOSE{x=d}\cup A)$ 
-  we have that $S\setminus B_R(P)$ is a straight line segment
+  there exists $T\in \partial B_R(T_0)$ such that
+  we have that $S\setminus B_R(T_0)$ is a straight line segment
   $[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
   with $H\in \ENCLOSE{x=d}$.
   In particular $\bar S$ is connected.
 \end{lemma}
 \begin{proof}
-  The claim $A\subset B_\lambda(P)$ can be easily checked
+  The claim $A\subset B_\rho(T_0)$ can be easily checked
   by noticing that any point of $A$ has distance
-  from $P$ not larger than 
+  from $T_0$ not larger than 
   \[
-      \frac{\sqrt 3}{2}\lambda + \lambda^2 + \lambda^3 + \dots
-      = \frac{\sqrt 3}{2}\lambda + \frac{\lambda^2}{1-\lambda}
+      \lambda + \lambda^2 + \lambda^3 + \dots = \rho.
   \]
-  and this is less than $\lambda$ if $\lambda < 1/10$.
-  Lemma \ref{lm:base} with $C:=A$ assures that 
-  $T$ exists with the desired properties and 
-  that $\bar S\cap \ENCLOSE{x=d} =\ENCLOSE{H}$.
+  Lemma \ref{lm:base} with $C:=A$ 
+  can be applied since the assumption $\lambda < 2/5$ assures 
+  that $3r < 1/2$.
+  So the point $T$ exists with the desired properties and 
+  $\bar S\cap \ENCLOSE{x=d} =\ENCLOSE{H}$.
   Since, by Lemma~\ref{lm:existsA}, $\bar S \supset A$
-  it follows that $\bar S$ is connected.
-\end{proof}
-
-\begin{lemma}\label{lm:tripod}
-  Let $\nu_1,\nu_2,\nu_3$ be three unit vectors in $\RR^2$
-  with $\nu_1+\nu_2+\nu_3=0$. 
-  Let $Y_j$ be a line perpendicular to $\nu_j$ for $j=1,2,3$.
-  Let $T$ be any point in $\RR^2$ and let $H_j$ be the orthogonal 
-  projection of $T$ on $Y_j$.
-  Define $d_j(T) := (T-H_j)\cdot \nu_j$
-  be the signed distance of $T$ from $Y_j$.
-  Then $d_1(T) + d_2(T) + d_3(T)$ is constant 
-  (i.e.\ independent of $T$).
-
-  In particular suppose that  
-  $Y_1,Y_2,Y_3$ are three lines in $\RR^2$
-  forming angles of $60$ degrees so that 
-  the three pairwise intersections identify
-  an equilateral triangle with sides of length $\ell$.
-  Let $T$ be any point and let $d_i(T)$ be 
-  the signed distance of $T$ from $Y_i$
-  with positive sign when $T$ is inside the triangle.
-  Then $d_1(T) + d_2(T) + d_3(T) = \frac{\sqrt 3}{2}\ell$.
-\end{lemma}
-\begin{proof}
-  If we move one of the lines parallel to itself by an amount $\delta$ 
-  then the sum $d_1(T)+d_2(T)+d_3(T)$ changes by $\delta$, independent 
-  of $T$.
-  Therefore, without loss of generality, we may assume that the three lines 
-  intersect in the origin.
-  In this case $d_j(T) = T\cdot \nu_j$ and hence 
-  $d_1(T)+d_2(T)+d_3(T) = T\cdot (\nu_1+\nu_2+\nu_3) = 0$
-  concluding the proof of the first claim.
-
-  For the second claim just notice that $d_1(T)+d_2(T)+d_3(T)$
-  is constant (by the first claim) and hence is equal to the value 
-  obtained when $T$ is one of vertices of the triangle, in which case 
-  two distances are $0$ and the third one is equal to the height of the
-  triangle, which is the claimed value.
+  it follows that $\bar S \supset \ENCLOSE{H}\cup A$ which is totally disconnected 
+  and hence $\bar S$ must be connected.
 \end{proof}
 
 \begin{lemma}\label{lm:precedente1}
@@ -669,27 +693,6 @@ The computation gives
   for instance when $\lambda < \frac 1 2$.
 \end{remark}
 
-\begin{lemma}\label{lm:envelope}
-Let $S\in \M(\ENCLOSE{T}\cup C)$
-for some $T\in \RR^2$ and a compact set $C$ contained in a horizontal strip 
-$E=\ENCLOSE{(x,y)\colon \abs{y}\le \delta}$ of width $2\delta>0$.
-Suppose also that there is some $T'\in S$, $T'\neq T$ 
-such that $[T,T']$ is horizontal.
-Then $T\in E$ and $S\subset E$.
-\end{lemma}
-%
-\begin{proof}
-  Suppose by contradiction that $T=(x_T,y_T)$ is outside $E$.
-  For example $y_T>\delta$. 
-  Then the convex hull of $\ENCLOSE{T}\cup C$ has a single 
-  point, which is $T$, on the line $\ENCLOSE{y=y_T}$. 
-  This is in contradiction with the fact that $T'\in S$ 
-  has the same $y$-coordinate as $T$.
-  This proves $T\in E$ and hence
-  shows that the whole convex hull of 
-  $\ENCLOSE{T}\cup C$ is contained in $E$. 
-  Therefore, $S$ must be contained in $E$ as well.
-\end{proof}
 \begin{figure}
   \begin{center}
   \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=4.0cm,y=4.0cm]
@@ -734,6 +737,7 @@ Then $T\in E$ and $S\subset E$.
     \fill (1.23,0) circle (1.5pt);
     \draw (1.24,0.0) node[anchor=south] {$P$};
     \draw (0,0.4) node[anchor=east] {$Y$};
+    \draw (0.21,0.4) node[anchor=east] {$Y'$};
     \draw (-0.17,-0.63) node {$Y_2$};
     \draw (-0.17,0.63) node {$Y_1$};
     \fill [color=blue] (0.1,0.1) circle (1.5pt);
@@ -759,6 +763,7 @@ Then $T\in E$ and $S\subset E$.
     The triangle $\Delta$ from the proof of Lemma~\ref{lm:branching} is highlighted.}
   \end{center}
 \end{figure}
+
 \begin{lemma}\label{lm:branching}
   Let $Y':=\ENCLOSE{x=d}$ for some $d<\frac 1 2$,
   be a line parallel to $Y=\ENCLOSE{x=0}$.
@@ -771,11 +776,11 @@ Then $T\in E$ and $S\subset E$.
   with $H\in Y'$ and $[HT]$ perpendicular to $Y'$.  
   Moreover, 
   \begin{equation}\label{eq:474947}
-    \dist(H,\ENCLOSE{y=0})\le \lambda^2
+    \dist(H,\ENCLOSE{y=0})\le 2\lambda\rho
     \qquad\text{and}\qquad 
-    T\in B_{\lambda^2}(T_0), 
+    T\in B_{2\lambda\rho}(T_0), 
   \end{equation}
-  where $T_0:=(1,0)$.
+  where $\rho:=\frac{\lambda}{1-\lambda}$ and $T_0:=(1,0)$.
   Finally if $Y_j'$ is the line parallel to $Y_j:=f_j(Y)$ 
   passing through $T$ 
   then $S_j \in \M(Y_j'\cup f_j(A))$ 
@@ -914,8 +919,9 @@ Then $T\in E$ and $S\subset E$.
   line segment $[HT]$ perpendicular to $Y'$.
   
   \emph{Step 5.}
-  By Lemma~\ref{lm:01} we have $A\subset B_\lambda(P)$,
-  hence $f_j(A) \subset B_{\lambda^2}(f_j(P))$
+  By Lemma~\ref{lm:01} we have $A\subset B_\rho(T_0)$,
+  with $\rho=\frac{\lambda}{1-\lambda}$
+  hence $f_j(A) \subset B_{\lambda\rho}(f_j(T_0))$
   for $j=1,2$.
   As noticed in Step~3 we know that $S$ is a regular tripod in a small 
   neighbourhood of $T$ composed by three straight line segments forming 
@@ -927,24 +933,24 @@ Then $T\in E$ and $S\subset E$.
   and $x$ perpendicular to $Y_j$),
   we obtain that $S_j$ is contained in the strip perpendicular 
   to $Y_j$, centered in $T_0$ and containing $f_j(A)$. 
-  Since $f_j(A)\subset B_{\lambda^2}(f_j(P))$
-  such a strip has width $\lambda^2$
-  (notice that $f_j(P)$ lies on the line passing through $T_0$ and perpendicular 
+  Since $f_j(A)\subset B_{\lambda\rho}(f_j(T_0))$
+  such a strip has width $2\lambda\rho$
+  (notice that $f_j(T_0)$ lies on the line passing through $T_0$ and perpendicular 
   to $Y_j$).
   
   The intersection between the two strips for $j=1,2$ 
   is the union of two equilateral 
-  triangles each with height $\lambda^2$. 
+  triangles each with height $2\lambda\rho$. 
   Hence $T$ is contained in the ball
-  $B_{\lambda^2}(T_0)$, 
+  $B_{2\lambda\rho}(T_0)$, 
   and thus, in particular, 
   \[
-    \dist(H,\ENCLOSE{y=0})= \dist(T,\ENCLOSE{y=0})\le \abs{TT_0} \le \lambda^2,
+    \dist(H,\ENCLOSE{y=0})= \dist(T,\ENCLOSE{y=0})\le \abs{TT_0} \le 2\lambda\rho,
   \]
   proving~\eqref{eq:474947}.
-  Moreover also the distance of the line $Y_j'$ from $T_0$ is less than 
-  $\lambda^2$ hence $Y_j'\subset f_j(\ENCLOSE{x<\lambda})
-  \subset f_j(\ENCLOSE{x<\frac 1 2})$, for $j=1,2$.
+  Moreover, also the distance of the line $Y_j'$ from $T_0$ is less than 
+  $2\lambda\rho$ hence $Y_j'\subset f_j(\ENCLOSE{x<2\rho})
+  \subset f_j(\ENCLOSE{x<\frac 1 2})$, for $j=1,2$, since $\lambda < \frac 1 5$.
   
   \emph{Step 6.}
   We claim that each $S_j$, $j=1,2$, has no branching points inside the triangle 
@@ -955,19 +961,19 @@ Then $T\in E$ and $S\subset E$.
   because $S_j\subset \overline{\co}(\ENCLOSE{T}\cup A_j)$ 
   is also outside of the triangle.
   Otherwise, 
-  since $f_j(A)\subset B_{\lambda^2}(f_j(P))$,
-  then, by Lemma~\ref{lm:01} all branching points of $S_j$ 
-  are inside $B_{\frac{2}{\sqrt 3}\lambda^2}(f_j(P))$ while 
-  $d(f_j(P),Y_j)=\lambda d(P,Y)
-  = \lambda \enclose{1+\frac{\lambda} 2 }
-  > \frac{2}{\sqrt 3}\lambda^2$.
+  since $f_j(A)\subset B_{\lambda\rho}(f_j(P))$,
+  then, by Lemma~\ref{lm:base} all branching points of $S_j$ 
+  are inside $B_{\frac{2\lambda \rho}{\sqrt 3}}(f_j(T_0))$ while 
+  $d(f_j(T_0),Y_j)=\lambda d(T_0,Y)
+  = \lambda > \frac{2\lambda \rho}{\sqrt 3}$
+  since $\lambda < \frac{3}{2\sqrt 3+3}\approx 0.46$.
 
   \emph{Step 7.}
   Let $Y_j''$ be the line parallel to $Y_j$ and passing through $P$.
   Denote with $\Delta$ the triangle delimited by $Y$, $Y_1''$ and $Y_2''$,
   and notice that $T$ is inside $\Delta$ because $T\in B_{\lambda^2}(T_0)$
   (as proven in Step~5)
-  while $\dist(T_0, Y_j'') = \frac{\lambda}{4}>\lambda^2$ for $j=1,2$.
+  while $\dist(T_0, Y_j'') = \frac{\lambda}{4}>2\lambda\rho$ for $j=1,2$.
   Let $T_j''$ be the point on $Y_j''$ such that $[T T_j'']$ is perpendicular
   to $Y_j$. 
   Recall that $S_j$ in a neighbourhood of $T$ is a segment perpendicular 
@@ -975,20 +981,17 @@ Then $T\in E$ and $S\subset E$.
   is a regular tripod with equal angles of 120 degrees 
   and $S_0$ is perpendicular to $Y$.
   We claim that $[T T_j'']$ is contained in $S_j$: otherwise there would 
-  be a branching point of $S_j$ on such segment, which is not the case because
-  $f_j(A)\subset B_{\lambda^2}(P)$ in view of Lemma~\ref{lm:01},
-  and hence by Lemma~\ref{lm:angle} with $f_j(A)$ in place of $C$, $\lambda^2$ in place 
-  of $\rho$ and $T$ in place of $H$, one has that   
-  all branching points of $S_j$ are inside 
-  the ball $B_{\frac{2}{\sqrt 3}\lambda^2}(f_j(P))$ while
+  be a branching point of $S_j$ on such segment, which is not the case because,
+  as already stated, all branching points of $S_j$ are inside 
+  the ball $B_{\frac{2\lambda \rho}{\sqrt 3}}(f_j(T_0))$, while
   \begin{align*}
     \dist(f_j(A), Y_j'') 
     &\ge \dist(f_j(A), Y_j) - \dist(Y_j, Y_j'')
     \ge \lambda \dist(A,Y) - \frac{\lambda}{4}  \\
     & \ge \lambda \enclose{1 + \frac \lambda 2 + \frac{\lambda^2}{1-\lambda}} - \frac \lambda 4 \\ 
     & \ge \frac 3 4 \lambda
-    > \frac 2 {\sqrt 3}\lambda^2
-    \qquad \text{for $\lambda < \frac 1 3$}. \\
+    > \frac 2 {\sqrt 3}\lambda\rho
+    \qquad \text{for $\lambda < \frac{9}{8\sqrt 3+9}\approx 0.39$}. \\
   \end{align*}
   Hence $\tilde S_j:= S_j\setminus [T T_j'']$ is connected and 
   $\H^1(\tilde S_j)=\H^1(S_j) - \dist(T,Y_j'')$.
