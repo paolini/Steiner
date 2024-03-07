@@ -1145,6 +1145,77 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 
 \end{proof}
 
+\section{Non symmetric trees}
+
+In this section we want to consider the case of a tree where each branching point has its own length.
+To deal with this case we need to introduce a notation to describe the parameters of the tree, which 
+can now differ on every subsequent branch of the tree.
+
+Let $G=\ENCLOSE{1,L,R,LL,LR,RL,RR,LLL,\dots}$ be the set of all finite words composed by letters 
+$L$ (for left) and $R$ (for right). We let $0$ represent the empty word.
+If $w\in G$ we denote with $Lw\in G$ and $Rw\in G$ the words obtained by adding, 
+respectively, $L$ and $R$ to the left of the word $w$.
+We agree that $L0=L$ and $R0=R$.
+We let $\abs{w}$ be the length of the word $w$.
+Each segment in an infinite splitting tree can be identified by a word $w\in G$:
+$0$ is the trunk, $L$ the first left branch, $R$ the first right branch, $LL$ is the branch obtained by taking
+the first left branch and then the first left branch again, and so on.
+We will also consider $L$ and $R$ as functions on $G$ defined by $L(w):=Lw$ and $R(w):=Rw$.
+Given a function $\mathbb \lambda\colon G\to (0,1)$ we write $\lambda_w:=\lambda(w)$.
+
+We will consider the splitting tree $\Sigma_\lambda$ composed by a trunk of length $\lambda_0$ splitting 
+into two branches (with equal angles of 120 degrees) of length $\lambda_0\lambda_L$ and $\lambda_0\lambda_R$
+and then splitting again so that $\lambda_w$ represents the ratio between the length of the branch $w$ with respect 
+to the length of its parent branch. 
+This way a constant function $\lambda_w = \lambda_0$ will represent a self-similar tree as the one considered in the previous section.
+
+Let us make this more precise.
+We identify $\RR^2$ with $\CC$ and consider $\theta=e^{\frac{\pi}{3}i}$.
+We define two roto-translations $f_L,f_R\colon \CC\to \CC$ by $f_L(z):= 1+\theta z$ and $f_R(z):=1+\bar\theta z$.
+The root of our tree will be the point $0\in \CC$ and first triple point (or branching point) will be 
+$T_0^\lambda:=\lambda_0\in \RR\subset \CC$. 
+The branching point $T_w^\lambda$ at the end of the segment identified by the word $w\in G$ can be defined by a recursive formula:
+\[
+   \begin{cases}
+    T_0 = \lambda_0, \\
+    T_0^\lambda = \lambda_0, \\
+    T_{Lw}^\lambda = \lambda_0 f_L(T_w^{\lambda\circ L}), \\
+    T_{Rw}^\lambda = \lambda_0 f_R(T_w^{\lambda\circ L}).
+   \end{cases}
+\]
+Notice that $\lambda\circ L\colon G \to (0,1)$ is the function representing the ratios of the lengths of the left branch of the tree 
+while $\lambda\circ R$ represents the right branch: 
+in fact $(\lambda\circ L)(w) = \lambda(Lw)$ and $(\lambda\circ R)(w) = \lambda(Rw)$.
+When $\lambda$ is fixed we will write $T_w$ in place of $T_w^\lambda$.
+For example, fixed $\lambda\colon G\to(0,1)$, we have: 
+\begin{align*}
+  T_L &= \lambda_0 (1+\theta \lambda_L) = \lambda_0+\theta \lambda_0\lambda_L,\\
+  T_{LR} &= \lambda_0(1+\theta\lambda_L(1+\bar \theta\lambda_{LR})) 
+    = \lambda_0 + \theta \lambda_0\lambda_L + \lambda_0\lambda_L\lambda_{LR},\\
+  T_{LRR} &= \lambda_0 (1+ \theta \lambda_L(1+\bar \theta \lambda_R(1+\bar \theta \lambda_{LRR}))) \\
+    &= \lambda_0 + \theta \lambda_0\lambda_L + \lambda_0\lambda_L\lambda_R + \bar\theta \lambda_0\lambda_L\lambda_R\lambda_{LRR}.
+\end{align*}
+To define the tree $\Sigma_\lambda$ we first define the finite trees $\Sigma_\lambda^n$ by induction:
+\[
+\begin{cases}
+  \Sigma_\lambda^0 = \emptyset \subset \CC, \\
+  \Sigma_\lambda^{n+1} = \lambda_0\big([0,1] \cup f_L(\Sigma_{\lambda\circ L}^n) \cup f_R(\Sigma_{\lambda\circ R}^n)\big).
+\end{cases}
+\]
+Finally we define
+\[
+  S_\lambda = \bigcup_{n\in \NN} \Sigma_\lambda^n,
+  \qquad
+  \Sigma_\lambda = \overline{S_\lambda}
+  \qquad
+  A_\lambda = \Sigma_\lambda \setminus S_\lambda.
+\]
+The set $A_\lambda$ is also the set of limit points of the sequences $T_w$ as $\abs{w}\to\infty$. 
+The set $\ENCLOSE{0}\cup A_\lambda$ is the set of endpoints of $\Sigma_\lambda$.
+
+Clearly $\Sigma_\lambda$ is compact and connected, and hence $\Sigma_\lambda\in \St(\ENCLOSE{0}\cup A_\lambda)$.
+
+
 \bibliographystyle{plain}
 %\bibliography{../share/math/biblio}
 \begin{thebibliography}{1}
