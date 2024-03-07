@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-%\usepackage{showkeys}
+\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -266,7 +266,7 @@ segment with endpoints $P$ and $Q$ and by $\abs{PQ}$ its length.
 % 
 % \end{conjecture}
 
-\subsection{Auxiliary lemmata}
+\subsection{Preparatory results}
 
 In the following proposition we state some known facts about 
 solutions to the Steiner problem collected from \cite{PaoSte12}
@@ -297,10 +297,12 @@ and \cite{IvaTuz94}.
   \end{itemize}
 \end{proposition}
 
-The following lemma is also taken from~\cite[lemma~2.6]{PaoSte12}.
+The following lemma is also taken from~\cite[Proposition~2.2 and lemma~2.6]{PaoSte12}.
 
 \begin{lemma}\label{lm:connected}
 If $S$ is connected and $\H^1(S)<+\infty$ then $\H^1(S) = \H^1(\bar S)$.
+If $S$ is compact, connected, and $\H^1(S)<+\infty$ then $S$ is 
+pathwise connected.
 \end{lemma}
 
 We also need the following lemmata for the case when the set to 
@@ -509,41 +511,30 @@ We need the following lemmata.
 
 \begin{lemma}\label{lm:existsA} 
   For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
-  Moreover if $\lambda < 2\sqrt 3- 3 \approx 0.46$ 
-  and $S \in \M(\ENCLOSE{x=d}\cup A)$ 
+  Moreover if $\lambda < \frac 1 2$
+  one has $\H^1(\Sigma)<+\infty$, $\H^1(A)=0$, $A$ is totally disconnected.
+  Moreover for any $S \in \M(\ENCLOSE{x=d}\cup A)$ 
   one has that $\H^1(S)<\infty$,
   $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and
   $\bar S$ contains $A$.
 \end{lemma}
+%
 \begin{proof}
-  Recall that $A$ is a self-similar set 
-  satisfying the recurrence relation
-  $A = f_1(A) \cup f_2(A)$
-  with $f_1$ and $f_2$ being compositions of euclidean isometries 
-  with a rescaling of factor $\lambda$. 
-  The \emph{fractal dimension} of $A$ is hence 
-  $D$ such that $1 = 2 \lambda^D$ i.e.\ $D=-1/\log_2\lambda$.
-  By \cite[theorem 5.3(1)]{Hut81} the Hausdorff dimension 
-  of $A$ equals $D$ if it is possible to find an open set $U$ 
-  such that 
-  \begin{equation}\label{eq:open}
-    U \supset f_1(U) \cup f_2(U) 
-    \qquad\text{and}\qquad 
-    f_1(U)\cap f_2(U) = \emptyset.
-  \end{equation}
-  We can choose $U:=B_R(T)$ with $T=(1,0)$ and 
-  $R:=\lambda+\lambda^2+\lambda^3+\dots = \frac{\lambda}{1-\lambda}$.
-  Using the identity $f_j(B_R(T)) = B_{\lambda R}(f_j(T))$
-  one finds that $f_j(U)\subset U$ for any $\lambda<1$ since
-  $\abs{f_j(T)-T} = \lambda$ and $\lambda + \lambda R = R$.
-  For the second requirement in~\eqref{eq:open} we observe 
-  that $\abs{f_1(T)-f_2(T)} = \lambda\sqrt 3 < 2\lambda R$
-  when $\lambda < 2\sqrt 3 - 3$.
-  Hence under this hypothesis we have that the Hausdorff 
-  dimension of $A$ equals $D$ and since 
-  also $\lambda < \frac 1 2$ we find $D<1$, so that 
-  $\H^1(A) = 0$ and in particular $A$ is totally disconnected.
-  
+  The family of minimizers is nonempty in view of Lemma~\ref{lm:exists}.
+
+  We claim the since $\lambda < \frac 1 2$ then $\H^1(A)=0$. 
+  Since $A\subset \Sigma$ and $\H^1(\Sigma)=\frac{1}{1-2\lambda}$
+  is finite if $\lambda<\frac 1 2$ then $\H^1(A)<+\infty$.
+  By the self-similarity property of $A$ we have that 
+  \[
+  \H^1(A) = 2 \lambda \H^1(A).
+  \]
+  If $0<\H^1(A)<+\infty$ we would have $\lambda = \frac 1 2$.
+  Hence, if $\lambda < \frac 1 2$ we conclude that $\H^1(A)=0$.
+  This also means that $A$ is totally disconnected because each connected 
+  component of $A$ is pathwise connected (by Lemma~\ref{lm:connected}) 
+  and hence if it were not a single point it would have positive length.
+    
   Now the conclusion follows from Lemma~\ref{lm:exists} with $C:=A$ 
   minding that 
   \[
