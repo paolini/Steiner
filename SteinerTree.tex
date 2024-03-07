@@ -1064,7 +1064,7 @@ $S=[H T] \cup S_1 \cup S_2$, $[HT]$ is perpendicular to $Y$.
 If we define the sets $b_1(S)$ and $b_2(S)$ 
 (the ``\emph{branches}'' of $S$) 
 by $b_j(S) := f_j^{-1}(S_j)$, $j=1,2$.
-We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_j<1$, 
+We notice that $b_j(S)\in \M(\ENCLOSE{x=d_j}\cup A)$ for some $d_j<\frac 1 2$, 
 as claimed in the Lemma~\ref{lm:branching}, $j=1,2$.
 Let $d(S)$ and $\delta(S)$ be the two coordinates of the point $H$ 
 so that $d(S)$ is the distance of $H$ from the line $Y$ 
@@ -1072,7 +1072,7 @@ and $\delta(S)$ is the distance of the point $H$
 (or, which is the same, the point $T$) 
 from the line $X:=\ENCLOSE{y=0}$.
 Define $\S^0:=\ENCLOSE{\tilde S}$ where $\tilde S\in \M(\ENCLOSE{x=0}\cup A)$ 
-is fixed
+is fixed, compact set,
 and define inductively $\S^k$ as the family of the rescaled branches of $\tilde S$ 
 at level $k$:
 \[
@@ -1082,7 +1082,7 @@ Notice that Lemma~\ref{lm:branching} can be applied to $\tilde S$ and
 hence inductively on the two rescaled branches 
 $b_1(S)$ and $b_2(S)$ for every $S\in \S^k$
 since the properties 
-$S \in \M(\ENCLOSE{x=d(S)}\cup A)$ and $d(S)<1$
+$S \in \M(\ENCLOSE{x=d(S)}\cup A)$ and $d(S)<\frac 1 2$
 are preserved by the operators $b_1$ and $b_2$
 as stated in Lemma~\ref{lm:branching} itself.
 
@@ -1098,7 +1098,7 @@ by a segment $[H T]$ and two trees $S_1$, $S_2$
 with $S_j\in \M(Y_j'\cup f_j(A))$, $j=1,2$
 where $Y_j'$ is the line passing through $T$ and parallel to $Y_j$.
 Let $\delta_j$ be the distance of $T$ from $f_j(X)$, $j=1,2$.
-By Lemma~\ref{lm:branching} one has $\delta_j \le \lambda^2$.
+By Lemma~\ref{lm:branching} one has $\delta_j \le 2\lambda\rho$.
 By Lemma~\ref{lm:tripod} applied to the three lines $X$, $f_1(X)$ and $f_2(X)$
 (all lines passing through $T_0$) we know that the sum of the signed distances of $T$ from the three lines 
 passing through $T_0$ is equal to $0$.
@@ -1123,7 +1123,7 @@ The proven claim now gives
 We have $\Delta_0 = 0$ since otherwise for 
 $\Delta_0>0$ we would have 
 $\Delta_k\to +\infty$ (because $2\lambda <1$), while we know,
-by Lemma~\ref{lm:branching}, that $\Delta_k \le \lambda^2$
+by Lemma~\ref{lm:branching}, that $\Delta_k \le 2\lambda\rho$
 for all $k$.
 But $\Delta_0 =0$ implies $\Delta_k=0$ for all $k$.
 In particular for $d=0$ this implies $\tilde S=\Sigma$ 
