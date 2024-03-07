@@ -2,7 +2,8 @@ function SteinerSet(lambda) {
     return {
         x: 0,
         y: 0,
-        r: 1/(1-lambda),
+//        r: 1/(1-lambda),
+        R: Math.sqrt(1+lambda+lambda*lambda),
         refine: () => {
             return [
                 SteinerBranch(0, 0, 1, 0, lambda),
