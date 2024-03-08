@@ -1145,13 +1145,17 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Non symmetric trees}
 
 In this section we want to consider the case of a tree where each branching point has its own length.
 To deal with this case we need to introduce a notation to describe the parameters of the tree, which 
 can now differ on every subsequent branch of the tree.
 
-Let $G=\ENCLOSE{1,L,R,LL,LR,RL,RR,LLL,\dots}$ be the set of all finite words composed by letters 
+Let $G=\ENCLOSE{0,L,R,LL,LR,RL,RR,LLL,\dots}$ be the set of all finite words composed by letters 
 $L$ (for left) and $R$ (for right). We let $0$ represent the empty word.
 If $w\in G$ we denote with $Lw\in G$ and $Rw\in G$ the words obtained by adding, 
 respectively, $L$ and $R$ to the left of the word $w$.
@@ -1161,8 +1165,8 @@ Each segment in an infinite splitting tree can be identified by a word $w\in G$:
 $0$ is the trunk, $L$ the first left branch, $R$ the first right branch, $LL$ is the branch obtained by taking
 the first left branch and then the first left branch again, and so on.
 We will also consider $L$ and $R$ as functions on $G$ defined by $L(w):=Lw$ and $R(w):=Rw$.
-Given a function $\mathbb \lambda\colon G\to (0,1)$ we write $\lambda_w:=\lambda(w)$.
 
+Given a function $\mathbb \lambda\colon G\to (0,1)$ we write $\lambda_w:=\lambda(w)$.
 We will consider the splitting tree $\Sigma_\lambda$ composed by a trunk of length $\lambda_0$ splitting 
 into two branches (with equal angles of 120 degrees) of length $\lambda_0\lambda_L$ and $\lambda_0\lambda_R$
 and then splitting again so that $\lambda_w$ represents the ratio between the length of the branch $w$ with respect 
