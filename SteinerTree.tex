@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-%\usepackage{showkeys}
+\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -213,7 +213,8 @@ small then
 for $C:=\ENCLOSE{H}\cup A$, with $H=0$, the closure $\bar S$ of any solution 
 $S$ to the Steiner problem 
 is connected and is equal to the binary self-similar 
-tree $\Sigma$ defined by the recurrence equation
+tree $\Sigma$ which can be defined as the unique compact set 
+satisfying the self-similarity equation
 \[
   \Sigma = [0,1] \cup f_1(\Sigma) \cup f_2(\Sigma).
 \]
@@ -476,7 +477,7 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
   branching points in $\bar S_1$ converging to $H$
   (branching points can only accumulate on $\ENCLOSE{H}\cup C$ 
   by Proposition~\ref{prop:PaoSte}(ii)).
-  but to each of such branching points there would correspond at least 
+  But to each of such branching points there would correspond at least 
   one branch of $\bar S_1$ containing an endpoint on $C$ 
   (i.e.\ different from $H$) and hence having length at least $\dist(H,C)>0$.
   Since $\H^1(\bar S_1)=\H^1(S_1)$, by Lemma~\ref{lm:connected}, 
@@ -572,7 +573,7 @@ We need the following lemmata.
 \begin{lemma}\label{lm:existsA} 
   For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A)$ is nonempty.
   If $\lambda < \frac 1 2$
-  one has $\H^1(\Sigma)<+\infty$, $\H^1(A)=0$, $A$ is totally disconnected.
+  one has $\H^1(\Sigma)<+\infty$, $\H^1(A)=0$ hence $A$ is totally disconnected.
   Moreover for any $S \in \M(\ENCLOSE{x=d}\cup A)$ 
   one has that $\H^1(S)<\infty$,
   $\bar S\in \M(\ENCLOSE{x=d}\cup A)$ and
@@ -582,7 +583,7 @@ We need the following lemmata.
 \begin{proof}
   The family of minimizers is nonempty in view of Lemma~\ref{lm:exists}.
 
-  We claim the since $\lambda < \frac 1 2$ then $\H^1(A)=0$. 
+  We claim that since $\lambda < \frac 1 2$ then $\H^1(A)=0$. 
   Since $A\subset \Sigma$ and $\H^1(\Sigma)=\frac{1}{1-2\lambda}$
   is finite if $\lambda<\frac 1 2$ then $\H^1(A)<+\infty$.
   By the self-similarity property of $A$ we have that 
@@ -607,11 +608,11 @@ We need the following lemmata.
   $\lambda < \frac 2 5$,
   $\rho= \frac{\lambda}{1-\lambda}$,
   $r=\frac{2\rho}{\sqrt 3}$
-  Then $A\subset B_\rho(T_0)$ and 
+  Then $A\subset \overline{B_\rho(T_0)}$ and 
   given any $d<\frac 1 2$ and any
   $S\in \M(\ENCLOSE{x=d}\cup A)$ 
-  there exists $T\in \partial B_R(T_0)$ such that
-  we have that $S\setminus B_R(T_0)$ is a straight line segment
+  there exists $T\in \partial B_r(T_0)$ such that
+  we have that $S\setminus B_r(T_0)$ is a straight line segment
   $[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
   with $H\in \ENCLOSE{x=d}$.
   In particular $\bar S$ is connected.
@@ -1149,9 +1150,90 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Full symmetric tree}
+
+\begin{lemma}\label{lemma:triple}
+  Let $V_1,V_2,V_3\in \RR^2$ be the three vertices of an 
+  equilateral triangle of side length $\ell$. 
+  Take $\rho \le \frac{\ell}{5}$.
+  Let $C\subset \RR^2$ be a compact set such that 
+  $C=C_1\cup C_2\cup C_3$ with $C_k=C\cap B_\rho(V_k)$
+  and suppose $C_k\neq \emptyset$ for $k=1,2,3$.
+
+  Then given any $S\in \M(C)$ there exists a point $T$ such 
+  that $S=S_1\cup S_2 \cup S_3$ with $S_k\in \M(C_k\cup\ENCLOSE{T})$.
+  Moreover $T\in \bar B_\rho(O)$ where $O$ is the center of the triangle.
+\end{lemma}
+
+Let $C$ and $\Sigma$ be the sets defined in the introduction, depending on a fixed $\lambda>0$.
+Let $\phi\colon \RR^2\to \RR^2$ be the counter-clockwise rotation of an angle $\frac{2\pi}{3}$,
+i.e., $\phi(z) = e^{\frac{2\pi i}{3}}\cdot z$ in the complex plane.
+Let $C_1=C$, $C_2=\phi(C)$, $C_3=\phi^2(C)$, 
+$C_f = C_1\cup C_2\cup C_3$,
+$\Sigma_1=\Sigma$, $\Sigma_2=\phi(\Sigma)$,
+$\Sigma_3=\phi^2(\Sigma)$, and $\Sigma_f = \Sigma_1 \cup \Sigma_2 \cup \Sigma_3$
+($f$ stands for \emph{full} here).
+
+See Figure~***FARE FIGURA***.
+
+\begin{theorem}[full minimizer]
+  Suppose $\lambda < \frac 1{25}$.
+  Then, $S \in \M(C_f)$ if and only if $S\cup C_f = \Sigma_f$.
+\end{theorem}
+\begin{proof}
+  Let $V_1 = (1,0)\in \RR^2$, $V_2=\phi(V_0)$, $V_3=\phi^2(V_0)$ be the vertices of an equilateral 
+  triangle of side length $\sqrt 3$ centered in the origin.
+  Let $S\in \M(C_f)$.
+  Let $\rho = \frac{\lambda}{1-\lambda}$.
+  By Lemma~\ref{lemma:triple} we know that there exists a point 
+  $T\in B_\rho(0)$ such that $S=S_1\cup S_2\cup S_3$ with $S_k\in \M(C_k\cup \ENCLOSE{T})$.
+  Consider the triangle $\Delta$ 
+  with vertices $\enclose{\frac 1 2,\pm\frac{\sqrt 3}{2}}$ and $\enclose{-1,0}$.
+  Let $Y$ be the line with equation $x=\frac 1 2$.
+  Clearly $\phi(\Delta)=\Delta$ and $\Delta$ has a side contained in the line $Y$. 
+  By Lemma~\ref{lm:angle} we know that $S_1\setminus B_\rho(V_1)$ is a single line segment
+  and hence $S_1\cap \partial \Delta$ is composed by a single point, 
+  which we call $H_1$. 
+  Let $S'_1 := \overline{S_1\setminus \Delta}$, and notice that
+  $S_1'$ is obtained from $S_1$ by removing the segment $[T,H_1)$.
+  Hence, from $S_1\in \M(C_1\cup \ENCLOSE{T})$, we get $S'_1\in \M(C_1\cup \ENCLOSE{H_1})$. 
+  Since $H_1\in \Delta$, we have also $S'_1\in \St(C_1 \cup \Delta)$.
+  If we define $\Sigma'_1 = \overline{\Sigma_1\setminus \Delta}$,
+  by Theorem~\ref{th:main} we know that $\Sigma'_1 \in \M(C_1\cup Y)$ 
+  and hence $\Sigma'_1 \in \M(C_1\cup \Delta)$ because the projection of $C_1$ onto the line 
+  $Y$ is contained in $\Delta$. 
+  Hence $\H^1(\Sigma'_1)\le \H^1(S'_1)$.
+  Repeat the reasoning for $k=2,3$ to define $H_k$, $S'_k$ and $\Sigma'_k$
+  as we did for $k=1$.
+  We obtain
+  \begin{align*}
+    \H^1(S) &= \H^1(S\cap \Delta) + \sum_{k=1}^3 \H^1(S'_k),\\
+    \H^1(\Sigma_f) &= \H^1(\Sigma_f\cap \Delta) + \sum_{k=1}^3 \H^1(\Sigma'_k),\\
+    \H^1(\Sigma'_k) & \le \H^1(S'_k) \qquad \text{for $k=1,2,3$}.
+  \end{align*}
+  Now notice that $S\cap \Delta = [T,H_1]\cup [T,H_2]\cup [T,H_3]$
+  and hence, by Lemma~\ref{lm:tripod}, $\H^1(S\cap \Delta) \ge \H^1(\Sigma_f\cap \Delta)$,
+  since $\abs{H_1 - T}\ge \dist(T,Y)$, and analogously for $k=2,3$.
+  Putting all together, we obtain $\H^1(S)\ge \H^1(\Sigma_f)$
+  which means that $\Sigma_f\in \M(C_f)$, and actually $H^1(S)=\H^1(\Sigma_f)$.
+
+  Since we have the equality $\H^1(S)=\H^1(\Sigma_f)$ the inequalities 
+  $\H^1(S\cap \Delta)\le \H^1(\Sigma_f\cap \Delta)$ and
+  $\H^1(S'_k)\ge \H^1(\Sigma'_k)$, $k=1,2,3$, must all be equalities.
+  It means that $S'_k\in \M(C_k\cup \Delta)$ for $k=1,2,3$, and,
+  by Theorem~\ref{th:main}, we might conclude that $S'_k\cup C_k = \Sigma'_k$.
+  As a consequence we have also $S\cap \Delta = \Sigma_f\cap \Delta$ because 
+  the tripod $S\cap \Delta$ is uniquely determined by the points of $S$ on 
+  the boundary of $\Delta$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Non symmetric trees}
 
-In this section we want to consider the case of a tree where each branching point has its own length.
+In this section we want to consider the case of a tree where each branch can have different length.
 To deal with this case we need to introduce a notation to describe the parameters of the tree, which 
 can now differ on every subsequent branch of the tree.
 
@@ -1160,11 +1242,11 @@ $L$ (for left) and $R$ (for right). We let $0$ represent the empty word.
 If $w\in G$ we denote with $Lw\in G$ and $Rw\in G$ the words obtained by adding, 
 respectively, $L$ and $R$ to the left of the word $w$.
 We agree that $L0=L$ and $R0=R$.
+We will also consider $L$ and $R$ be functions on $G$, letting $L(w):=Lw$ and $R(w):=Rw$.
 We let $\abs{w}$ be the length of the word $w$.
 Each segment in an infinite splitting tree can be identified by a word $w\in G$:
 $0$ is the trunk, $L$ the first left branch, $R$ the first right branch, $LL$ is the branch obtained by taking
 the first left branch and then the first left branch again, and so on.
-We will also consider $L$ and $R$ as functions on $G$ defined by $L(w):=Lw$ and $R(w):=Rw$.
 
 Given a function $\mathbb \lambda\colon G\to (0,1)$ we write $\lambda_w:=\lambda(w)$.
 We will consider the splitting tree $\Sigma_\lambda$ composed by a trunk of length $\lambda_0$ splitting 
@@ -1175,13 +1257,13 @@ This way a constant function $\lambda_w = \lambda_0$ will represent a self-simil
 
 Let us make this more precise.
 We identify $\RR^2$ with $\CC$ and consider $\theta=e^{\frac{\pi}{3}i}$.
-We define two roto-translations $f_L,f_R\colon \CC\to \CC$ by $f_L(z):= 1+\theta z$ and $f_R(z):=1+\bar\theta z$.
+We consider the two roto-translations $f_L,f_R\colon \CC\to \CC$ defined by 
+$f_L(z):= 1+\theta z$ and $f_R(z):=1+\bar\theta z$.
 The root of our tree will be the point $0\in \CC$ and first triple point (or branching point) will be 
 $T_0^\lambda:=\lambda_0\in \RR\subset \CC$. 
 The branching point $T_w^\lambda$ at the end of the segment identified by the word $w\in G$ can be defined by a recursive formula:
 \[
    \begin{cases}
-    T_0 = \lambda_0, \\
     T_0^\lambda = \lambda_0, \\
     T_{Lw}^\lambda = \lambda_0 f_L(T_w^{\lambda\circ L}), \\
     T_{Rw}^\lambda = \lambda_0 f_R(T_w^{\lambda\circ L}).
@@ -1206,6 +1288,10 @@ To define the tree $\Sigma_\lambda$ we first define the finite trees $\Sigma_\la
   \Sigma_\lambda^{n+1} = \lambda_0\big([0,1] \cup f_L(\Sigma_{\lambda\circ L}^n) \cup f_R(\Sigma_{\lambda\circ R}^n)\big).
 \end{cases}
 \]
+The tree $\Sigma_\lambda^n$ is composed by $2^n-1$ segments, has a root in the origin, 
+$2^{n-1}$ leaves
+(the endpoints, or terminal points of the tree, apart from the root)
+and $2^n-1$ branching points.
 Finally we define
 \[
   S_\lambda = \bigcup_{n\in \NN} \Sigma_\lambda^n,
@@ -1214,11 +1300,94 @@ Finally we define
   \qquad
   A_\lambda = \Sigma_\lambda \setminus S_\lambda.
 \]
-The set $A_\lambda$ is also the set of limit points of the sequences $T_w$ as $\abs{w}\to\infty$. 
+The set $S_\lambda$ is an infinite branching tree with a root in the origin, 
+and terminal points (leaves) in the set $A_\lambda$.
+The set $A_\lambda$ is also the set of limit points of the sequences $T^\lambda_w$ as $\abs{w}\to\infty$. 
 The set $\ENCLOSE{0}\cup A_\lambda$ is the set of endpoints of $\Sigma_\lambda$.
 
-Clearly $\Sigma_\lambda$ is compact and connected, and hence $\Sigma_\lambda\in \St(\ENCLOSE{0}\cup A_\lambda)$.
+Clearly $\Sigma_\lambda$ is compact and connected, 
+and hence $\Sigma_\lambda\in \St(\ENCLOSE{0}\cup A_\lambda)$.
 
+We are now going to extend the results of the previous section to the case of non symmetric trees.
+\begin{lemma}\label{lm2:existsA} 
+  Let $\lambda\colon G\to (0,1)$ be given.
+  For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A_\lambda)$ is nonempty.
+  If $\lambda < \frac 1 2$ (i.e.\ $\lambda_w < \frac 1 2$ for all $w\in G$)
+  then for every $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$
+  one has $\H^1(\Sigma^\lambda)<+\infty$, $\H^1(A_\lambda)=0$ hence $A_\lambda$ is totally disconnected.
+  Moreover for any $S \in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
+  one has that $\H^1(S)<\infty$,
+  $\bar S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ and
+  $\bar S$ contains $A_\lambda$.
+\end{lemma}
+\begin{proof}
+  The proof follows that of Lemma~\ref{lm:existsA}. 
+  Just notice that if $\lambda \le \mu$, for some constant 
+  $\mu\in \RR$ then one has 
+  $\H^1(\Sigma_\lambda)\le \frac{1}{1-2\mu}$ which is 
+  finite if $\mu<\frac 1 2$.
+  Let $\ell(\mu)=\sup\ENCLOSE{\H^1(A_\lambda)\colon \lambda \le \mu}$.
+  The set $A_\lambda$ is the union 
+  of two sets which are rescaled copies of $A_{\lambda\circ L}$ and $A_{\lambda\circ R}$
+  by a rescaling factor $\lambda_0$.
+  Hence, if $\lambda \le \mu$, 
+  \[
+    \H^1(A_\lambda) \le \mu (\H^1(A_{\lambda\circ L}) + \H^1(A_{\lambda\circ R}))
+    \le 2\mu \ell(\mu).
+  \]
+  This implies that $\ell(\mu)\le 2\mu \ell(\mu)$ and hence $\ell(\mu)=0$ 
+  if $\mu< \frac 1 2$.  
+  The conclusions follow.
+\end{proof}
+
+\begin{lemma}\label{lm2:01}
+Let $\lambda\colon G\to (0,1)$ be given 
+with $\mu=\sup \lambda < \frac 1 {12}$.
+Let $\rho = \frac{\mu}{1-\mu}$,
+$r=\frac{2\rho}{\sqrt 3}$.
+The point $T_0^\lambda=(\lambda_0,0)\in\RR^2$ and the 
+set $A_\lambda\subset \RR^2$ are defined as above.
+Then $A_\lambda\subset \overline{B_\rho(T_0)}$ and 
+given any $d<\frac {\lambda_0} 2$ and any
+$S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
+there exists $T\in \partial B_r(T_0)$ such that
+we have that $S\setminus B_r(T_0)$ is a straight line segment
+$[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
+with $H\in \ENCLOSE{x=d}$.
+In particular $\bar S$ is connected.
+\end{lemma}
+%
+\begin{proof}
+  Notice that $\abs{T_w-T_0} \le \lambda_0\mu + \lambda_0\mu^2 + \dots + \lambda_0\mu^n$ 
+  if $w\in G$ is a word of length $n$. 
+  Hence $\abs{T_w-T_0}\le \frac{\lambda_0\mu}{1-\mu}$
+  and $A_\lambda\subset \overline{B_\rho(T^\lambda_0)}$.
+  The rest of the proof follows that of Lemma~\ref{lm:01}.
+  A sufficient condition to apply Lemma~\ref{lm:base} is 
+  $3r < \frac{\lambda_0}{2}$ which holds true if $\mu < \frac 1 {12}$.
+\end{proof}
+
+\begin{lemma}\label{lm:precedente1}
+  Let $X=\ENCLOSE{(x,0)\colon x\in \RR}$ and $Y=\ENCLOSE{(0,y)\colon y\in \RR}$.
+  Let $\lambda\colon G\to (0,1)$ be given with $\mu=\sup \lambda <\frac 1 2$.
+  Notice that $A_\lambda = A_\lambda^+ \cup A_\lambda^-$ where 
+  $A^+ = \lambda_0 f_L(A_{\lambda\circ L}) = A_\lambda \cap \ENCLOSE{(x,y)\colon y>0}$ 
+  is the left-hand side 
+  part of $A_\lambda$
+  and $A^- = \lambda_0 f_R(A_{\lambda\circ R}) = A_\lambda \cap\ENCLOSE{(x,y)\colon y<0}$ 
+  is the right-hand side.
+  One has
+  \begin{align*}
+      \dist(Y,A_\lambda) 
+      &= \min \ENCLOSE{\dist(Y,A^+),\dist(Y,A^-)}\\
+      \dist(Y,A^+)
+      & \ge \lambda_0 + \frac{\lambda_0}{2} \lambda_L\frac{1-\mu-3\mu^2}{1-\mu^2}, \\
+      \dist(Y,A^-)
+      & \ge \lambda_0 + \frac{\lambda_0}{2} \lambda_R\frac{1-\mu-3\mu^2}{1-\mu^2}, \\
+      \dist(A^+,A^-) &\ge 
+      \frac{\sqrt 3}{2} \lambda_0(\lambda_L+\lambda_R)\frac{1-\mu-\mu^2}{1-\mu}.
+  \end{align*}
+  \end{lemma}  
 
 \bibliographystyle{plain}
 %\bibliography{../share/math/biblio}
