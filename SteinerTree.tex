@@ -146,18 +146,12 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
   \hspace{1cm}
   \includegraphics[height=6cm]{singleBranch.png}
   \label{fig:tree}
-  \caption{The self-similar tree $S$ with a countable 
+  \caption{The self-similar tree with a countable 
   number of triple junctions and an uncountable number 
   of leaves which are the limit points of the triple 
-  junctions. On the left the \emph{full} fractal tree, 
-  on the right a single branch, with a fixed root.}
+  junctions. On the left the \emph{full} fractal tree $\Sigma_f$, 
+  on the right a single branch $\Sigma$, with a fixed root in the origin.}
 \end{figure}
-% Our proof requires that the sequence $\{\lambda_j\}$ vanish rather quickly (in fact, al least be summable).
-% It is an open question if in the case of a
-% constant sequence $\lambda_j=\lambda$ (with $\lambda>0$ small enough) the same construction
-% still provides a Steiner tree. This seems to be quite interesting
-% since the resulting tree would be, in that case, a \emph{self-similar}
-% fractal.
 
 In \cite{PaoSteTep15} it has been proven that 
 the suggested tree is in fact the solution (and even the unique one) 
@@ -423,10 +417,10 @@ be connected is not compact but contains a line.
   that $\bar S_1$ and $\bar S_2$ each have 
   at most one endpoint on $\ell$ (hence exactly one).
   Let $H_1$ and $H_2$ be such endpoints.
-  Note that $S_j\in \M(\ENCLOSE{H_j}\cup C_j)$ 
-  with $C_j:=\bar S_j\cap C$, $j=1,2$, compact subsets of $C$. 
+  Note that $S_j\in \M(\ENCLOSE{H_j}\cup A_j)$ 
+  with $A_j:=\bar S_j\cap C$, $j=1,2$, compact subsets of $C$. 
   By Lemma~\ref{lm:angle} below
-  with $C_j$ and $H_j$ in place of $C$ and $H$ respectively,
+  with $A_j$ and $H_j$ in place of $C$ and $H$ respectively,
   one has that
   the set $S_j\setminus B_r(P)$ is a straight line segment $[H_j T_j]$
   with $T_j\in \partial B_r(P)$, $j=1,2$.
@@ -579,28 +573,45 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
     triangle, which is the claimed value.
   \end{proof}
   
-  \begin{lemma}\label{lm:envelope}
-  Let $S\in \M(\ENCLOSE{T}\cup C)$
-  for some $T\in \RR^2$ and a compact set $C$ contained in a horizontal strip 
-  $E=\ENCLOSE{(x,y)\colon \abs{y}\le \delta}$ of width $2\delta>0$.
-  Suppose also that there is some $T'\in S$, $T'\neq T$ 
-  such that $[T,T']$ is horizontal.
-  Then $T\in E$ and $S\subset E$.
-  \end{lemma}
-  %
-  \begin{proof}
-    Suppose by contradiction that $T=(x_T,y_T)$ is outside $E$.
-    For example $y_T>\delta$. 
-    Then the convex hull of $\ENCLOSE{T}\cup C$ has a single 
-    point, which is $T$, on the line $\ENCLOSE{y=y_T}$. 
-    This is in contradiction with the fact that $T'\in S$ 
-    has the same $y$-coordinate as $T$.
-    This proves $T\in E$ and hence
-    shows that the whole convex hull of 
-    $\ENCLOSE{T}\cup C$ is contained in $E$. 
-    Therefore, $S$ must be contained in $E$ as well.
-  \end{proof}
+\begin{lemma}\label{lm:envelope}
+Let $S\in \M(\ENCLOSE{T}\cup C)$
+for some $T\in \RR^2$ and a compact set $C$ contained in a horizontal strip 
+$E=\ENCLOSE{(x,y)\colon \abs{y}\le \delta}$ of width $2\delta>0$.
+Suppose also that there is some $T'\in S$, $T'\neq T$ 
+such that $[T,T']$ is horizontal.
+Then $T\in E$ and $S\subset E$.
+\end{lemma}
+%
+\begin{proof}
+  Suppose by contradiction that $T=(x_T,y_T)$ is outside $E$.
+  For example $y_T>\delta$. 
+  Then the convex hull of $\ENCLOSE{T}\cup C$ has a single 
+  point, which is $T$, on the line $\ENCLOSE{y=y_T}$. 
+  This is in contradiction with the fact that $T'\in S$ 
+  has the same $y$-coordinate as $T$.
+  This proves $T\in E$ and hence
+  shows that the whole convex hull of 
+  $\ENCLOSE{T}\cup C$ is contained in $E$. 
+  Therefore, $S$ must be contained in $E$ as well.
+\end{proof}
+
+\begin{lemma}\label{lemma:triple}
+  Let $V_1,V_2,V_3\in \RR^2$ be the three vertices of an 
+  equilateral triangle of side length $\ell$. 
+  Take $\rho \le \frac{\ell}{5}$.
+  Let $A\subset \RR^2$ be a compact set such that 
+  $A=A_1\cup A_2\cup A_3$ with $A_k=A\cap B_\rho(V_k)$
+  and suppose $A_k\neq \emptyset$ for $k=1,2,3$.
+
+  Then given any $S\in \M(A)$ there exists a point $T$ such 
+  that $S=S_1\cup S_2 \cup S_3$ with $S_k\in \M(A_k\cup\ENCLOSE{T})$.
+  Moreover $T\in \bar B_\rho(O)$ where $O$ is the center of the triangle.
+\end{lemma}
   
+\begin{proof}
+  *** to be completed ***
+\end{proof}
+
 \section{Main results}
 \label{sec:main}
 
@@ -1078,8 +1089,9 @@ The computation gives
   and thus $S_j \in \M(Y_j'\cup f_j(A))$, $j=1,2$ as claimed.
 \end{proof}
 
-
-Finally we are in the position to prove the main result.
+Finally we are in the position to prove the minimality of 
+the branching tree $\Sigma$ with a fixed root, or, more generally,
+with the root moving along the line $Y$.
 
 \begin{theorem}\label{th:main}
 Suppose $\lambda < \frac 1{25}$.
@@ -1186,47 +1198,22 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can now prove the main result for the full tree $\Sigma_f$.
 
-\section{Full symmetric tree}
+Let $A_f$ and $\Sigma_f$ be the sets defined in the introduction
+(see Figure~\ref{fig:tree} left side)
 
-\begin{lemma}\label{lemma:triple}
-  Let $V_1,V_2,V_3\in \RR^2$ be the three vertices of an 
-  equilateral triangle of side length $\ell$. 
-  Take $\rho \le \frac{\ell}{5}$.
-  Let $C\subset \RR^2$ be a compact set such that 
-  $C=C_1\cup C_2\cup C_3$ with $C_k=C\cap B_\rho(V_k)$
-  and suppose $C_k\neq \emptyset$ for $k=1,2,3$.
-
-  Then given any $S\in \M(C)$ there exists a point $T$ such 
-  that $S=S_1\cup S_2 \cup S_3$ with $S_k\in \M(C_k\cup\ENCLOSE{T})$.
-  Moreover $T\in \bar B_\rho(O)$ where $O$ is the center of the triangle.
-\end{lemma}
-
-Let $C$ and $\Sigma$ be the sets defined in the introduction, depending on a fixed $\lambda>0$.
-Let $\phi\colon \RR^2\to \RR^2$ be the counter-clockwise rotation of an angle $\frac{2\pi}{3}$,
-i.e., $\phi(z) = e^{\frac{2\pi i}{3}}\cdot z$ in the complex plane.
-Let $C_1=C$, $C_2=\phi(C)$, $C_3=\phi^2(C)$, 
-$C_f = C_1\cup C_2\cup C_3$,
-$\Sigma_1=\Sigma$, $\Sigma_2=\phi(\Sigma)$,
-$\Sigma_3=\phi^2(\Sigma)$, and $\Sigma_f = \Sigma_1 \cup \Sigma_2 \cup \Sigma_3$
-($f$ stands for \emph{full} here).
-
-See Figure~***FARE FIGURA***.
-
-\begin{theorem}[full minimizer]
+\begin{theorem}[full minimizer]\label{th:full}
   Suppose $\lambda < \frac 1{25}$.
-  Then, $S \in \M(C_f)$ if and only if $S\cup C_f = \Sigma_f$.
+  Then, $S \in \M(A_f)$ if and only if $S\cup A_f = \Sigma_f$.
 \end{theorem}
 \begin{proof}
   Let $V_1 = (1,0)\in \RR^2$, $V_2=\phi(V_0)$, $V_3=\phi^2(V_0)$ be the vertices of an equilateral 
   triangle of side length $\sqrt 3$ centered in the origin.
-  Let $S\in \M(C_f)$.
+  Let $S\in \M(A_f)$.
   Let $\rho = \frac{\lambda}{1-\lambda}$.
   By Lemma~\ref{lemma:triple} we know that there exists a point 
-  $T\in B_\rho(0)$ such that $S=S_1\cup S_2\cup S_3$ with $S_k\in \M(C_k\cup \ENCLOSE{T})$.
+  $T\in B_\rho(0)$ such that $S=S_1\cup S_2\cup S_3$ with $S_k\in \M(A_k\cup \ENCLOSE{T})$.
   Consider the triangle $\Delta$ 
   with vertices $\enclose{\frac 1 2,\pm\frac{\sqrt 3}{2}}$ and $\enclose{-1,0}$.
   Let $Y$ be the line with equation $x=\frac 1 2$.
@@ -1236,11 +1223,11 @@ See Figure~***FARE FIGURA***.
   which we call $H_1$. 
   Let $S'_1 := \overline{S_1\setminus \Delta}$, and notice that
   $S_1'$ is obtained from $S_1$ by removing the segment $[T,H_1)$.
-  Hence, from $S_1\in \M(C_1\cup \ENCLOSE{T})$, we get $S'_1\in \M(C_1\cup \ENCLOSE{H_1})$. 
-  Since $H_1\in \Delta$, we have also $S'_1\in \St(C_1 \cup \Delta)$.
+  Hence, from $S_1\in \M(A_1\cup \ENCLOSE{T})$, we get $S'_1\in \M(A_1\cup \ENCLOSE{H_1})$. 
+  Since $H_1\in \Delta$, we have also $S'_1\in \St(A_1 \cup \Delta)$.
   If we define $\Sigma'_1 = \overline{\Sigma_1\setminus \Delta}$,
-  by Theorem~\ref{th:main} we know that $\Sigma'_1 \in \M(C_1\cup Y)$ 
-  and hence $\Sigma'_1 \in \M(C_1\cup \Delta)$ because the projection of $C_1$ onto the line 
+  by Theorem~\ref{th:main} we know that $\Sigma'_1 \in \M(A_1\cup Y)$ 
+  and hence $\Sigma'_1 \in \M(A_1\cup \Delta)$ because the projection of $A_1$ onto the line 
   $Y$ is contained in $\Delta$. 
   Hence $\H^1(\Sigma'_1)\le \H^1(S'_1)$.
   Repeat the reasoning for $k=2,3$ to define $H_k$, $S'_k$ and $\Sigma'_k$
@@ -1255,13 +1242,13 @@ See Figure~***FARE FIGURA***.
   and hence, by Lemma~\ref{lm:tripod}, $\H^1(S\cap \Delta) \ge \H^1(\Sigma_f\cap \Delta)$,
   since $\abs{H_1 - T}\ge \dist(T,Y)$, and analogously for $k=2,3$.
   Putting all together, we obtain $\H^1(S)\ge \H^1(\Sigma_f)$
-  which means that $\Sigma_f\in \M(C_f)$, and actually $H^1(S)=\H^1(\Sigma_f)$.
+  which means that $\Sigma_f\in \M(A_f)$, and actually $H^1(S)=\H^1(\Sigma_f)$.
 
   Since we have the equality $\H^1(S)=\H^1(\Sigma_f)$ the inequalities 
   $\H^1(S\cap \Delta)\le \H^1(\Sigma_f\cap \Delta)$ and
   $\H^1(S'_k)\ge \H^1(\Sigma'_k)$, $k=1,2,3$, must all be equalities.
-  It means that $S'_k\in \M(C_k\cup \Delta)$ for $k=1,2,3$, and,
-  by Theorem~\ref{th:main}, we might conclude that $S'_k\cup C_k = \Sigma'_k$.
+  It means that $S'_k\in \M(A_k\cup \Delta)$ for $k=1,2,3$, and,
+  by Theorem~\ref{th:main}, we might conclude that $S'_k\cup A_k = \Sigma'_k$.
   As a consequence we have also $S\cap \Delta = \Sigma_f\cap \Delta$ because 
   the tripod $S\cap \Delta$ is uniquely determined by the points of $S$ on 
   the boundary of $\Delta$.
