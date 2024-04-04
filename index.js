@@ -2,9 +2,12 @@ function drawSet(ctx, S) {
     const draw_arc = false
     const draw_tree = true
     if (draw_arc) {
+        ctx.save()
+        ctx.strokeStyle = 'lightgray'
         ctx.beginPath()
         ctx.arc(S.x, S.y, S.r, 0, 2 * Math.PI)
         ctx.stroke()
+        ctx.restore()
     }    
     if (S.r < 0.005) return
     for (const child of S.refine()) {
@@ -20,10 +23,10 @@ function drawSet(ctx, S) {
 
 function draw(canvas) {
     const ctx = canvas.getContext('2d')
-    const S = new SteinerSet(0.55)
+    const S = new SteinerSet(0.47)
     ctx.translate(canvas.width/2, canvas.height/2)
     const s = 0.2*Math.min(canvas.width, canvas.height)
     ctx.scale(s,s)
-    ctx.lineWidth /= s
+    ctx.lineWidth /= s/2
     drawSet(ctx, S)
 }

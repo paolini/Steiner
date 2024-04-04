@@ -5,7 +5,7 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-\usepackage{showkeys}
+%\usepackage{showkeys}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -92,7 +92,7 @@ the shortest connection of a given planar self-similar fractal set $C$
 of positive Hausdorff dimension.
 The set $C$ can be considered the set of \emph{leaves}, or the ``boundary'',
 of the tree $\Sigma$,
-so that $\Sigma$ is an \emph{irreducible} solution to the Steiner problem
+so that $\Sigma$ is an \emph{indecomposable} solution to the Steiner problem
 with datum $C$ (i.e.\ $\Sigma\setminus C$ is connected).
 \end{abstract}
 
@@ -102,9 +102,9 @@ with datum $C$ (i.e.\ $\Sigma\setminus C$ is connected).
 
 Let $C$ be a subset of $\RR^2$.
 The Steiner problem with datum $C$ consists of finding a set $S\subset \RR^2$ 
-such that $S\cup C$ is connected and $\H^1(S)$ is minimal where $\H^1$ stands 
+such that $S\cup C$ is connected and $\H^1(S)$ is minimal, where $\H^1$ stands 
 for the $1$-dimensional Hausdorff measure (i.e.\ the length of the set).
-Usually this problem is considered for the case when $C$ is the finite 
+Usually this problem is considered for the case when $C$ is a finite 
 set and in this setting it becomes a problem of combinatorial geometry. 
 The Steiner problem goes back to Jarník and Kössler \cite{JarKos34} 
 (although some of its particular cases are much more ancient, for instance 
@@ -118,17 +118,17 @@ sets $C$.
 Moreover finding explicit solutions for an infinite $C$ may shed light on 
 the solutions to finite sets with an arbitrarily large number of points.
 One natural question that has arosen in this context is 
-whether there exists a planar irreducible Steiner tree $S$ connecting an uncountable 
+whether there exists a planar indecomposable Steiner tree $S$ connecting an uncountable 
 and possibly fractal set of points $C$ 
-(we say that $S$ is irreducible if $S\setminus C$ is 
+(we say that $S$ is \emph{indecomposable} if $S\setminus C$ is 
 connected).
 A very similar question,
-namely the existence of irreducible Steiner sets with the topology 
+namely the existence of indecomposable Steiner sets with the topology 
 of a binary tree for a finite set of points $C$ with arbitrarily 
 large number of points, has been answered positively by Ivanov and 
 Tuzhilin \cite{IvaTuz94} by means of an abstract construction.
-Further an explicit construction of such a tree has been developed
-in \cite{PaoSteTep15} were the set $C$ consists of a \emph{root} $H$ and uncountably many
+Further, an explicit construction of such a tree has been developed
+in \cite{PaoSteTep15}, were the set $C$ consists of a \emph{root} $H$ and uncountably many
 points (\emph{leaves}) which together give a totally disconnected perfect set 
 (i.e.\ every connected component is a point, but the points are not isolated).
 No segment of $S$
@@ -139,15 +139,18 @@ is composed by a \emph{trunk} of
 some length $\ell$ which splits at angles of 120 degrees 
 into two branches of length $\lambda_1 \ell$ 
 both of which split further at the same angles into two branches of length
-$\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}).
+$\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
 \begin{figure}
   \centering 
-  \includegraphics[height=6cm]{tree.pdf}
+  \includegraphics[height=6cm]{fullTree.png}
+  \hspace{1cm}
+  \includegraphics[height=6cm]{singleBranch.png}
   \label{fig:tree}
   \caption{The self-similar tree $S$ with a countable 
   number of triple junctions and an uncountable number 
   of leaves which are the limit points of the triple 
-  junctions.}
+  junctions. On the left the \emph{full} fractal tree, 
+  on the right a single branch, with a fixed root.}
 \end{figure}
 % Our proof requires that the sequence $\{\lambda_j\}$ vanish rather quickly (in fact, al least be summable).
 % It is an open question if in the case of a
@@ -161,8 +164,8 @@ the suggested tree is in fact the solution (and even the unique one)
 to the Steiner problem when the sequence of coefficients $\lambda_k$
 is small and rapidly decreasing to zero (in particular summable).
 In such a situation the set $C$, though being uncountable,
-has zero Hausdorff dimension.
-The natural original question, whether this construction is also valid 
+is not self-similar and has zero Hausdorff dimension.
+The natural, original question, whether this construction is also valid 
 for fractal self-similar $C$ (i.e.\ when the coefficients are constant,
 i.e.\ $\lambda_j=\lambda$ for all $j$)
 was left open.
@@ -176,55 +179,95 @@ a ramified transportation problem similar to the Steiner problem.
 The method itself is very useful and can be applied in many situations.
 However it failed in this particular problem.
 A breakthrough has been provided by the recent paper \cite{CheTep23}
-where the authors provide a much simpler symmetry based argument to show that for 
-sufficiently small but constant coefficients the above construction 
-gives in fact an irreducible Steiner tree for a set $C$ 
+where the authors provide a much simpler, symmetry based argument, to show that for 
+sufficiently small but constant coefficients the above construction,
+for a single branch with a fixed root,
+gives in fact an indecomposable Steiner tree for a set $C$ 
 of positive Hausdorff dimension.
-However this construction does not provide uniqueness of 
-the minimizer leaving open the possibility of having other solutions, 
-different from the conjectured one.
-In this paper 
-we close the original question of both existence and uniqueness.
-To do so we develop a method which in particular uses 
+In this paper we develop a method which in particular uses 
 a further simplification and a generalization of 
-the idea developed in \cite{CheTep23}.
-Moreover since we do not use the symmetry argument anymore our method 
-could be applied even to non symmetric trees and to a full fractal tree 
-without root.
+the idea developed in \cite{CheTep23} to obtain the minimality and also uniqueness 
+of the full fractal tree (Figure~\ref{fig:tree}, left side), 
+see Theorem~\ref{th:main} and~\ref{th:full} below.
 
-To be more precise, 
-let $\RR^2$ be identified with the complex plane $\CC$
-and given $\lambda>0$, 
-consider $f_j(z) = 1 + \theta_j z$,
-where $\theta_j = \lambda e^{(-1)^j i \frac \pi 3}$,
-for $j=1,2$. 
-The affine map $f_j$ is the composition of a rotation,
-rescaling and translation. 
-Let $A$ be the only non-empty compact set such that 
+Let us make some more precise statements.
+Let $\lambda>0$ be fixed.
+Consider the affine functions $f_\pm\colon \CC^2\to \CC^2$ defined by
 \[
-  A = f_1(A) \cup f_2(A).  
+  f_\pm(x,y) = \begin{pmatrix} 1 \\ 0 \end{pmatrix} 
+    + \lambda \begin{pmatrix} 
+        \frac 1 2 & \frac{\mp\sqrt 3}{2} \\\\ 
+        \frac{\pm\sqrt 3}{2} & \frac 1 2 
+      \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
 \]
-One can check that $A$ is the limit, 
-in the sense of Hausdorff distance,
-of the finite sets $A_N$ where $A_N:=\ENCLOSE{f_{j_1}(f_{j_2}(\dots f_{j_N}(0)))\colon 
-j_1,j_2, \dots, j_N \in \ENCLOSE{1,2}}$.
-We are going to prove that if $\lambda$ is sufficiently 
-small then 
-for $C:=\ENCLOSE{H}\cup A$, with $H=0$, the closure $\bar S$ of any solution 
-$S$ to the Steiner problem 
-is connected and is equal to the binary self-similar 
-tree $\Sigma$ which can be defined as the unique compact set 
-satisfying the self-similarity equation
-\[
-  \Sigma = [0,1] \cup f_1(\Sigma) \cup f_2(\Sigma).
-\]
-Equivalently one can define $\Sigma$ as
-\[
-  \Sigma := \overline{\bigcup_{N \in \NN}  
-  \bigcup\ENCLOSE{f_{j_1}\circ \dots \circ f_{j_N}([0,1])\colon 
-  j_1, \dots, j_N \in \ENCLOSE{1,2}}}.
-\]
+or, by identifying $\CC^2$ with $\RR^2$,
+we can define $f_\pm(z) = 1 + \lambda e^{\pm i \frac \pi 3} z$.
+The function $f_+$ is the subsequent composition of: a counter-clockwise rotation of $60$ degrees,
+a scaling by a factor $\lambda$, and a unit translation along the positive $x$-axis.
+Let $O=(0,0)\in \RR^2$ be the origin and let $A\subset \RR^2$ be the set of all limits of sequences obtained 
+by iterating $f_+$ and $f_-$ starting from $O$.
+What we obtain is a compact set $A$ which is the only non-empty compact set 
+such that $A=f_+(A)\cup f_-(A)$.
+If we instead we start from the unit segment $[O,T]$ where $T=(1,0)$, and 
+consider the union of all images of $[O,T]$ under the composition of iterations of the 
+functions $f_+$ and $f_-$, we obtain the only compact set $\Sigma$ which satisfies 
+$\Sigma=[O,T]\cup f_+(\Sigma)\cup f_-(\Sigma)$.
+The set $\Sigma$ is depicted in Figure~\ref{fig:tree}, right side:
+there is a trunk $[O,T]$ which splits into two branches $f_\pm([O,T])$, 
+which in turn split into four branches $f_\pm(f_\pm([O,T]))$ and so on.
+The set $A$ is composed by the \emph{leaves} of this branching tree.
+If $\lambda < \frac 1 2$ (as we will assume from now on)
+one can check that $A$ is 
+homeomorphic to the Cantor set, it is totally disconnected, 
+perfect, uncountable and it is a self-similar fractal with Hausdorff dimension
+$-\log_\lambda 2$ (see \cite{Hut81}).
+The set $\Sigma$ is instead a topological tree (i.e.{} connected and simply connected), 
+compact set with finite positive length: $\H^1(\Sigma) = \frac{1}{1-2\lambda}$.
+The set $C=\ENCLOSE{O}\cup A$ is the set of \emph{endpoints} of the tree $\Sigma$ i.e.\ 
+the set of points $x\in \Sigma$ such that $\Sigma\setminus\ENCLOSE{x}$ remains connected.
 
+The full tree $\Sigma_f$, depicted in Figure~\ref{fig:tree}, left side,
+is the union of three rotated copies of $\Sigma$: $\Sigma_T = \Sigma \cup \phi(\Sigma) \cup \phi^2(\Sigma)$
+where $\phi$ is the counter-clockwise rotation of $120$ degrees centered in $O$.
+Analogously we define $A_f = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_f$.
+
+In Theorem~\ref{th:main} we show that for $\lambda$ sufficiently small the set $\Sigma_f$ 
+is the unique shortest set which connects $A_f$.
+
+
+% To be more precise, 
+% let $\RR^2$ be identified with the complex plane $\CC$
+% and given $\lambda>0$, 
+% consider $f_j(z) = 1 + \theta_j z$,
+% where $\theta_j = \lambda e^{(-1)^j i \frac \pi 3}$,
+% for $j=1,2$. 
+% The affine map $f_j$ is the composition of a rotation,
+% rescaling and translation. 
+% Let $A$ be the only non-empty compact set such that 
+% \[
+%   A = f_1(A) \cup f_2(A).  
+% \]
+% One can check that $A$ is the limit, 
+% in the sense of Hausdorff distance,
+% of the finite sets $A_N$ where $A_N:=\ENCLOSE{f_{j_1}(f_{j_2}(\dots f_{j_N}(0)))\colon 
+% j_1,j_2, \dots, j_N \in \ENCLOSE{1,2}}$.
+% We are going to prove that if $\lambda$ is sufficiently 
+% small then 
+% for $C:=\ENCLOSE{H}\cup A$, with $H=0$, the closure $\bar S$ of any solution 
+% $S$ to the Steiner problem 
+% is connected and is equal to the binary self-similar 
+% tree $\Sigma$ which can be defined as the unique compact set 
+% satisfying the self-similarity equation
+% \[
+%   \Sigma = [0,1] \cup f_1(\Sigma) \cup f_2(\Sigma).
+% \]
+% Equivalently one can define $\Sigma$ as
+% \[
+%   \Sigma := \overline{\bigcup_{N \in \NN}  
+%   \bigcup\ENCLOSE{f_{j_1}\circ \dots \circ f_{j_N}([0,1])\colon 
+%   j_1, \dots, j_N \in \ENCLOSE{1,2}}}.
+% \]
+% 
 \section{Notation and preliminaries}
 
 Let $\St(C)$ be the family of all sets $S$ such that 
@@ -558,12 +601,9 @@ In the proof of the above Lemma~\ref{lm:base} we used the following statement.
     Therefore, $S$ must be contained in $E$ as well.
   \end{proof}
   
-  \section{Main result}
+\section{Main results}
 \label{sec:main}
 
-Let $\lambda>0$ be fixed,
-$f_j$ ($j=1,2$), 
-$A$ and $\Sigma$ be defined as in the Introduction.
 Let $Y:=\ENCLOSE{(x,y)\in\RR^2\colon x=0}$ be the $y$-axis,
 and $Y_j := f_j(Y)$ for $j=1,2$.
 Consider the point $P:=(1+\frac\lambda 2,0)$.

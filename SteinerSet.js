@@ -19,15 +19,18 @@ function SteinerBranch(x, y, length, alpha, lambda) {
         // (x, y) with two sticks in direction alpha +/- pi/3
         // which recursively split into two sticks of length
         // lambda*length
+
+        x = x + length*Math.cos(alpha)
+        y = y + length*Math.sin(alpha)
         return {
             x,
             y,
-            r: length/(1-lambda),
+            r: lambda*length/(1-lambda),
             refine: () => {
                 function branch(sign) {
                     return SteinerBranch(
-                        x + length*Math.cos(alpha + sign*Math.PI/3),
-                        y + length*Math.sin(alpha + sign*Math.PI/3),
+                        x,
+                        y,
                         lambda*length,
                         alpha + sign*Math.PI/3,
                         lambda
