@@ -34,6 +34,7 @@
 \newcommand{\dist}{\mathrm{dist}}
 \newcommand{\co}{\mathrm{co}}
 \renewcommand{\S}{\mathcal{S}}
+\newcommand{\hide}[1]{}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -1259,13 +1260,12 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 
 We can now prove the main result for the full tree $\Sigma_f$.
 
-Let $A$,$\Sigma$, $A_f$, $\Sigma_f$, be the sets defined in the introduction
+Let $A$, $\Sigma$, $A_f$, $\Sigma_f$, be the sets defined in the introduction
 (see Figure~\ref{fig:tree})
 $A_f = A \cup \phi(A)\cup \phi^2(A)$ and 
 $\Sigma_f = \Sigma \cup \phi(\Sigma)\cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
 
-[*** RIVEDERE DA QUI ***]
 \begin{theorem}[full minimizer]\label{th:full}
   Suppose $\lambda < \frac 1{29}$.
   Then, $S \in \M(A_f)$ if and only if $S\cup A_f = \Sigma_f$.
@@ -1286,7 +1286,7 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
   By Lemma~\ref{lm:angle} we know that $S_1\setminus B_r(V_1)$ is a single line segment,
   for $r=\frac 2 {\sqrt 3} \rho$,
   and hence $S_1\cap \partial \Delta$ is composed by a single point, 
-  which we call $H_1$. 
+  which we call $H_1\in Y$. 
   Let $S'_1 := \overline{S_1\setminus \Delta}$, and notice that
   $S_1'$ is obtained from $S_1$ by removing the segment $[T,H_1)$.
   Hence, from $S_1\in \M(A_1\cup \ENCLOSE{T})$, we get $S'_1\in \M(A_1\cup \ENCLOSE{H_1})$. 
@@ -1324,6 +1324,7 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\hide{
 \section{Non symmetric trees}
 
 In this section we want to consider the case of a tree where each branch can have different length.
@@ -1481,6 +1482,7 @@ In particular $\bar S$ is connected.
       \frac{\sqrt 3}{2} \lambda_0(\lambda_L+\lambda_R)\frac{1-\mu-\mu^2}{1-\mu}.
   \end{align*}
   \end{lemma}  
+}
 
 \bibliographystyle{plain}
 %\bibliography{../share/math/biblio}
