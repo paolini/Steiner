@@ -126,7 +126,8 @@ A very similar question,
 namely the existence of indecomposable Steiner sets with the topology 
 of a binary tree for a finite set of points $C$ with arbitrarily 
 large number of points, has been answered positively by Ivanov and 
-Tuzhilin \cite{IvaTuz94} by means of an abstract construction.
+Tuzhilin \cite{IvaTuz94} by means of an abstract construction
+which gives no information on the length of the branches of the tree.
 Further, an explicit construction of such a tree has been developed
 in \cite{PaoSteTep15}, were the set $C$ consists of a \emph{root} $H$ and uncountably many
 points (\emph{leaves}) which together give a totally disconnected perfect set 
@@ -206,7 +207,8 @@ of positive Hausdorff dimension.
 In this paper we develop a method which in particular uses 
 a further simplification and a generalization of 
 the idea developed in \cite{CheTep23} to obtain the minimality and also uniqueness 
-of the full fractal tree (Figure~\ref{fig:tree}, left side), 
+not only for the \emph{rooted tree} (Figure~\ref{fig:tree}, right side) 
+but also for the full fractal tree (Figure~\ref{fig:tree}, left side), 
 see Theorem~\ref{th:main} and~\ref{th:full} below.
 
 Let us make some more precise statements.
@@ -220,11 +222,12 @@ Consider the affine functions $f_\pm\colon \RR^2\to \RR^2$ defined by
       \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
 \]
 or, by identifying $\CC$ with $\RR^2$,
-we can define $f_\pm(z) = 1 + \lambda e^{\pm i \frac \pi 3} z$.
+$f_\pm(z) = 1 + \lambda e^{\pm i \frac \pi 3} z$.
 The function $f_+$ is the subsequent composition of: a counter-clockwise rotation of $60$ degrees,
 a scaling by a factor $\lambda$, and a unit translation along the positive $x$-axis.
-Let $O=(0,0)\in \RR^2$ be the origin and let $A\subset \RR^2$ be the set of all limits of sequences obtained 
-by iterating $f_+$ and $f_-$ starting from $O$.
+Let $O=(0,0)\in \RR^2$ be the origin, and let $A\subset \RR^2$ be the set of 
+the limits of all the sequences obtained starting from $O$ and 
+iterating $f_+$ and $f_-$.
 What we obtain is a compact set $A$ which is the only non-empty compact set 
 such that $A=f_+(A)\cup f_-(A)$.
 If instead we start from the unit segment $[O,T]$ where $T=(1,0)$, and 
@@ -241,12 +244,12 @@ homeomorphic to the Cantor set, it is totally disconnected,
 perfect, uncountable and it is a self-similar fractal with Hausdorff dimension
 $-\log_\lambda 2$ (see \cite{Hut81}).
 The set $\Sigma$ is instead a topological tree (i.e.{} connected and simply connected), 
-compact set with finite positive length: $\H^1(\Sigma) = \frac{1}{1-2\lambda}$.
+compact, with finite positive length: $\H^1(\Sigma) = \frac{1}{1-2\lambda}$.
 The set $C=\ENCLOSE{O}\cup A$ is the set of \emph{endpoints} of the tree $\Sigma$ i.e.\ 
 the set of points $x\in \Sigma$ such that $\Sigma\setminus\ENCLOSE{x}$ remains connected.
 
 The full tree $\Sigma_f$, depicted in Figure~\ref{fig:tree}, left side,
-is the union of three rotated copies of $\Sigma$: $\Sigma_T = \Sigma \cup \phi(\Sigma) \cup \phi^2(\Sigma)$
+is the union of three rotated copies of $\Sigma$: $\Sigma_f = \Sigma \cup \phi(\Sigma) \cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of $120$ degrees centered in $O$.
 Analogously we define $A_f = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_f$.
 
@@ -289,9 +292,9 @@ is the unique shortest set which connects $A_f$.
 % 
 \section{Notation and preliminaries}
 
-Let $\St(C)$ be the family of all sets $S$ such that 
+For $C\subset \RR^2$ let $\St(C)$ (Steiner competitors with datum C) be the family of all sets $S$ such that 
 $S\cup C$ is connected and 
-let $\M(C)$ be the subset of $\St(C)$ of sets $S$ 
+let $\M(C)$ (minimal sets) be the subset of $\St(C)$ of the sets $S$ 
 with minimal (possibly infinite) length $\H^1(S)$.
 
 For a set $S\subset \RR^2$ we denote by $\bar S$ 
@@ -299,7 +302,7 @@ its closure and by $\partial S$ its topological boundary.
 If $x\in \RR^2$ and $\rho>0$ then we let $B_\rho(x)\subset \RR^2$ 
 be the open ball of radius 
 $\rho$ centered at $x$.
-When $x\in \RR^2$, $S,S_1,S_2$ subsets of $\RR^2$
+When $x\in \RR^2$, and $S,S_1,S_2$ are subsets of $\RR^2$
 we also write
 \begin{align*}
   \dist(x,S)
@@ -307,8 +310,10 @@ we also write
   \dist(S_1,S_2) 
     &:= \inf\ENCLOSE{\abs{x-y}\colon x\in S_1, y\in S_2}.
 \end{align*}
-For $P,Q\in \RR^2$ we denote by $[PQ]$ the closed straight line 
-segment with endpoints $P$ and $Q$ and by $\abs{PQ}$ its length.
+For $P,Q\in \RR^2$ we denote by $[P,Q]$ the closed straight line 
+segment with endpoints $P$ and $Q$, with $[P,Q)$ and $(P,Q]$ 
+we denote the half-open segments, and with $(P,Q)$ we denote 
+the open segment.
 
 % \subsection{Construction}
 % 
@@ -338,12 +343,12 @@ and \cite{IvaTuz94}.
 \begin{proposition}[known facts about minimizers]\label{prop:PaoSte}
   Let $C\subset \RR^n$ be a compact set.
   Then $\M(C)\neq \emptyset$. If $S\in \M(C)$
-  with $\H^1(S)<+\infty$
-  then the following assertions hold.
+  and $\H^1(S)<+\infty$
+  then the following statements hold:
   \begin{itemize}
     \item[(i)] $S\cup C$ is compact, 
-    hence $\bar S \setminus S \subset C$;
-    \item[(ii)] the closure of every connected component of $S$     
+    and $\bar S \setminus S \subset C$;
+    \item[(ii)] the closure of every connected component of $S\setminus C$     
     is a topological tree 
     (contains no subset homeomorphic to $\mathbb S^1$)
     with endpoints\footnote{%
@@ -351,12 +356,14 @@ and \cite{IvaTuz94}.
     of $S$ if and only if $S\setminus \ENCLOSE{x}$ is connected.} 
     on $C$ and with at most one endpoint 
     on each connected component of $C$;
-    \item[(iii)] for all $x\in S\setminus C$ and all 
+    \item[(iii)] $S\setminus C$ is a locally finite Steiner tree in the sense that 
+    for all $x\in S\setminus C$ and almost all 
     $\rho < \dist(x,C)$ the set $S\cap \bar B_\rho(x)$ 
     is the union of a finite number of straight line 
     segments which meet in triple points with equal 
     angles of 120 degrees and have endpoints in 
     $\partial B_\rho(x)$.
+
   \end{itemize}
 \end{proposition}
 
@@ -368,8 +375,100 @@ If $S$ is compact, connected, and $\H^1(S)<+\infty$ then $S$ is
 pathwise connected.
 \end{lemma}
 
-We also need the following lemmata for the case when the set to 
-be connected is not compact but contains a line.
+\begin{lemma}\label{lm:angle}
+  Let $C\subset \RR^2$ be a compact set, $H\not \in C$ a point, 
+  $C^*:=C\cup \ENCLOSE{H}$.
+  Let $S\in \M(C^*)$. 
+  Then there exists a point $Q\neq H$ such that $[H,Q]\subset \bar S$ 
+  and either $Q\in C$ or $Q$ is a triple point of $S\setminus C^*$
+  and there are no other triple points of $S\setminus C^*$ on $[H,Q]$.
+  
+  Moreover if $C\subset \overline {B_\rho(P)}$ for some point $P$ and radius $\rho > 0$,
+  if $r\ge 2\rho/\sqrt 3$, and $r < \abs{P-H}$, then, there exists a point 
+  $T\in [H,Q]\cap \partial B_r(P)$ such that 
+  $\bar S\setminus B_r(P) = [H,T]$
+  (see Figure~\ref{fig:angle}).
+  \end{lemma}
+  %
+  \begin{figure}
+    \begin{center}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+      %\clip(-4.3,-1.06) rectangle (17.96,6.3);
+      \draw (4.2,4.44) node {\includegraphics[scale=0.6]{blob1.png}};    
+      \draw(4.48,4.38) circle (1.05cm);
+      \draw(4.48,4.38) circle (1.54cm);
+      \draw [line width=1.6pt] (3.32,4.36)-- (3.76,4.88);
+      \draw [line width=1.6pt] (3.32,4.36)-- (3.7,3.8);
+      \draw [line width=1.6pt] (3.32,4.36)-- (-0.64,4.44);
+      \draw [->] (4.48,4.38) -- (5.35,3.8);
+      \draw [->] (4.48,4.38) -- (6.02,4.34);
+      \draw (4.16,4.1) node[anchor=north west] {C};
+      \draw (1.18,4.86) node[anchor=north west] {S};
+      \fill (4.48,4.38) circle (1.5pt);
+      \draw (4.64,4.64) node {$P$};
+      \fill (3.32,4.36) circle (1.5pt);
+      \draw (3.22,4.36) node[anchor=north] {$Q$};
+      \fill (-0.64,4.44) circle (1.5pt);
+      \draw (-0.48,4.7) node {$H$};
+      \fill (2.94,4.37) circle (1.5pt);
+      \draw (3.1,4.62) node {$T$};
+      \draw (5.08,4.1) node {$\rho$};
+      \draw (5.28,4.58) node {$r$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{The situation in Lemma~\ref{lm:angle}.}
+    \label{fig:angle}
+  \end{figure}
+  
+\begin{proof}
+  Since $H\not \in C$ there exists $\eps>0$ such that $C\cap B_\eps(H)=\emptyset$. 
+  Clearly $\H^1(S\cap B_\eps(H))<+\infty$ because otherwise we could find a better competitor
+  to $S$ by removing $B_\eps(H)$ from $S$ and adding the circle $\partial B_\eps(H)$ and 
+  a single radius from $H$ to a point on $\partial B_\eps(H)$.
+  This means that the connected components of $S\setminus C^*$
+  are a finite number because each of them has length at least $\eps$ in $B_\eps(H)$.
+  Let $S_1$ be a connected component of $S\setminus C^*$ such that 
+  $H\in \overline{S_1}$.
+  Recall that, by Proposition~\ref{prop:PaoSte}(iii), $S_1$ is a locally finite Steiner tree 
+  composed by segments and triple points.
+  We have two cases depending on whether $S_1$ contains a triple point.
+  
+  If $S_1$ contains triple points
+  then let $Q$ be the triple point closest to $H$
+  in the intrinsic (geodesic) distance on $S_1$.
+  Such a point exists. 
+  In fact otherwise there would exist a sequence of 
+  triple points in $\bar S_1$ converging to $H$,
+  because branching points can only accumulate on $C^*$ 
+  by Proposition~\ref{prop:PaoSte}(ii).
+  But this is not possible because in $B_\eps(H)$ there are no triple points.
+  Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
+  (by Proposition~\ref{prop:PaoSte}(iii)) hence $[H,Q]\subset \bar S$.
+
+  If $S_1$ contains no triple point then $\overline{S_1}=[H,Q]$ for some $Q$, 
+  and, necessarily, $Q\in C$. 
+  In both cases the first claim of the lemma is proven.
+
+  For the second claim suppose that $\abs{P-H}> r$. 
+  This means that the convex hull of $\ENCLOSE{H}\cup B_\rho(P)$ has an angle in 
+  $H$ which is smaller than 120 degrees.
+  The set $S$ must be included in this convex hull  
+  and if $T$ is any triple point of $S$ then $T\in \overline{B_r(P)}$ because 
+  otherwise at least one of the three segments meeting in $T$ would have a direction 
+  which is not going to meet the ball $\overline{B_\rho(P)}$ and is not going towards 
+  $H$. Along this segment one could hence find a further triple point $T'$ and repeat 
+  the reasoning finding infinitely many triple points. 
+  Since any sequence of triple points must converge to a point 
+  of $C^*$, this is impossible.
+
+  We conclude that $S\setminus \overline{B_r(P)}$ does not contain triple points and 
+  hence is composed by a disjoint union of segments each of which has an endpoint in $H$
+  and an endpoint in $\partial B_r(P)$. 
+  But we can have at most one such segment because otherwise we would have, in $H$, an angle 
+  smaller than 120 degrees, which is not possible.
+  This means that $\bar S \setminus B_r(P)$ is contained in the segment $[H,T]$ and hence 
+  is equal to a segment $[H,Q]$ with $Q \in \partial B_r(P)$.
+\end{proof}
 
 \begin{lemma}\label{lm:exists}
   Let $C$ be a compact subset of $\RR^2$ and $\ell$ be a straight line.
@@ -427,8 +526,8 @@ be connected is not compact but contains a line.
   and suppose $\H^1(S)<+\infty$.
   Then there exists a point $Q\in \partial B_r(P)$ 
   and a point $H\in \ell$
-  such that $\bar S\setminus B_r(P) = [HQ]$.
-  Moreover $[HQ]$ is perpendicular to $\ell$.
+  such that $\bar S\setminus B_r(P) = [H,Q]$.
+  Moreover $[H,Q]$ is perpendicular to $\ell$.
 \end{lemma}
 \begin{proof}
   We claim that $S\setminus B_r(P)$ belongs to 
@@ -447,15 +546,15 @@ be connected is not compact but contains a line.
   By Lemma~\ref{lm:angle} below
   with $A_j$ and $H_j$ in place of $C$ and $H$ respectively,
   one has that
-  the set $S_j\setminus B_r(P)$ is a straight line segment $[H_j T_j]$
+  the set $S_j\setminus B_r(P)$ is a straight line segment $[H_j,T_j]$
   with $T_j\in \partial B_r(P)$, $j=1,2$.
   Since $\bar S_1\cap \bar S_2\subset \ell\cup C$ 
-  the line segments $[H_1T_1]$ and $[H_2T_2]$ may only intersect at their endpoints.
-  Let $S':=(S\setminus [H_2T_2])\cup[T_1T_2])$ so that 
+  the line segments $[H_1,T_1]$ and $[H_2,T_2]$ may only intersect at their endpoints.
+  Let $S':=(S\setminus [H_2,T_2])\cup[T_1,T_2]$ so that 
   $S'\in \St(\ell\cup C)$ and
   \[
     \H^1(S) - \H^1(S')
-    = \abs{H_2 T_2} - \abs{T_1T_2}
+    = \abs{H_2 - T_2} - \abs{T_1 - T_2}
     \ge (d(P,\ell)-r) - 2r 
     > (3r-r) - 2r = 0. 
   \]
@@ -465,101 +564,12 @@ be connected is not compact but contains a line.
   connected component of $S$, 
   denoting by $H$ its endpoint on $\ell$,
   and applying Lemma~\ref{lm:angle}, we have that 
-  $S\setminus B_r(P)$ is a straight line segment $[HT]$.
-  Finally, if $[HT]$ were not perpendicular to $\ell$ by moving $H$ along $\ell$ 
-  we could decrease the length of $[HT]$ contrary to the minimality 
+  $S\setminus B_r(P)$ is a straight line segment $[H,T]$.
+  Finally, if $[H,T]$ were not perpendicular to $\ell$ by moving $H$ along $\ell$ 
+  we could decrease the length of $[H,T]$ contrary to the minimality 
   of $S$.
 \end{proof}
   
-In the proof of the above Lemma~\ref{lm:base} we used the following statement.
-
-\begin{lemma}\label{lm:angle}
-  Let $S\in \M(\ENCLOSE{H} \cup C)$ with $C$ a compact set, $H\not \in C$.
-  Then there exists a point $Q$ such that $[HQ]\subset \bar S$ 
-  and either $Q\in C$ or $Q$ is a triple point of $S$
-  and there are no other branching points of $S$ on $[HQ]$.
-  
-  Moreover if $C\subset \bar B_\rho(P)$ for some point $P$ and radius $\rho > 0$
-  then for any $r\ge 2\rho/\sqrt 3$ there exists a point 
-  $T\in [HQ]\cap \partial B_r(P)$ such that 
-  $\bar S\setminus B_r(P) = [HT]$
-  (see Figure~\ref{fig:angle}).
-  \end{lemma}
-  %
-  \begin{figure}
-    \begin{center}
-    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-      %\clip(-4.3,-1.06) rectangle (17.96,6.3);
-      \draw (4.2,4.44) node {\includegraphics[scale=0.6]{blob1.png}};    
-      \draw(4.48,4.38) circle (1.05cm);
-      \draw(4.48,4.38) circle (1.54cm);
-      \draw [line width=1.6pt] (3.32,4.36)-- (3.76,4.88);
-      \draw [line width=1.6pt] (3.32,4.36)-- (3.7,3.8);
-      \draw [line width=1.6pt] (3.32,4.36)-- (-0.64,4.44);
-      \draw [->] (4.48,4.38) -- (5.35,3.8);
-      \draw [->] (4.48,4.38) -- (6.02,4.34);
-      \draw (4.16,4.1) node[anchor=north west] {C};
-      \draw (1.18,4.86) node[anchor=north west] {S};
-      \fill (4.48,4.38) circle (1.5pt);
-      \draw (4.64,4.64) node {$P$};
-      \fill (3.32,4.36) circle (1.5pt);
-      \draw (3.22,4.36) node[anchor=north] {$Q$};
-      \fill (-0.64,4.44) circle (1.5pt);
-      \draw (-0.48,4.7) node {$H$};
-      \fill (2.94,4.37) circle (1.5pt);
-      \draw (3.1,4.62) node {$T$};
-      \draw (5.08,4.1) node {$\rho$};
-      \draw (5.28,4.58) node {$r$};
-      \end{tikzpicture}
-    \end{center}
-    \caption{The situation in Lemma~\ref{lm:angle}.}
-    \label{fig:angle}
-  \end{figure}
-  
-\begin{proof}
-  Consider the connected component $S_1$ of $S$ such that $H\in \bar S_1$
-  (see Proposition~\ref{prop:PaoSte}(ii)).
-  We have two cases depending on whether $S_1$ has branching points or not.
-  
-  \emph{Case 1.} Suppose $\bar S_1$ has no branching points. 
-  Then it is itself a line 
-  segment $[HQ]$, and thus, necessarily $Q\in C$ 
-  (again by Proposition~\ref{prop:PaoSte}(ii)).
-  The second claim is then also obvious because every connected component 
-  of $S$ different from $S_1$ touches only connected components of $C$ 
-  but not $H$
-  and hence is contained in the convex hull of $C$ hence in $B_\rho(P)\subset B_r(P)$.
-  Therefore $\bar S\setminus B_r(P) = \bar S_1\setminus B_r(P) = [HT]$
-  where $T$ is the intersection point of $\partial B_r(P)$ and $[HQ]$.
-  
-  \emph{Case 2.} If $\bar S_1$ has branching points
-  then let $Q$ be the branching point closest to $H$ 
-  in the intrinsic (geodesic) distance on $\bar S_1$.
-  Such a point exists. In fact otherwise there would exist a sequence of 
-  branching points in $\bar S_1$ converging to $H$
-  (branching points can only accumulate on $\ENCLOSE{H}\cup C$ 
-  by Proposition~\ref{prop:PaoSte}(ii)).
-  But to each of such branching points there would correspond at least 
-  one branch of $\bar S_1$ containing an endpoint on $C$ 
-  (i.e.\ different from $H$) and hence having length at least $\dist(H,C)>0$.
-  Since $\H^1(\bar S_1)=\H^1(S_1)$, by Lemma~\ref{lm:connected}, 
-  we would have $\H^1(S)\ge \H^1(S_1)= +\infty$, contrary to the assumption.
-  Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
-  (by Proposition~\ref{prop:PaoSte}(iii)).
-  
-  To prove the second claim in this case, 
-  it is enough to show that $Q\in \bar B_r(P)$.
-  If not, for $S':=S\setminus [HQ]$ one clearly has $S'\in \M(\ENCLOSE{Q} \cup C)$
-  and hence $S'$ is contained in the convex hull of $\ENCLOSE{Q}\cup C$
-  hence in the convex hull of $\ENCLOSE{Q}\cup \bar B_\rho(P)$.
-  Since by contradiction $\abs{QP}> r = 2\rho/\sqrt 3$ 
-  we notice that the latter convex 
-  hull is contained in an angle of less than 120 degrees with vertex in $Q$.
-  This is in contradiction with the fact that $Q$ was a triple point 
-  which defines equal angles of 120 degrees as claimed in 
-  Proposition~\ref{prop:PaoSte}(iii).
-  \end{proof}
-
   \begin{lemma}\label{lm:tripod}
     Let $\nu_1,\nu_2,\nu_3$ be three unit vectors in $\RR^2$
     with $\nu_1+\nu_2+\nu_3=0$. 
@@ -724,7 +734,7 @@ We need the following lemmata.
   $S\in \M(\ENCLOSE{x=d}\cup A)$ 
   there exists $T\in \partial B_r(T_0)$ such that
   we have that $S\setminus B_r(T_0)$ is a straight line segment
-  $[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
+  $[H,T]$ perpendicular to $\ENCLOSE{x=d}$ 
   with $H\in \ENCLOSE{x=d}$.
   In particular $\bar S$ is connected.
 \end{lemma}
@@ -884,8 +894,8 @@ The computation gives
   there is a branching point $T\in S$ 
   such that $S\setminus \ENCLOSE{T}$ is composed of 
   three connected sets, the closures of which are
-   $[HT]$, $S_1$ and $S_2$ respectively,
-  with $H\in Y'$ and $[HT]$ perpendicular to $Y'$.  
+   $[H,T]$, $S_1$ and $S_2$ respectively,
+  with $H\in Y'$ and $[H,T]$ perpendicular to $Y'$.  
   Moreover, 
   \begin{equation}\label{eq:474947}
     \dist(H,\ENCLOSE{y=0})\le 2\lambda\rho
@@ -1028,7 +1038,7 @@ The computation gives
   
   \emph{Step 4.} 
   Clearly $S_0\in \M(Y'\cup \ENCLOSE{T})$ implies that $S_0$ is the straight 
-  line segment $[HT]$ perpendicular to $Y'$.
+  line segment $[H,T]$ perpendicular to $Y'$.
   
   \emph{Step 5.}
   By Lemma~\ref{lm:01} we have $A\subset B_\rho(T_0)$,
@@ -1086,13 +1096,13 @@ The computation gives
   and notice that $T$ is inside $\Delta$ because $T\in B_{\lambda^2}(T_0)$
   (as proven in Step~5)
   while $\dist(T_0, Y_j'') = \frac{\lambda}{4}>2\lambda\rho$ for $j=1,2$.
-  Let $T_j''$ be the point on $Y_j''$ such that $[T T_j'']$ is perpendicular
+  Let $T_j''$ be the point on $Y_j''$ such that $[T,T_j'']$ is perpendicular
   to $Y_j$. 
   Recall that $S_j$ in a neighbourhood of $T$ is a segment perpendicular 
   to $Y_j$ because $S$, in a neighbourhood of $T$, 
   is a regular tripod with equal angles of 120 degrees 
   and $S_0$ is perpendicular to $Y$.
-  We claim that $[T T_j'']$ is contained in $S_j$: otherwise there would 
+  We claim that $[T,T_j'']$ is contained in $S_j$: otherwise there would 
   be a branching point of $S_j$ on such segment, which is not the case because,
   as already stated, all branching points of $S_j$ are inside 
   the ball $B_{\frac{2\lambda \rho}{\sqrt 3}}(f_j(T_0))$, while
@@ -1105,7 +1115,7 @@ The computation gives
     > \frac 2 {\sqrt 3}\lambda\rho
     \qquad \text{for $\lambda < \frac{9}{8\sqrt 3+9}\approx 0.39$}. \\
   \end{align*}
-  Hence $\tilde S_j:= S_j\setminus [T T_j'']$ is connected and 
+  Hence $\tilde S_j:= S_j\setminus [T,T_j'']$ is connected and 
   $\H^1(\tilde S_j)=\H^1(S_j) - \dist(T,Y_j'')$.
 
   \emph{Step 8: conclusion.}
@@ -1117,7 +1127,7 @@ The computation gives
   in view of Lemma~\ref{lm:envelope} 
   because the orthogonal 
   projection of $f_j(A)$ onto $Y_j''$ belongs to the respective side of this triangle.
-  Define $S_j':= S_j''\cup [H_j'' H_j']$ where $H_j'$ is the projection of $H_j''$ 
+  Define $S_j':= S_j''\cup [H_j'',H_j']$ where $H_j'$ is the projection of $H_j''$ 
   onto the line $Y_j'$, $j=1,2$ and let $\Gamma\in \M(Y\cup \ENCLOSE{H_1'',H_2''})$
   be the regular tripod with endpoints in $H_1''$, $H_2''$ and a third point on 
   the side of $\Delta$ contained in $Y$.
@@ -1173,7 +1183,7 @@ If $d<\frac 1 2$,
 by Lemma~\ref{lm:branching}, 
 we are able to define $S_1$ and $S_2$, $H$, $T$
 such that 
-$S=[H T] \cup S_1 \cup S_2$, $[HT]$ is perpendicular to $Y$.
+$S=[H, T] \cup S_1 \cup S_2$, $[H,T]$ is perpendicular to $Y$.
 If we define the sets $b_1(S)$ and $b_2(S)$ 
 (the ``\emph{branches}'' of $S$) 
 by $b_j(S) := f_j^{-1}(S_j)$, $j=1,2$.
@@ -1207,7 +1217,7 @@ We claim that for all $S\in \S^k$, one has
 We know that $S\in \S^k$ touches the vertical line $\ENCLOSE{x=d(S)}$ 
 in a single point $H$.
 By Lemma~\ref{lm:branching} we know that $S$ is composed 
-by a segment $[H T]$ and two trees $S_1$, $S_2$
+by a segment $[H, T]$ and two trees $S_1$, $S_2$
 with $S_j\in \M(Y_j'\cup f_j(A))$, $j=1,2$
 where $Y_j'$ is the line passing through $T$ and parallel to $Y_j$.
 Let $\delta_j$ be the distance of $T$ from $f_j(X)$, $j=1,2$.
@@ -1446,7 +1456,7 @@ given any $d<\frac {\lambda_0} 2$ and any
 $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
 there exists $T\in \partial B_r(T_0)$ such that
 we have that $S\setminus B_r(T_0)$ is a straight line segment
-$[HT]$ perpendicular to $\ENCLOSE{x=d}$ 
+$[H,T]$ perpendicular to $\ENCLOSE{x=d}$ 
 with $H\in \ENCLOSE{x=d}$.
 In particular $\bar S$ is connected.
 \end{lemma}
