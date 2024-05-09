@@ -1,0 +1,27 @@
+name: compile, build and release
+on: [push]
+jobs:
+  Compile-LaTeX:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: compile
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: SteinerTree.tex
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d_%H.%M')"
+      - run: echo "the current date is ${{ steps.date.outputs.date }}"
+      - name: create Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.date.outputs.date }}
+          artifacts: "SteinerTree.pdf"
+          artifactContentType: "application/pdf"
+          body: "${{ github.event.head_commit.message }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
