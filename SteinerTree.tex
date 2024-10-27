@@ -428,7 +428,7 @@ pathwise connected.
   This means that the connected components of $S\setminus C^*$
   are a finite number because each of them has length at least $\eps$ in $B_\eps(H)$.
   Let $S_1$ be a connected component of $S\setminus C^*$ such that 
-  $H\in \overline{S_1}$.
+  $H\in \bar S_1$.
   Recall that, by Proposition~\ref{prop:PaoSte}(iii), $S_1$ is a locally finite Steiner tree 
   composed by segments and triple points.
   We have two cases depending on whether $S_1$ contains a triple point.
@@ -445,7 +445,7 @@ pathwise connected.
   Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
   (by Proposition~\ref{prop:PaoSte}(iii)) hence $[H,Q]\subset \bar S$.
 
-  If $S_1$ contains no triple point then $\overline{S_1}=[H,Q]$ for some $Q$, 
+  If $S_1$ contains no triple point then $\bar S_1 =[H,Q]$ for some $Q$, 
   and, necessarily, $Q\in C$. 
   In both cases the first claim of the lemma is proven.
 
@@ -453,15 +453,15 @@ pathwise connected.
   This means that the convex hull of $\ENCLOSE{H}\cup B_\rho(P)$ has an angle in 
   $H$ which is smaller than 120 degrees.
   The set $S$ must be included in this convex hull  
-  and if $T$ is any triple point of $S$ then $T\in \overline{B_r(P)}$ because 
+  and if $T$ is any triple point of $S$ then $T\in \bar B_r(P)$ because 
   otherwise at least one of the three segments meeting in $T$ would have a direction 
-  which is not going to meet the ball $\overline{B_\rho(P)}$ and is not going towards 
+  which is not going to meet the ball $\bar B_\rho(P)$ and is not going towards 
   $H$. Along this segment one could hence find a further triple point $T'$ and repeat 
   the reasoning finding infinitely many triple points. 
   Since any sequence of triple points must converge to a point 
   of $C^*$, this is impossible.
 
-  We conclude that $S\setminus \overline{B_r(P)}$ does not contain triple points and 
+  We conclude that $S\setminus \bar B_r(P)$ does not contain triple points and 
   hence is composed by a disjoint union of segments each of which has an endpoint in $H$
   and an endpoint in $\partial B_r(P)$. 
   But we can have at most one such segment because otherwise we would have, in $H$, an angle 
@@ -1400,7 +1400,7 @@ Finally we define
 \[
   S_\lambda = \bigcup_{n\in \NN} \Sigma_\lambda^n,
   \qquad
-  \Sigma_\lambda = \overline{S_\lambda}
+  \Sigma_\lambda = \bar S_\lambda
   \qquad
   A_\lambda = \Sigma_\lambda \setminus S_\lambda.
 \]
@@ -1451,7 +1451,7 @@ Let $\rho = \frac{\mu}{1-\mu}$,
 $r=\frac{2\rho}{\sqrt 3}$.
 The point $T_0^\lambda=(\lambda_0,0)\in\RR^2$ and the 
 set $A_\lambda\subset \RR^2$ are defined as above.
-Then $A_\lambda\subset \overline{B_\rho(T_0)}$ and 
+Then $A_\lambda\subset \bar B_\rho(T_0)$ and 
 given any $d<\frac {\lambda_0} 2$ and any
 $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
 there exists $T\in \partial B_r(T_0)$ such that
@@ -1465,7 +1465,7 @@ In particular $\bar S$ is connected.
   Notice that $\abs{T_w-T_0} \le \lambda_0\mu + \lambda_0\mu^2 + \dots + \lambda_0\mu^n$ 
   if $w\in G$ is a word of length $n$. 
   Hence $\abs{T_w-T_0}\le \frac{\lambda_0\mu}{1-\mu}$
-  and $A_\lambda\subset \overline{B_\rho(T^\lambda_0)}$.
+  and $A_\lambda\subset \bar B_\rho(T^\lambda_0)$.
   The rest of the proof follows that of Lemma~\ref{lm:01}.
   A sufficient condition to apply Lemma~\ref{lm:base} is 
   $3r < \frac{\lambda_0}{2}$ which holds true if $\mu < \frac 1 {12}$.
