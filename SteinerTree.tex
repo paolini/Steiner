@@ -94,6 +94,8 @@ The set $C$ can be considered the set of \emph{leaves}, or the ``boundary'',
 of the tree $\Sigma$,
 so that $\Sigma$ is an \emph{indecomposable} solution to the Steiner problem
 with datum $C$ (i.e.\ $\Sigma\setminus C$ is connected).
+The constructed Steiner tree is, in fact, universal, in the sense that 
+it contains, as a subtree, a Steiner tree of any given combinatorial structure.
 \end{abstract}
 
 \maketitle
@@ -1329,6 +1331,26 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
   the tripod $S\cap \Delta$ is uniquely determined by the points of $S$ on 
   the boundary of $\Delta$.
 \end{proof}
+
+\begin{theorem}
+Let $\Sigma_f$ be the full tree as defined in the introduction.
+Then
+\begin{enumerate}
+  \item[(i)]
+given any $S$ compact connected subset of $\Sigma_f$, 
+letting $D$ stand for the set of the endpoints of $S$,
+then $S\in \St(D)$;
+  \item[(ii)]
+given any abstract binary tree, there exists a subset 
+$S\subset \Sigma_f$
+such that $S$ is homeomorphic to the given tree 
+(and hence, by the previous point, $S\in \St(D)$ is a Steiner tree for 
+the set of its endpoints $D$);
+  \item[(iii)] given any compact set $D$ and any $S\in \St(D)$, if $S_0$ 
+  is the closure of any connected component of $S\setminus D$, 
+  then $S_0$ is homeomerphic to a subtree of $\Sigma_f$.
+\end{enumerate}
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
