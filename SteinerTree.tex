@@ -1332,25 +1332,81 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
   the boundary of $\Delta$.
 \end{proof}
 
+The Theorem below shows that, in fact, the constructed set 
+$\Sigma_f$ is the universal Steiner tree, 
+in the sense that it contains homeomorphic copies of all 
+Steiner trees.
+
 \begin{theorem}
-Let $\Sigma_f$ be the full tree as defined in the introduction.
+Let $\Sigma_f$ be the full tree as defined in the introduction
+with such $\lambda>0$ that $\Sigma_f\in \M(A_f)$.
 Then
 \begin{enumerate}
   \item[(i)]
 given any $S$ compact connected subset of $\Sigma_f$, 
 letting $D$ stand for the set of the endpoints of $S$,
-then $S\in \St(D)$;
+one has $S\in \M(D)$;
   \item[(ii)]
-given any abstract binary tree, there exists a subset 
-$S\subset \Sigma_f$
-such that $S$ is homeomorphic to the given tree 
-(and hence, by the previous point, $S\in \St(D)$ is a Steiner tree for 
+given any abstract possibly infinite binary tree (i.e.\ a graph 
+such that every pair of vertices has a unique finite path connecting them and all vertices 
+have order at most 3) 
+there exists a subset $S\subset \Sigma_f$
+such that $S$ is homeomorphic to the topological space given by the abstract tree 
+(and hence, by the previous point, $S\in \M(D)$ is a Steiner tree for 
 the set of its endpoints $D$);
-  \item[(iii)] given any compact set $D$ and any $S\in \St(D)$, if $S_0$ 
-  is the closure of any connected component of $S\setminus D$, 
+  \item[(iii)] given any compact set $D\subset \RR^d$ 
+  (or any metric space with the Heine-Borel property) 
+  and any $S\in \M(D)$, with $\H^1(S)<+\infty$ if $S_0$ 
+  is any connected component of $S\setminus D$, 
   then $S_0$ is homeomerphic to a subtree of $\Sigma_f$.
 \end{enumerate}
 \end{theorem}
+%
+\begin{proof}
+To prove (i) take any set $S'$ such that $S'\cup D$ is connected 
+and $\H^1(S)<+\infty$. 
+Consider $\Sigma_f' = (\Sigma_f\setminus S) \cup S'$.
+We claim that $\Sigma_f'$ is pathwise connected. 
+In fact given any two points $x,y\in \Sigma_f'$ since $\Sigma_f$ is connected 
+and $\H^1(\Sigma_f)<+\infty$ there exists an injective curve $\gamma \subset \Sigma_f$ 
+connecting $x$ and $y$. If $\gamma$ does not intersect $S$ then $\gamma\subset \Sigma_f'$.
+Otherwise $\gamma$ should intersect $S$. 
+Then we can take the curve $\gamma_1$ which is the part of $\gamma$ connecting $x$ 
+to the first point of $x'$ of $\gamma$ in $\bar S$ 
+and the curve $\gamma_2$ which is the part of $\gamma$
+connecting the last point $y'$ of $\gamma$ in $\bar S$ to $y$. 
+Since $S'\cup D$ is connected 
+and $\H^1(S'\cup D)=\H^1(S')<+\infty$ there exists an injective 
+curve $\gamma_3$ connecting $x'$ to $y'$ in $S'\cup D$. 
+The union $\gamma_1\cup \gamma_3\cup \gamma_2$ is a curve connecting $x$ to $y$ 
+in $\Sigma_f'$, proving the claim.
+Since $\Sigma_f\in \M(A_f)$ we have $\H^1(\Sigma_f')\le \H^1(\Sigma_f)$
+but since $\H^1(\Sigma_f') \le \H^1(\Sigma_f)-\H^1(S) + \H^1(S'\cup D)$ 
+we obtain $\H^1(S)\le \H^1(S'\cup D)$ which proves $S\in \M(D)$.
+
+For the proof of (ii) we take any abstract binary tree $T$ and take a vertex $v$ of $T$.
+We map $v$ to the point $(0,0)\in \Sigma_f$. 
+Then we consider the edges of $T$ meeting in $v$ and map them 
+among the three segments of $\Sigma_f$ meeting in $(0,0)$. 
+We then proceed by induction on the distance of the vertices from $v$: once 
+we have mapped all the vertices up to distance $n$, for each of these vertices 
+we have at most two adjacent vertices at distance $n+1$ which we can map to the two 
+adjacent vertices of the tree in $\Sigma_f$.
+Since the graph is a tree, the additional vertices were not already mapped.
+And since it is connected, all the vertices are reached by the induction.
+
+For the point (iii), given any compact set $D\subset \RR^d$ and any $S\in \M(D)$,
+we recall that (by Proposition~\ref{prop:PaoSte}) every connected component $A_0$ 
+of $S\setminus D$ is a locally finite binary tree. 
+Hence, by (ii), $A_0$ is homeomorphic to a subset of $\Sigma_f$.
+\end{proof}
+
+\begion{remark}
+Notice that the set $\Sigma$ is universal in the weaker 
+sense of containing homeomerphic copies of every \emph{finite}
+Steiner tree, but, for example, it does not contain any 
+homeomorphic copy of $\Sigma_f$.
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
