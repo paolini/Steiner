@@ -158,7 +158,7 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
     %
     \begin{scope}
       \pgftransformscale{2}
-      \node at (0.7,0) [above] {$\Sigma_f$};
+      \node at (0.7,0) [above] {$\Sigma_u$};
       \node at (0,0) [below right] {$O$};
       \node at (1,0) [right] {$T$};
       \node at (1.65,0.5) {$A_f$};
@@ -177,7 +177,7 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
   \caption{The self-similar tree with a countable 
   number of triple junctions and an uncountable number 
   of leaves which are the limit points of the triple 
-  junctions. On the left the \emph{full} fractal tree $\Sigma_f$, 
+  junctions. On the left the \emph{full} fractal tree $\Sigma_u$, 
   on the right a single branch $\Sigma$, with a fixed root in the origin.}
 \end{figure}
 
@@ -250,12 +250,12 @@ compact, with finite positive length: $\H^1(\Sigma) = \frac{1}{1-2\lambda}$.
 The set $C=\ENCLOSE{O}\cup A$ is the set of \emph{endpoints} of the tree $\Sigma$ i.e.\ 
 the set of points $x\in \Sigma$ such that $\Sigma\setminus\ENCLOSE{x}$ remains connected.
 
-The full tree $\Sigma_f$, depicted in Figure~\ref{fig:tree}, left side,
-is the union of three rotated copies of $\Sigma$: $\Sigma_f = \Sigma \cup \phi(\Sigma) \cup \phi^2(\Sigma)$
+The full tree $\Sigma_u$, depicted in Figure~\ref{fig:tree}, left side,
+is the union of three rotated copies of $\Sigma$: $\Sigma_u = \Sigma \cup \phi(\Sigma) \cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of $120$ degrees centered in $O$.
-Analogously we define $A_f = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_f$.
+Analogously we define $A_f = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_u$.
 
-In Theorem~\ref{th:main} we show that for $\lambda$ sufficiently small the set $\Sigma_f$ 
+In Theorem~\ref{th:main} we show that for $\lambda$ sufficiently small the set $\Sigma_u$ 
 is the unique shortest set which connects $A_f$.
 
 
@@ -1270,17 +1270,17 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 
 \end{proof}
 
-We can now prove the main result for the full tree $\Sigma_f$.
+We can now prove the main result for the full tree $\Sigma_u$.
 
-Let $A$, $\Sigma$, $A_f$, $\Sigma_f$, be the sets defined in the introduction
+Let $A$, $\Sigma$, $A_f$, $\Sigma_u$, be the sets defined in the introduction
 (see Figure~\ref{fig:tree})
 $A_f = A \cup \phi(A)\cup \phi^2(A)$ and 
-$\Sigma_f = \Sigma \cup \phi(\Sigma)\cup \phi^2(\Sigma)$
+$\Sigma_u = \Sigma \cup \phi(\Sigma)\cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
 
 \begin{theorem}[full minimizer]\label{th:full}
   Suppose $\lambda < \frac 1{29}$.
-  Then, $S \in \M(A_f)$ if and only if $S\cup A_f = \Sigma_f$.
+  Then, $S \in \M(A_f)$ if and only if $S\cup A_f = \Sigma_u$.
 \end{theorem}
 \begin{proof}
   Let $v_1 = (1,0)\in \RR^2$, $v_2=\phi(v_1)$, $v_3=\phi^2(v_1)$ 
@@ -1313,44 +1313,44 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
   We obtain
   \begin{align*}
     \H^1(S) &= \H^1(S\cap \Delta) + \sum_{k=1}^3 \H^1(S'_k),\\
-    \H^1(\Sigma_f) &= \H^1(\Sigma_f\cap \Delta) + \sum_{k=1}^3 \H^1(\Sigma'_k),\\
+    \H^1(\Sigma_u) &= \H^1(\Sigma_u\cap \Delta) + \sum_{k=1}^3 \H^1(\Sigma'_k),\\
     \H^1(\Sigma'_k) & \le \H^1(S'_k) \qquad \text{for $k=1,2,3$}.
   \end{align*}
   Now notice that $S\cap \Delta = [T,H_1]\cup [T,H_2]\cup [T,H_3]$
-  and hence, by Lemma~\ref{lm:tripod}, $\H^1(S\cap \Delta) \ge \H^1(\Sigma_f\cap \Delta)$,
+  and hence, by Lemma~\ref{lm:tripod}, $\H^1(S\cap \Delta) \ge \H^1(\Sigma_u\cap \Delta)$,
   since $\abs{H_1 - T}\ge \dist(T,Y)$, and analogously for $k=2,3$.
-  Putting all together, we obtain $\H^1(S)\ge \H^1(\Sigma_f)$
-  which means that $\Sigma_f\in \M(A_f)$, and actually $H^1(S)=\H^1(\Sigma_f)$.
+  Putting all together, we obtain $\H^1(S)\ge \H^1(\Sigma_u)$
+  which means that $\Sigma_u\in \M(A_f)$, and actually $H^1(S)=\H^1(\Sigma_u)$.
 
-  Since we have the equality $\H^1(S)=\H^1(\Sigma_f)$ the inequalities 
-  $\H^1(S\cap \Delta)\le \H^1(\Sigma_f\cap \Delta)$ and
+  Since we have the equality $\H^1(S)=\H^1(\Sigma_u)$ the inequalities 
+  $\H^1(S\cap \Delta)\le \H^1(\Sigma_u\cap \Delta)$ and
   $\H^1(S'_k)\ge \H^1(\Sigma'_k)$, $k=1,2,3$, must all be equalities.
   It means that $S'_k\in \M(A_k\cup \Delta)$ for $k=1,2,3$, and,
   by Theorem~\ref{th:main}, we might conclude that $S'_k\cup A_k = \Sigma'_k$.
-  As a consequence we have also $S\cap \Delta = \Sigma_f\cap \Delta$ because 
+  As a consequence we have also $S\cap \Delta = \Sigma_u\cap \Delta$ because 
   the tripod $S\cap \Delta$ is uniquely determined by the points of $S$ on 
   the boundary of $\Delta$.
 \end{proof}
 
 The Theorem below shows that, in fact, the constructed set 
-$\Sigma_f$ is the universal Steiner tree, 
+$\Sigma_u$ is the universal Steiner tree, 
 in the sense that it contains homeomorphic copies of all 
 Steiner trees.
 
 \begin{theorem}
-Let $\Sigma_f$ be the full tree as defined in the introduction
-with such $\lambda>0$ that $\Sigma_f\in \M(A_f)$.
+Let $\Sigma_u$ be the full tree as defined in the introduction
+with such $\lambda>0$ that $\Sigma_u\in \M(A_f)$.
 Then
 \begin{enumerate}
   \item[(i)]
-given any $S$ compact connected subset of $\Sigma_f$, 
+given any $S$ compact connected subset of $\Sigma_u$, 
 letting $D$ stand for the set of the endpoints of $S$,
 one has $S\in \M(D)$;
   \item[(ii)]
 given any abstract possibly infinite binary tree (i.e.\ a graph 
 such that every pair of vertices has a unique finite path connecting them and all vertices 
 have order at most 3) 
-there exists a subset $S\subset \Sigma_f$
+there exists a subset $S\subset \Sigma_u$
 such that $S$ is homeomorphic to the topological space given by the abstract tree 
 (and hence, by the previous point, $S\in \M(D)$ is a Steiner tree for 
 the set of its endpoints $D$);
@@ -1358,18 +1358,18 @@ the set of its endpoints $D$);
   (or any metric space with the Heine-Borel property) 
   and any $S\in \M(D)$, with $\H^1(S)<+\infty$ if $S_0$ 
   is any connected component of $S\setminus D$, 
-  then $S_0$ is homeomerphic to a subtree of $\Sigma_f$.
+  then $S_0$ is homeomerphic to a subtree of $\Sigma_u$.
 \end{enumerate}
 \end{theorem}
 %
 \begin{proof}
 To prove (i) take any set $S'$ such that $S'\cup D$ is connected 
 and $\H^1(S)<+\infty$. 
-Consider $\Sigma_f' = (\Sigma_f\setminus S) \cup S'$.
-We claim that $\Sigma_f'$ is pathwise connected. 
-In fact given any two points $x,y\in \Sigma_f'$ since $\Sigma_f$ is connected 
-and $\H^1(\Sigma_f)<+\infty$ there exists an injective curve $\gamma \subset \Sigma_f$ 
-connecting $x$ and $y$. If $\gamma$ does not intersect $S$ then $\gamma\subset \Sigma_f'$.
+Consider $\Sigma_u' = (\Sigma_u\setminus S) \cup S'$.
+We claim that $\Sigma_u'$ is pathwise connected. 
+In fact given any two points $x,y\in \Sigma_u'$ since $\Sigma_u$ is connected 
+and $\H^1(\Sigma_u)<+\infty$ there exists an injective curve $\gamma \subset \Sigma_u$ 
+connecting $x$ and $y$. If $\gamma$ does not intersect $S$ then $\gamma\subset \Sigma_u'$.
 Otherwise $\gamma$ should intersect $S$. 
 Then we can take the curve $\gamma_1$ which is the part of $\gamma$ connecting $x$ 
 to the first point of $x'$ of $\gamma$ in $\bar S$ 
@@ -1379,33 +1379,33 @@ Since $S'\cup D$ is connected
 and $\H^1(S'\cup D)=\H^1(S')<+\infty$ there exists an injective 
 curve $\gamma_3$ connecting $x'$ to $y'$ in $S'\cup D$. 
 The union $\gamma_1\cup \gamma_3\cup \gamma_2$ is a curve connecting $x$ to $y$ 
-in $\Sigma_f'$, proving the claim.
-Since $\Sigma_f\in \M(A_f)$ we have $\H^1(\Sigma_f')\le \H^1(\Sigma_f)$
-but since $\H^1(\Sigma_f') \le \H^1(\Sigma_f)-\H^1(S) + \H^1(S'\cup D)$ 
+in $\Sigma_u'$, proving the claim.
+Since $\Sigma_u\in \M(A_f)$ we have $\H^1(\Sigma_u')\le \H^1(\Sigma_u)$
+but since $\H^1(\Sigma_u') \le \H^1(\Sigma_u)-\H^1(S) + \H^1(S'\cup D)$ 
 we obtain $\H^1(S)\le \H^1(S'\cup D)$ which proves $S\in \M(D)$.
 
 For the proof of (ii) we take any abstract binary tree $T$ and take a vertex $v$ of $T$.
-We map $v$ to the point $(0,0)\in \Sigma_f$. 
+We map $v$ to the point $(0,0)\in \Sigma_u$. 
 Then we consider the edges of $T$ meeting in $v$ and map them 
-among the three segments of $\Sigma_f$ meeting in $(0,0)$. 
+among the three segments of $\Sigma_u$ meeting in $(0,0)$. 
 We then proceed by induction on the distance of the vertices from $v$: once 
 we have mapped all the vertices up to distance $n$, for each of these vertices 
 we have at most two adjacent vertices at distance $n+1$ which we can map to the two 
-adjacent vertices of the tree in $\Sigma_f$.
+adjacent vertices of the tree in $\Sigma_u$.
 Since the graph is a tree, the additional vertices were not already mapped.
 And since it is connected, all the vertices are reached by the induction.
 
 For the point (iii), given any compact set $D\subset \RR^d$ and any $S\in \M(D)$,
 we recall that (by Proposition~\ref{prop:PaoSte}) every connected component $A_0$ 
 of $S\setminus D$ is a locally finite binary tree. 
-Hence, by (ii), $A_0$ is homeomorphic to a subset of $\Sigma_f$.
+Hence, by (ii), $A_0$ is homeomorphic to a subset of $\Sigma_u$.
 \end{proof}
 
 \begion{remark}
 Notice that the set $\Sigma$ is universal in the weaker 
 sense of containing homeomerphic copies of every \emph{finite}
 Steiner tree, but, for example, it does not contain any 
-homeomorphic copy of $\Sigma_f$.
+homeomorphic copy of $\Sigma_u$.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
