@@ -5,7 +5,8 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage{pgf,tikz}
-%\usepackage{showkeys}
+%\usepackage{showkeys}+
+
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
@@ -161,7 +162,7 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
       \node at (0.7,0) [above] {$\Sigma_u$};
       \node at (0,0) [below right] {$O$};
       \node at (1,0) [right] {$T$};
-      \node at (1.65,0.5) {$A_f$};
+      \node at (1.65,0.5) {$A_u$};
       \myter{\mybin{\mybin{\mybin{\mybin{\mybin{\draw (0,0) -- (1,0);}}}}}}
       \begin{scope}
         \pgftransformxshift{2cm}
@@ -177,7 +178,7 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
   \caption{The self-similar tree with a countable 
   number of triple junctions and an uncountable number 
   of leaves which are the limit points of the triple 
-  junctions. On the left the \emph{full} fractal tree $\Sigma_u$, 
+  junctions. On the left the \emph{universal} fractal tree $\Sigma_u$, 
   on the right a single branch $\Sigma$, with a fixed root in the origin.}
 \end{figure}
 
@@ -250,13 +251,13 @@ compact, with finite positive length: $\H^1(\Sigma) = \frac{1}{1-2\lambda}$.
 The set $C=\ENCLOSE{O}\cup A$ is the set of \emph{endpoints} of the tree $\Sigma$ i.e.\ 
 the set of points $x\in \Sigma$ such that $\Sigma\setminus\ENCLOSE{x}$ remains connected.
 
-The full tree $\Sigma_u$, depicted in Figure~\ref{fig:tree}, left side,
+The universal tree $\Sigma_u$, depicted in Figure~\ref{fig:tree}, left side,
 is the union of three rotated copies of $\Sigma$: $\Sigma_u = \Sigma \cup \phi(\Sigma) \cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of $120$ degrees centered in $O$.
-Analogously we define $A_f = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_u$.
+Analogously we define $A_u = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_u$.
 
 In Theorem~\ref{th:main} we show that for $\lambda$ sufficiently small the set $\Sigma_u$ 
-is the unique shortest set which connects $A_f$.
+is the unique shortest set which connects $A_u$.
 
 
 % To be more precise, 
@@ -1270,23 +1271,23 @@ $\Sigma \in \M(Y\cup A)$ which implies the claim.
 
 \end{proof}
 
-We can now prove the main result for the full tree $\Sigma_u$.
+We can now prove the main result for the universal tree $\Sigma_u$.
 
-Let $A$, $\Sigma$, $A_f$, $\Sigma_u$, be the sets defined in the introduction
+Let $A$, $\Sigma$, $A_u$, $\Sigma_u$, be the sets defined in the introduction
 (see Figure~\ref{fig:tree})
-$A_f = A \cup \phi(A)\cup \phi^2(A)$ and 
+$A_u = A \cup \phi(A)\cup \phi^2(A)$ and 
 $\Sigma_u = \Sigma \cup \phi(\Sigma)\cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
 
-\begin{theorem}[full minimizer]\label{th:full}
+\begin{theorem}[universal minimizer]\label{th:full}
   Suppose $\lambda < \frac 1{29}$.
-  Then, $S \in \M(A_f)$ if and only if $S\cup A_f = \Sigma_u$.
+  Then, $S \in \M(A_u)$ if and only if $S\cup A_u = \Sigma_u$.
 \end{theorem}
 \begin{proof}
   Let $v_1 = (1,0)\in \RR^2$, $v_2=\phi(v_1)$, $v_3=\phi^2(v_1)$ 
   be the vertices of an equilateral 
   triangle of side length $\ell = \sqrt 3$ centered in the origin.
-  Let $S\in \M(A_f)$.
+  Let $S\in \M(A_u)$.
   Let $\rho = \frac{\lambda}{1-\lambda}$, so that $A\subset B_\rho(v_1)$ as 
   stated in Lemma~\ref{lm:01}.
   By Lemma~\ref{lemma:triple} we know that there exists a point 
@@ -1320,7 +1321,7 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
   and hence, by Lemma~\ref{lm:tripod}, $\H^1(S\cap \Delta) \ge \H^1(\Sigma_u\cap \Delta)$,
   since $\abs{H_1 - T}\ge \dist(T,Y)$, and analogously for $k=2,3$.
   Putting all together, we obtain $\H^1(S)\ge \H^1(\Sigma_u)$
-  which means that $\Sigma_u\in \M(A_f)$, and actually $H^1(S)=\H^1(\Sigma_u)$.
+  which means that $\Sigma_u\in \M(A_u)$, and actually $H^1(S)=\H^1(\Sigma_u)$.
 
   Since we have the equality $\H^1(S)=\H^1(\Sigma_u)$ the inequalities 
   $\H^1(S\cap \Delta)\le \H^1(\Sigma_u\cap \Delta)$ and
@@ -1338,8 +1339,8 @@ in the sense that it contains homeomorphic copies of all
 Steiner trees.
 
 \begin{theorem}
-Let $\Sigma_u$ be the full tree as defined in the introduction
-with such $\lambda>0$ that $\Sigma_u\in \M(A_f)$.
+Let $\Sigma_u$ be the universal tree as defined in the introduction
+with such $\lambda>0$ that $\Sigma_u\in \M(A_u)$.
 Then
 \begin{enumerate}
   \item[(i)]
@@ -1380,7 +1381,7 @@ and $\H^1(S'\cup D)=\H^1(S')<+\infty$ there exists an injective
 curve $\gamma_3$ connecting $x'$ to $y'$ in $S'\cup D$. 
 The union $\gamma_1\cup \gamma_3\cup \gamma_2$ is a curve connecting $x$ to $y$ 
 in $\Sigma_u'$, proving the claim.
-Since $\Sigma_u\in \M(A_f)$ we have $\H^1(\Sigma_u')\le \H^1(\Sigma_u)$
+Since $\Sigma_u\in \M(A_u)$ we have $\H^1(\Sigma_u')\le \H^1(\Sigma_u)$
 but since $\H^1(\Sigma_u') \le \H^1(\Sigma_u)-\H^1(S) + \H^1(S'\cup D)$ 
 we obtain $\H^1(S)\le \H^1(S'\cup D)$ which proves $S\in \M(D)$.
 
