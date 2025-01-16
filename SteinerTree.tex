@@ -108,7 +108,7 @@ The Steiner problem with datum $C$ consists of finding a set $S\subset \RR^2$
 such that $S\cup C$ is connected and $\H^1(S)$ is minimal, where $\H^1$ stands 
 for the $1$-dimensional Hausdorff measure (i.e.\ the length of the set).
 Usually this problem is considered for the case when $C$ is a finite 
-set and in this setting it becomes a problem of combinatorial geometry. 
+set and, in this setting, it becomes a problem of combinatorial geometry. 
 The Steiner problem goes back to Jarník and Kössler \cite{JarKos34} 
 (although some of its particular cases are much more ancient, for instance 
 when $C$ is the set of the three vertices of a triangle the problem was 
@@ -211,8 +211,8 @@ In this paper we develop a method which in particular uses
 a further simplification and a generalization of 
 the idea developed in \cite{CheTep23} to obtain the minimality and also uniqueness 
 not only for the \emph{rooted tree} (Figure~\ref{fig:tree}, right side) 
-but also for the full fractal tree (Figure~\ref{fig:tree}, left side), 
-see Theorem~\ref{th:main} and~\ref{th:full} below.
+but also for the universal fractal tree (Figure~\ref{fig:tree}, left side), 
+see Theorem~\ref{th:main} and~\ref{th:universal} below.
 
 Let us make some more precise statements.
 Let $\lambda>0$ be fixed.
@@ -1279,7 +1279,7 @@ $A_u = A \cup \phi(A)\cup \phi^2(A)$ and
 $\Sigma_u = \Sigma \cup \phi(\Sigma)\cup \phi^2(\Sigma)$
 where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
 
-\begin{theorem}[universal minimizer]\label{th:full}
+\begin{theorem}[universal minimizer]\label{th:universal}
   Suppose $\lambda < \frac 1{29}$.
   Then, $S \in \M(A_u)$ if and only if $S\cup A_u = \Sigma_u$.
 \end{theorem}
@@ -1334,18 +1334,20 @@ where $\phi$ is the counter-clockwise rotation of angle of 120 degrees.
 \end{proof}
 
 The Theorem below shows that, in fact, the constructed set 
-$\Sigma_u$ is the universal Steiner tree, 
+$\Sigma_u$ is a universal Steiner tree, 
 in the sense that it contains homeomorphic copies of all 
 Steiner trees.
 
 \begin{theorem}
+  \label{th:universality}
 Let $\Sigma_u$ be the universal tree as defined in the introduction
 with such $\lambda>0$ that $\Sigma_u\in \M(A_u)$.
 Then
 \begin{enumerate}
   \item[(i)]
-given any $S$ compact connected subset of $\Sigma_u$, 
-letting $D$ stand for the set of the endpoints of $S$,
+given any $S$ connected subset of $\Sigma_u$, 
+letting $D=\partial_{\Sigma_u}(S\setminus A_u)$ (the topological boundary of $S\setminus A_u$ relative 
+to $\Sigma_u$),
 one has $S\in \M(D)$;
   \item[(ii)]
 given any abstract possibly infinite binary tree (i.e.\ a graph 
@@ -1364,26 +1366,25 @@ the set of its endpoints $D$);
 \end{theorem}
 %
 \begin{proof}
+Clearly $\H^1(S)\le \H^1(\Sigma_u)<+\infty$.
 To prove (i) take any set $S'$ such that $S'\cup D$ is connected 
-and $\H^1(S)<+\infty$. 
-Consider $\Sigma_u' = (\Sigma_u\setminus S) \cup S'$.
-We claim that $\Sigma_u'$ is pathwise connected. 
-In fact given any two points $x,y\in \Sigma_u'$ since $\Sigma_u$ is connected 
-and $\H^1(\Sigma_u)<+\infty$ there exists an injective curve $\gamma \subset \Sigma_u$ 
-connecting $x$ and $y$. If $\gamma$ does not intersect $S$ then $\gamma\subset \Sigma_u'$.
-Otherwise $\gamma$ should intersect $S$. 
-Then we can take the curve $\gamma_1$ which is the part of $\gamma$ connecting $x$ 
-to the first point of $x'$ of $\gamma$ in $\bar S$ 
-and the curve $\gamma_2$ which is the part of $\gamma$
-connecting the last point $y'$ of $\gamma$ in $\bar S$ to $y$. 
-Since $S'\cup D$ is connected 
-and $\H^1(S'\cup D)=\H^1(S')<+\infty$ there exists an injective 
-curve $\gamma_3$ connecting $x'$ to $y'$ in $S'\cup D$. 
-The union $\gamma_1\cup \gamma_3\cup \gamma_2$ is a curve connecting $x$ to $y$ 
-in $\Sigma_u'$, proving the claim.
-Since $\Sigma_u\in \M(A_u)$ we have $\H^1(\Sigma_u')\le \H^1(\Sigma_u)$
-but since $\H^1(\Sigma_u') \le \H^1(\Sigma_u)-\H^1(S) + \H^1(S'\cup D)$ 
-we obtain $\H^1(S)\le \H^1(S'\cup D)$ which proves $S\in \M(D)$.
+and $\H^1(S')<+\infty$ and hence $S'\cup D$ is pathwise connected. 
+Consider $\Sigma' = (\Sigma_u\setminus S) \cup A_u \cup \bar S'$.
+
+We claim that $\Sigma'$ is pathwise connected.
+Fixed $x_0\in D$ we are going to show that any $x\in \Sigma'$ can be joined to $x_0$ 
+by a curve contained in $\Sigma'$.
+If $x\in \bar S'$ then $x$ can be joined to $x_0$ with a curve in $\bar S' \subset \Sigma'$ 
+because $\bar S'$ is connected (see Lemma~\ref{lm:connected}).
+if $x\in \Sigma'\setminus \bar S'$ then $x\in \Sigma_u$ and there exists a curve in $\Sigma_u$ 
+joining $x$ to $x_0$: we can restrict such a curve up to the first point $x'\in \bar S'$ and 
+reduce to the previous case. The claim is proven.
+
+Since $\Sigma_u\in \M(A_u)$ and $\Sigma'$ is a competitor to $\Sigma_u$ 
+we have $\H^1(\Sigma')\le \H^1(\Sigma_u)$
+but since $\H^1(\Sigma') \le \H^1(\Sigma_u)-\H^1(S) + \H^1(A_u) + \H^1(\bar S')$ 
+we obtain (see Lemma~\ref{lm:connected} again) $\H^1(S)\le \H^1(\bar S') = \H^1(S')$ 
+which proves $S\in \M(D)$.
 
 For the proof of (ii) we take any abstract binary tree $T$ and take a vertex $v$ of $T$.
 We map $v$ to the point $(0,0)\in \Sigma_u$. 
@@ -1413,166 +1414,166 @@ homeomorphic copy of $\Sigma_u$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\hide{
-\section{Non symmetric trees}
-
-In this section we want to consider the case of a tree where each branch can have different length.
-To deal with this case we need to introduce a notation to describe the parameters of the tree, which 
-can now differ on every subsequent branch of the tree.
-
-Let $G=\ENCLOSE{0,L,R,LL,LR,RL,RR,LLL,\dots}$ be the set of all finite words composed by letters 
-$L$ (for left) and $R$ (for right). We let $0$ represent the empty word.
-If $w\in G$ we denote with $Lw\in G$ and $Rw\in G$ the words obtained by adding, 
-respectively, $L$ and $R$ to the left of the word $w$.
-We agree that $L0=L$ and $R0=R$.
-We will also consider $L$ and $R$ be functions on $G$, letting $L(w):=Lw$ and $R(w):=Rw$.
-We let $\abs{w}$ be the length of the word $w$.
-Each segment in an infinite splitting tree can be identified by a word $w\in G$:
-$0$ is the trunk, $L$ the first left branch, $R$ the first right branch, $LL$ is the branch obtained by taking
-the first left branch and then the first left branch again, and so on.
-
-Given a function $\mathbb \lambda\colon G\to (0,1)$ we write $\lambda_w:=\lambda(w)$.
-We will consider the splitting tree $\Sigma_\lambda$ composed by a trunk of length $\lambda_0$ splitting 
-into two branches (with equal angles of 120 degrees) of length $\lambda_0\lambda_L$ and $\lambda_0\lambda_R$
-and then splitting again so that $\lambda_w$ represents the ratio between the length of the branch $w$ with respect 
-to the length of its parent branch. 
-This way a constant function $\lambda_w = \lambda_0$ will represent a self-similar tree as the one considered in the previous section.
-
-Let us make this more precise.
-We identify $\RR^2$ with $\CC$ and consider $\theta=e^{\frac{\pi}{3}i}$.
-We consider the two roto-translations $f_L,f_R\colon \CC\to \CC$ defined by 
-$f_L(z):= 1+\theta z$ and $f_R(z):=1+\bar\theta z$.
-The root of our tree will be the point $0\in \CC$ and first triple point (or branching point) will be 
-$T_0^\lambda:=\lambda_0\in \RR\subset \CC$. 
-The branching point $T_w^\lambda$ at the end of the segment identified by the word $w\in G$ can be defined by a recursive formula:
-\[
-   \begin{cases}
-    T_0^\lambda = \lambda_0, \\
-    T_{Lw}^\lambda = \lambda_0 f_L(T_w^{\lambda\circ L}), \\
-    T_{Rw}^\lambda = \lambda_0 f_R(T_w^{\lambda\circ L}).
-   \end{cases}
-\]
-Notice that $\lambda\circ L\colon G \to (0,1)$ is the function representing the ratios of the lengths of the left branch of the tree 
-while $\lambda\circ R$ represents the right branch: 
-in fact $(\lambda\circ L)(w) = \lambda(Lw)$ and $(\lambda\circ R)(w) = \lambda(Rw)$.
-When $\lambda$ is fixed we will write $T_w$ in place of $T_w^\lambda$.
-For example, fixed $\lambda\colon G\to(0,1)$, we have: 
-\begin{align*}
-  T_L &= \lambda_0 (1+\theta \lambda_L) = \lambda_0+\theta \lambda_0\lambda_L,\\
-  T_{LR} &= \lambda_0(1+\theta\lambda_L(1+\bar \theta\lambda_{LR})) 
-    = \lambda_0 + \theta \lambda_0\lambda_L + \lambda_0\lambda_L\lambda_{LR},\\
-  T_{LRR} &= \lambda_0 (1+ \theta \lambda_L(1+\bar \theta \lambda_R(1+\bar \theta \lambda_{LRR}))) \\
-    &= \lambda_0 + \theta \lambda_0\lambda_L + \lambda_0\lambda_L\lambda_R + \bar\theta \lambda_0\lambda_L\lambda_R\lambda_{LRR}.
-\end{align*}
-To define the tree $\Sigma_\lambda$ we first define the finite trees $\Sigma_\lambda^n$ by induction:
-\[
-\begin{cases}
-  \Sigma_\lambda^0 = \emptyset \subset \CC, \\
-  \Sigma_\lambda^{n+1} = \lambda_0\big([0,1] \cup f_L(\Sigma_{\lambda\circ L}^n) \cup f_R(\Sigma_{\lambda\circ R}^n)\big).
-\end{cases}
-\]
-The tree $\Sigma_\lambda^n$ is composed by $2^n-1$ segments, has a root in the origin, 
-$2^{n-1}$ leaves
-(the endpoints, or terminal points of the tree, apart from the root)
-and $2^n-1$ branching points.
-Finally we define
-\[
-  S_\lambda = \bigcup_{n\in \NN} \Sigma_\lambda^n,
-  \qquad
-  \Sigma_\lambda = \bar S_\lambda
-  \qquad
-  A_\lambda = \Sigma_\lambda \setminus S_\lambda.
-\]
-The set $S_\lambda$ is an infinite branching tree with a root in the origin, 
-and terminal points (leaves) in the set $A_\lambda$.
-The set $A_\lambda$ is also the set of limit points of the sequences $T^\lambda_w$ as $\abs{w}\to\infty$. 
-The set $\ENCLOSE{0}\cup A_\lambda$ is the set of endpoints of $\Sigma_\lambda$.
-
-Clearly $\Sigma_\lambda$ is compact and connected, 
-and hence $\Sigma_\lambda\in \St(\ENCLOSE{0}\cup A_\lambda)$.
-
-We are now going to extend the results of the previous section to the case of non symmetric trees.
-\begin{lemma}\label{lm2:existsA} 
-  Let $\lambda\colon G\to (0,1)$ be given.
-  For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A_\lambda)$ is nonempty.
-  If $\lambda < \frac 1 2$ (i.e.\ $\lambda_w < \frac 1 2$ for all $w\in G$)
-  then for every $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$
-  one has $\H^1(\Sigma^\lambda)<+\infty$, $\H^1(A_\lambda)=0$ hence $A_\lambda$ is totally disconnected.
-  Moreover for any $S \in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
-  one has that $\H^1(S)<\infty$,
-  $\bar S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ and
-  $\bar S$ contains $A_\lambda$.
-\end{lemma}
-\begin{proof}
-  The proof follows that of Lemma~\ref{lm:existsA}. 
-  Just notice that if $\lambda \le \mu$, for some constant 
-  $\mu\in \RR$ then one has 
-  $\H^1(\Sigma_\lambda)\le \frac{1}{1-2\mu}$ which is 
-  finite if $\mu<\frac 1 2$.
-  Let $\ell(\mu)=\sup\ENCLOSE{\H^1(A_\lambda)\colon \lambda \le \mu}$.
-  The set $A_\lambda$ is the union 
-  of two sets which are rescaled copies of $A_{\lambda\circ L}$ and $A_{\lambda\circ R}$
-  by a rescaling factor $\lambda_0$.
-  Hence, if $\lambda \le \mu$, 
-  \[
-    \H^1(A_\lambda) \le \mu (\H^1(A_{\lambda\circ L}) + \H^1(A_{\lambda\circ R}))
-    \le 2\mu \ell(\mu).
-  \]
-  This implies that $\ell(\mu)\le 2\mu \ell(\mu)$ and hence $\ell(\mu)=0$ 
-  if $\mu< \frac 1 2$.  
-  The conclusions follow.
-\end{proof}
-
-\begin{lemma}\label{lm2:01}
-Let $\lambda\colon G\to (0,1)$ be given 
-with $\mu=\sup \lambda < \frac 1 {12}$.
-Let $\rho = \frac{\mu}{1-\mu}$,
-$r=\frac{2\rho}{\sqrt 3}$.
-The point $T_0^\lambda=(\lambda_0,0)\in\RR^2$ and the 
-set $A_\lambda\subset \RR^2$ are defined as above.
-Then $A_\lambda\subset \bar B_\rho(T_0)$ and 
-given any $d<\frac {\lambda_0} 2$ and any
-$S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
-there exists $T\in \partial B_r(T_0)$ such that
-we have that $S\setminus B_r(T_0)$ is a straight line segment
-$[H,T]$ perpendicular to $\ENCLOSE{x=d}$ 
-with $H\in \ENCLOSE{x=d}$.
-In particular $\bar S$ is connected.
-\end{lemma}
-%
-\begin{proof}
-  Notice that $\abs{T_w-T_0} \le \lambda_0\mu + \lambda_0\mu^2 + \dots + \lambda_0\mu^n$ 
-  if $w\in G$ is a word of length $n$. 
-  Hence $\abs{T_w-T_0}\le \frac{\lambda_0\mu}{1-\mu}$
-  and $A_\lambda\subset \bar B_\rho(T^\lambda_0)$.
-  The rest of the proof follows that of Lemma~\ref{lm:01}.
-  A sufficient condition to apply Lemma~\ref{lm:base} is 
-  $3r < \frac{\lambda_0}{2}$ which holds true if $\mu < \frac 1 {12}$.
-\end{proof}
-
-\begin{lemma}\label{lm:precedente1}
-  Let $X=\ENCLOSE{(x,0)\colon x\in \RR}$ and $Y=\ENCLOSE{(0,y)\colon y\in \RR}$.
-  Let $\lambda\colon G\to (0,1)$ be given with $\mu=\sup \lambda <\frac 1 2$.
-  Notice that $A_\lambda = A_\lambda^+ \cup A_\lambda^-$ where 
-  $A^+ = \lambda_0 f_L(A_{\lambda\circ L}) = A_\lambda \cap \ENCLOSE{(x,y)\colon y>0}$ 
-  is the left-hand side 
-  part of $A_\lambda$
-  and $A^- = \lambda_0 f_R(A_{\lambda\circ R}) = A_\lambda \cap\ENCLOSE{(x,y)\colon y<0}$ 
-  is the right-hand side.
-  One has
-  \begin{align*}
-      \dist(Y,A_\lambda) 
-      &= \min \ENCLOSE{\dist(Y,A^+),\dist(Y,A^-)}\\
-      \dist(Y,A^+)
-      & \ge \lambda_0 + \frac{\lambda_0}{2} \lambda_L\frac{1-\mu-3\mu^2}{1-\mu^2}, \\
-      \dist(Y,A^-)
-      & \ge \lambda_0 + \frac{\lambda_0}{2} \lambda_R\frac{1-\mu-3\mu^2}{1-\mu^2}, \\
-      \dist(A^+,A^-) &\ge 
-      \frac{\sqrt 3}{2} \lambda_0(\lambda_L+\lambda_R)\frac{1-\mu-\mu^2}{1-\mu}.
-  \end{align*}
-  \end{lemma}  
-}
-
+%% \hide{
+%% \section{Non symmetric trees}
+%% 
+%% In this section we want to consider the case of a tree where each branch can have different length.
+%% To deal with this case we need to introduce a notation to describe the parameters of the tree, which 
+%% can now differ on every subsequent branch of the tree.
+%% 
+%% Let $G=\ENCLOSE{0,L,R,LL,LR,RL,RR,LLL,\dots}$ be the set of all finite words composed by letters 
+%% $L$ (for left) and $R$ (for right). We let $0$ represent the empty word.
+%% If $w\in G$ we denote with $Lw\in G$ and $Rw\in G$ the words obtained by adding, 
+%% respectively, $L$ and $R$ to the left of the word $w$.
+%% We agree that $L0=L$ and $R0=R$.
+%% We will also consider $L$ and $R$ be functions on $G$, letting $L(w):=Lw$ and $R(w):=Rw$.
+%% We let $\abs{w}$ be the length of the word $w$.
+%% Each segment in an infinite splitting tree can be identified by a word $w\in G$:
+%% $0$ is the trunk, $L$ the first left branch, $R$ the first right branch, $LL$ is the branch obtained by taking
+%% the first left branch and then the first left branch again, and so on.
+%% 
+%% Given a function $\mathbb \lambda\colon G\to (0,1)$ we write $\lambda_w:=\lambda(w)$.
+%% We will consider the splitting tree $\Sigma_\lambda$ composed by a trunk of length $\lambda_0$ splitting 
+%% into two branches (with equal angles of 120 degrees) of length $\lambda_0\lambda_L$ and $\lambda_0\lambda_R$
+%% and then splitting again so that $\lambda_w$ represents the ratio between the length of the branch $w$ with respect 
+%% to the length of its parent branch. 
+%% This way a constant function $\lambda_w = \lambda_0$ will represent a self-similar tree as the one considered in the previous section.
+%% 
+%% Let us make this more precise.
+%% We identify $\RR^2$ with $\CC$ and consider $\theta=e^{\frac{\pi}{3}i}$.
+%% We consider the two roto-translations $f_L,f_R\colon \CC\to \CC$ defined by 
+%% $f_L(z):= 1+\theta z$ and $f_R(z):=1+\bar\theta z$.
+%% The root of our tree will be the point $0\in \CC$ and first triple point (or branching point) will be 
+%% $T_0^\lambda:=\lambda_0\in \RR\subset \CC$. 
+%% The branching point $T_w^\lambda$ at the end of the segment identified by the word $w\in G$ can be defined by a recursive formula:
+%% \[
+%%    \begin{cases}
+%%     T_0^\lambda = \lambda_0, \\
+%%     T_{Lw}^\lambda = \lambda_0 f_L(T_w^{\lambda\circ L}), \\
+%%     T_{Rw}^\lambda = \lambda_0 f_R(T_w^{\lambda\circ L}).
+%%    \end{cases}
+%% \]
+%% Notice that $\lambda\circ L\colon G \to (0,1)$ is the function representing the ratios of the lengths of the left branch of the tree 
+%% while $\lambda\circ R$ represents the right branch: 
+%% in fact $(\lambda\circ L)(w) = \lambda(Lw)$ and $(\lambda\circ R)(w) = \lambda(Rw)$.
+%% When $\lambda$ is fixed we will write $T_w$ in place of $T_w^\lambda$.
+%% For example, fixed $\lambda\colon G\to(0,1)$, we have: 
+%% \begin{align*}
+%%   T_L &= \lambda_0 (1+\theta \lambda_L) = \lambda_0+\theta \lambda_0\lambda_L,\\
+%%   T_{LR} &= \lambda_0(1+\theta\lambda_L(1+\bar \theta\lambda_{LR})) 
+%%     = \lambda_0 + \theta \lambda_0\lambda_L + \lambda_0\lambda_L\lambda_{LR},\\
+%%   T_{LRR} &= \lambda_0 (1+ \theta \lambda_L(1+\bar \theta \lambda_R(1+\bar \theta \lambda_{LRR}))) \\
+%%     &= \lambda_0 + \theta \lambda_0\lambda_L + \lambda_0\lambda_L\lambda_R + \bar\theta \lambda_0\lambda_L\lambda_R\lambda_{LRR}.
+%% \end{align*}
+%% To define the tree $\Sigma_\lambda$ we first define the finite trees $\Sigma_\lambda^n$ by induction:
+%% \[
+%% \begin{cases}
+%%   \Sigma_\lambda^0 = \emptyset \subset \CC, \\
+%%   \Sigma_\lambda^{n+1} = \lambda_0\big([0,1] \cup f_L(\Sigma_{\lambda\circ L}^n) \cup f_R(\Sigma_{\lambda\circ R}^n)\big).
+%% \end{cases}
+%% \]
+%% The tree $\Sigma_\lambda^n$ is composed by $2^n-1$ segments, has a root in the origin, 
+%% $2^{n-1}$ leaves
+%% (the endpoints, or terminal points of the tree, apart from the root)
+%% and $2^n-1$ branching points.
+%% Finally we define
+%% \[
+%%   S_\lambda = \bigcup_{n\in \NN} \Sigma_\lambda^n,
+%%   \qquad
+%%   \Sigma_\lambda = \bar S_\lambda
+%%   \qquad
+%%   A_\lambda = \Sigma_\lambda \setminus S_\lambda.
+%% \]
+%% The set $S_\lambda$ is an infinite branching tree with a root in the origin, 
+%% and terminal points (leaves) in the set $A_\lambda$.
+%% The set $A_\lambda$ is also the set of limit points of the sequences $T^\lambda_w$ as $\abs{w}\to\infty$. 
+%% The set $\ENCLOSE{0}\cup A_\lambda$ is the set of endpoints of $\Sigma_\lambda$.
+%% 
+%% Clearly $\Sigma_\lambda$ is compact and connected, 
+%% and hence $\Sigma_\lambda\in \St(\ENCLOSE{0}\cup A_\lambda)$.
+%% 
+%% We are now going to extend the results of the previous section to the case of non symmetric trees.
+%% \begin{lemma}\label{lm2:existsA} 
+%%   Let $\lambda\colon G\to (0,1)$ be given.
+%%   For every $d\in \RR$ the family $\M(\ENCLOSE{x=d}\cup A_\lambda)$ is nonempty.
+%%   If $\lambda < \frac 1 2$ (i.e.\ $\lambda_w < \frac 1 2$ for all $w\in G$)
+%%   then for every $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$
+%%   one has $\H^1(\Sigma^\lambda)<+\infty$, $\H^1(A_\lambda)=0$ hence $A_\lambda$ is totally disconnected.
+%%   Moreover for any $S \in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
+%%   one has that $\H^1(S)<\infty$,
+%%   $\bar S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ and
+%%   $\bar S$ contains $A_\lambda$.
+%% \end{lemma}
+%% \begin{proof}
+%%   The proof follows that of Lemma~\ref{lm:existsA}. 
+%%   Just notice that if $\lambda \le \mu$, for some constant 
+%%   $\mu\in \RR$ then one has 
+%%   $\H^1(\Sigma_\lambda)\le \frac{1}{1-2\mu}$ which is 
+%%   finite if $\mu<\frac 1 2$.
+%%   Let $\ell(\mu)=\sup\ENCLOSE{\H^1(A_\lambda)\colon \lambda \le \mu}$.
+%%   The set $A_\lambda$ is the union 
+%%   of two sets which are rescaled copies of $A_{\lambda\circ L}$ and $A_{\lambda\circ R}$
+%%   by a rescaling factor $\lambda_0$.
+%%   Hence, if $\lambda \le \mu$, 
+%%   \[
+%%     \H^1(A_\lambda) \le \mu (\H^1(A_{\lambda\circ L}) + \H^1(A_{\lambda\circ R}))
+%%     \le 2\mu \ell(\mu).
+%%   \]
+%%   This implies that $\ell(\mu)\le 2\mu \ell(\mu)$ and hence $\ell(\mu)=0$ 
+%%   if $\mu< \frac 1 2$.  
+%%   The conclusions follow.
+%% \end{proof}
+%% 
+%% \begin{lemma}\label{lm2:01}
+%% Let $\lambda\colon G\to (0,1)$ be given 
+%% with $\mu=\sup \lambda < \frac 1 {12}$.
+%% Let $\rho = \frac{\mu}{1-\mu}$,
+%% $r=\frac{2\rho}{\sqrt 3}$.
+%% The point $T_0^\lambda=(\lambda_0,0)\in\RR^2$ and the 
+%% set $A_\lambda\subset \RR^2$ are defined as above.
+%% Then $A_\lambda\subset \bar B_\rho(T_0)$ and 
+%% given any $d<\frac {\lambda_0} 2$ and any
+%% $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
+%% there exists $T\in \partial B_r(T_0)$ such that
+%% we have that $S\setminus B_r(T_0)$ is a straight line segment
+%% $[H,T]$ perpendicular to $\ENCLOSE{x=d}$ 
+%% with $H\in \ENCLOSE{x=d}$.
+%% In particular $\bar S$ is connected.
+%% \end{lemma}
+%% %
+%% \begin{proof}
+%%   Notice that $\abs{T_w-T_0} \le \lambda_0\mu + \lambda_0\mu^2 + \dots + \lambda_0\mu^n$ 
+%%   if $w\in G$ is a word of length $n$. 
+%%   Hence $\abs{T_w-T_0}\le \frac{\lambda_0\mu}{1-\mu}$
+%%   and $A_\lambda\subset \bar B_\rho(T^\lambda_0)$.
+%%   The rest of the proof follows that of Lemma~\ref{lm:01}.
+%%   A sufficient condition to apply Lemma~\ref{lm:base} is 
+%%   $3r < \frac{\lambda_0}{2}$ which holds true if $\mu < \frac 1 {12}$.
+%% \end{proof}
+%% 
+%% \begin{lemma}\label{lm:precedente1}
+%%   Let $X=\ENCLOSE{(x,0)\colon x\in \RR}$ and $Y=\ENCLOSE{(0,y)\colon y\in \RR}$.
+%%   Let $\lambda\colon G\to (0,1)$ be given with $\mu=\sup \lambda <\frac 1 2$.
+%%   Notice that $A_\lambda = A_\lambda^+ \cup A_\lambda^-$ where 
+%%   $A^+ = \lambda_0 f_L(A_{\lambda\circ L}) = A_\lambda \cap \ENCLOSE{(x,y)\colon y>0}$ 
+%%   is the left-hand side 
+%%   part of $A_\lambda$
+%%   and $A^- = \lambda_0 f_R(A_{\lambda\circ R}) = A_\lambda \cap\ENCLOSE{(x,y)\colon y<0}$ 
+%%   is the right-hand side.
+%%   One has
+%%   \begin{align*}
+%%       \dist(Y,A_\lambda) 
+%%       &= \min \ENCLOSE{\dist(Y,A^+),\dist(Y,A^-)}\\
+%%       \dist(Y,A^+)
+%%       & \ge \lambda_0 + \frac{\lambda_0}{2} \lambda_L\frac{1-\mu-3\mu^2}{1-\mu^2}, \\
+%%       \dist(Y,A^-)
+%%       & \ge \lambda_0 + \frac{\lambda_0}{2} \lambda_R\frac{1-\mu-3\mu^2}{1-\mu^2}, \\
+%%       \dist(A^+,A^-) &\ge 
+%%       \frac{\sqrt 3}{2} \lambda_0(\lambda_L+\lambda_R)\frac{1-\mu-\mu^2}{1-\mu}.
+%%   \end{align*}
+%%   \end{lemma}  
+%% }
+%% 
 \bibliographystyle{plain}
 %\bibliography{../share/math/biblio}
 \begin{thebibliography}{1}
