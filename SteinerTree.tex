@@ -7,7 +7,6 @@
 \usepackage{pgf,tikz}
 %\usepackage{showkeys}+
 
-
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
 
@@ -1339,7 +1338,7 @@ in the sense that it contains homeomorphic copies of all
 Steiner trees.
 
 \begin{theorem}
-  \label{th:universality}
+\label{th:universality}%
 Let $\Sigma_u$ be the universal tree as defined in the introduction
 with such $\lambda>0$ that $\Sigma_u\in \M(A_u)$.
 Then
@@ -1368,22 +1367,43 @@ the set of its endpoints $D$);
 \begin{proof}
 Clearly $\H^1(S)\le \H^1(\Sigma_u)<+\infty$.
 To prove (i) take any set $S'$ such that $S'\cup D$ is connected 
-and $\H^1(S')<+\infty$ and hence $S'\cup D$ is pathwise connected. 
-Consider $\Sigma' = (\Sigma_u\setminus S) \cup A_u \cup \bar S'$.
+and $\H^1(S')<+\infty$. 
+Consider 
+\[
+  \Sigma' 
+      := (\Sigma_u\setminus S) \cup S' \cup D.
+\]
 
-We claim that $\Sigma'$ is pathwise connected.
-Fixed $x_0\in D$ we are going to show that any $x\in \Sigma'$ can be joined to $x_0$ 
-by a curve contained in $\Sigma'$.
-If $x\in \bar S'$ then $x$ can be joined to $x_0$ with a curve in $\bar S' \subset \Sigma'$ 
-because $\bar S'$ is connected (see Lemma~\ref{lm:connected}).
-if $x\in \Sigma'\setminus \bar S'$ then $x\in \Sigma_u$ and there exists a curve in $\Sigma_u$ 
-joining $x$ to $x_0$: we can restrict such a curve up to the first point $x'\in \bar S'$ and 
-reduce to the previous case. The claim is proven.
+\emph{Step 1.} We claim that $\Sigma'$ is connected.
+After fixing $x_0\in D$ we are going to show that for any $x\in \Sigma'$ there exists 
+a connected set containing $x$ and $x_0$ and contained in $\Sigma'\cup D$.
+If $x\in S'\cup D$ then just take $S'\cup D$ and we are done.
+Otherwise 
+\[
+  x\in \Sigma'\setminus (S'\cup D) 
+    = (\Sigma_u\setminus S)\setminus(S'\cup D)
+    = \Sigma_u \setminus (S\cup S' \cup D),
+\]
+in particular $x\not\in S$ and hence $x\not \in S\setminus A_u$.
+By Lemma~\ref{lemma_da_fare} applied to the connected component $C$ of 
+$\Sigma_u\setminus(S\setminus A_u)$ containing $x$,
+since $\Sigma_u$ is locally connected, we know that $\bar C\cap \partial (S\setminus A_u)$
+is non empty. Hence there is $x_1\in \bar C \cap \partial (S\setminus A_u)$ and $\bar C$
+is connected. Therefore $\bar C \cup (S'\cup D)$ is a connected set containing 
+both $x$ and $x_0$, showing the claim.
 
-Since $\Sigma_u\in \M(A_u)$ and $\Sigma'$ is a competitor to $\Sigma_u$ 
-we have $\H^1(\Sigma')\le \H^1(\Sigma_u)$
-but since $\H^1(\Sigma') \le \H^1(\Sigma_u)-\H^1(S) + \H^1(A_u) + \H^1(\bar S')$ 
-we obtain (see Lemma~\ref{lm:connected} again) $\H^1(S)\le \H^1(\bar S') = \H^1(S')$ 
+\emph{Step 2.} We claim that $\H^1(D)=0$. 
+Consider $\Sigma_u$ as a metric space with the geodesic distance. 
+... Serve dire che $\Sigma_u$ è Ahlfors regolare.... 
+
+It is easy to check that $A_u\subset \Sigma'$ hence
+since $\Sigma'$ is connected, we have that $\Sigma'$ is in fact 
+a competitor to the minimality of $\Sigma_u\in \M(A_u)$ hence $\H^1(\Sigma')\le \H^1(\Sigma_u)$.
+But since 
+\[
+  \H^1(\Sigma') \le \H^1(\Sigma_u)-\H^1(S) + \H^1(S') + \H^1(D) 
+\]
+we obtain $\H^1(S)\le \H^1(S')$ 
 which proves $S\in \M(D)$.
 
 For the proof of (ii) we take any abstract binary tree $T$ and take a vertex $v$ of $T$.
@@ -1402,6 +1422,22 @@ we recall that (by Proposition~\ref{prop:PaoSte}) every connected component $A_0
 of $S\setminus D$ is a locally finite binary tree. 
 Hence, by (ii), $A_0$ is homeomorphic to a subset of $\Sigma_u$.
 \end{proof}
+
+\begin{lemma}\label{lemma_da_fare}
+Let $X$ be a locally connected metric space, $A\subset X$, and 
+$C$ a connected component of $A$. Then $\partial C \subset \partial A$.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+\begin{remark}
+Notice that if $X$ is not locally connected, Lemma~\ref{lemma_da_fare} is not true.
+In fact if $X$ is the so called Knaster-Kuratowski fan, which is even connected, 
+there exist $x\in X$ such that $A\defeq X\setminus\ENCLOSE{x}$ is totally disconnected hence
+every connected component $C$ of $A$ is a singleton $C=\ENCLOSE{c}$.
+Hence $\partial C = \ENCLOSE{c}$ while $\partial A = \ENCLOSE{x}$ and clearly $c\neq x$.
+\end{remark}
 
 \begin{remark}
 Notice that the set $\Sigma$ is universal in the weaker 
