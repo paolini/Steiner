@@ -112,8 +112,14 @@ The Steiner problem goes back to Jarník and Kössler \cite{JarKos34}
 (although some of its particular cases are much more ancient, for instance 
 when $C$ is the set of the three vertices of a triangle the problem was 
 stated already by Fermat and solved by Torricelli).
-The problem is computationally hard and relatively few explicit solutions 
-are known, especially in the cases when the number of points is large.
+The problem is computationally hard \cite{GarGraJoh77}.
+Only few explicit examples of indecomposable solutions with an arbitrarily large number of points 
+are known, namely when the set $C$ is either contained in a circle 
+\cite{Rub97}
+(in particular when it is the set of vertices of a regular polygon
+\cite{DuHwaWen87}),
+or in the case of the so called \emph{ladders} 
+\cite{BurDudMai96,BurDud96,ChuGra78}.
 
 However the problem is important for the more general setting of possibly infinite 
 sets $C$. 
@@ -130,8 +136,18 @@ of a binary tree for a finite set of points $C$ with arbitrarily
 large number of points, has been answered positively by Ivanov and 
 Tuzhilin \cite{IvaTuz94} by means of an abstract construction
 which gives no information on the length of the branches of the tree.
-Further, an explicit construction of such a tree has been developed
-in \cite{PaoSteTep15}, were the set $C$ consists of a \emph{root} $H$ and uncountably many
+In this paper we provide a very natural construction of an infinite 
+binary tree connecting a fractal set $C$ of positive
+Hausdorff dimension, which is the unique solution to the Steiner problem
+with datum $C$.
+Moreover the tree is universal in the sense that it contains, as a subtree,
+any finite or infinite Steiner tree of any given combinatorial structure
+(Theorem~\ref{th:universality}).
+
+The first explicit construction of an optimal Steiner tree connecting 
+an uncountable set of vertices, has been developed
+in \cite{PaoSteTep15}, were the set $C$ consists of a \emph{root} $O$ 
+and uncountably many
 points (\emph{leaves}) which together give a totally disconnected perfect set 
 (i.e.\ every connected component is a point, but the points are not isolated).
 No segment of $S$
@@ -142,7 +158,8 @@ is composed by a \emph{trunk} of
 some length $\ell$ which splits at angles of 120 degrees 
 into two branches of length $\lambda_1 \ell$ 
 both of which split further at the same angles into two branches of length
-$\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
+$\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree} right side, where the case 
+$\lambda_k=\lambda$ is depicted).
 \begin{figure}
   \begin{tikzpicture}
     \def\mybin#1{#1\begin{scope}
@@ -177,7 +194,7 @@ $\lambda_1\lambda_2\ell$ and so on (see Figure~\ref{fig:tree}, right side).
   \caption{The self-similar tree with a countable 
   number of triple junctions and an uncountable number 
   of leaves which are the limit points of the triple 
-  junctions. On the left the \emph{universal} fractal tree $\Sigma_u$, 
+  junctions. On the left the \emph{universal} tree $\Sigma_u$, 
   on the right a single branch $\Sigma$, with a fixed root in the origin.}
 \end{figure}
 
@@ -200,7 +217,7 @@ of an infinite \emph{irrigation} tree which is a solution to
 a ramified transportation problem similar to the Steiner problem.
 The method itself is very useful and can be applied in many situations.
 However it failed in this particular problem.
-A breakthrough has been provided by the recent paper \cite{CheTep23}
+A breakthrough has been achieved in the paper \cite{CheTep23}
 where the authors provide a much simpler, symmetry based argument, to show that for 
 sufficiently small but constant coefficients the above construction,
 for a single branch with a fixed root,
@@ -257,9 +274,11 @@ is the union of three rotated copies of $\Sigma$: $\Sigma_u = \Sigma \cup \phi(\
 where $\phi$ is the counter-clockwise rotation of $120$ degrees centered in $O$.
 Analogously we define $A_u = A \cup \phi(A) \cup \phi^2(A)$ the set of endpoints of $\Sigma_u$.
 
-In Theorem~\ref{th:main} we show that for $\lambda$ sufficiently small the set $\Sigma_u$ 
-is the unique shortest set which connects $A_u$.
-
+In Theorem~\ref{th:main} and \ref{th:universal},
+for $\lambda$ sufficiently small,
+we show that the sets 
+$\Sigma$ and $\Sigma_u$ are
+the shortest sets connecting $A$ and $A_u$ respectively.
 
 % To be more precise, 
 % let $\RR^2$ be identified with the complex plane $\CC$
@@ -314,7 +333,7 @@ we also write
   \dist(S_1,S_2) 
     &:= \inf\ENCLOSE{\abs{x-y}\colon x\in S_1, y\in S_2}.
 \end{align*}
-For $P,Q\in \RR^2$ we denote by $[P,Q]$ the closed straight line 
+For $P,Q\in \RR^2$ we denote by $[P,Q]$ the closed line 
 segment with endpoints $P$ and $Q$, with $[P,Q)$ and $(P,Q]$ 
 we denote the half-open segments, and with $(P,Q)$ we denote 
 the open segment.
@@ -363,7 +382,7 @@ and \cite{IvaTuz94}.
     \item[(iii)] $S\setminus C$ is a locally finite Steiner tree in the sense that 
     for all $x\in S\setminus C$ and almost all 
     $\rho < \dist(x,C)$ the set $S\cap \bar B_\rho(x)$ 
-    is the union of a finite number of straight line 
+    is the union of a finite number of line 
     segments which meet in triple points with equal 
     angles of 120 degrees and have endpoints in 
     $\partial B_\rho(x)$.
@@ -446,7 +465,7 @@ pathwise connected.
   because branching points can only accumulate on $C^*$ 
   by Proposition~\ref{prop:PaoSte}(ii).
   But this is not possible because in $B_\eps(H)$ there are no triple points.
-  Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a straight line segment 
+  Clearly the arc from $H$ to $Q$ in $\bar S_1$ is a line segment 
   (by Proposition~\ref{prop:PaoSte}(iii)) hence $[H,Q]\subset \bar S$.
 
   If $S_1$ contains no triple point then $\bar S_1 =[H,Q]$ for some $Q$, 
@@ -475,7 +494,7 @@ pathwise connected.
 \end{proof}
 
 \begin{lemma}\label{lm:exists}
-  Let $C$ be a compact subset of $\RR^2$ and $\ell$ be a straight line.
+  Let $C$ be a compact subset of $\RR^2$ and $\ell$ be a line.
   Then $\M(\ell\cup C)\neq \emptyset$.
   If $C$ is also totally disconnected, $C\cap \ell=\emptyset$ 
   and $S\in \M(\ell\cup C)$  
@@ -550,7 +569,7 @@ pathwise connected.
   By Lemma~\ref{lm:angle} below
   with $A_j$ and $H_j$ in place of $C$ and $H$ respectively,
   one has that
-  the set $S_j\setminus B_r(P)$ is a straight line segment $[H_j,T_j]$
+  the set $S_j\setminus B_r(P)$ is a line segment $[H_j,T_j]$
   with $T_j\in \partial B_r(P)$, $j=1,2$.
   Since $\bar S_1\cap \bar S_2\subset \ell\cup C$ 
   the line segments $[H_1,T_1]$ and $[H_2,T_2]$ may only intersect at their endpoints.
@@ -568,7 +587,7 @@ pathwise connected.
   connected component of $S$, 
   denoting by $H$ its endpoint on $\ell$,
   and applying Lemma~\ref{lm:angle}, we have that 
-  $S\setminus B_r(P)$ is a straight line segment $[H,T]$.
+  $S\setminus B_r(P)$ is a line segment $[H,T]$.
   Finally, if $[H,T]$ were not perpendicular to $\ell$ by moving $H$ along $\ell$ 
   we could decrease the length of $[H,T]$ contrary to the minimality 
   of $S$.
@@ -589,7 +608,7 @@ pathwise connected.
     $Y_1,Y_2,Y_3$ are three lines in $\RR^2$
     forming angles of $60$ degrees so that 
     the three pairwise intersections identify
-    an equilateral triangle with sides of length $\ell$.
+    an equilateral triangle with side length $\ell$.
     Let $T$ be any point and let $d_i(T)$ be 
     the signed distance of $T$ from $Y_i$
     with positive sign when $T$ is inside the triangle.
@@ -737,7 +756,7 @@ We need the following lemmata.
   given any $d\le \frac 1 2$ and any
   $S\in \M(\ENCLOSE{x=d}\cup A)$ 
   there exists $T\in \partial B_r(T_0)$ such that
-  we have that $S\setminus B_r(T_0)$ is a straight line segment
+  we have that $S\setminus B_r(T_0)$ is a line segment
   $[H,T]$ perpendicular to $\ENCLOSE{x=d}$ 
   with $H\in \ENCLOSE{x=d}$.
   In particular $\bar S$ is connected.
@@ -1050,7 +1069,7 @@ The computation gives
   hence $f_j(A) \subset B_{\lambda\rho}(f_j(T_0))$
   for $j=1,2$.
   As noticed in Step~3 we know that $S$ is a regular tripod in a small 
-  neighbourhood of $T$ composed by three straight line segments forming 
+  neighbourhood of $T$ composed by three line segments forming 
   equal angles of 120 degrees. Since $S_0$ is perpendicular to $Y$ 
   it follows that $S_j$ contains a small segment perpendicular to $Y_j=f_j(Y)$.
   Since $S_j\in \M(\ENCLOSE{T}\cup f_j(A))$ for $j=1,2$,
@@ -1372,6 +1391,8 @@ the set of its endpoints $D$).
   sense of containing homeomerphic copies of every \emph{finite}
   Steiner tree, but, for example, it does not contain a 
   homeomorphic copy of $\Sigma_u$.
+  This weaker form of universality has been used, e.g., 
+  in~\cite{BasCheRasTep24}.
   \end{remark}
   %
 \begin{proof}[Proof of Theorem~\ref{th:universality}]
@@ -1589,7 +1610,7 @@ Hence $\partial C = \ENCLOSE{c}$ while $\partial A = \ENCLOSE{x}$ and clearly $c
 %% given any $d<\frac {\lambda_0} 2$ and any
 %% $S\in \M(\ENCLOSE{x=d}\cup A_\lambda)$ 
 %% there exists $T\in \partial B_r(T_0)$ such that
-%% we have that $S\setminus B_r(T_0)$ is a straight line segment
+%% we have that $S\setminus B_r(T_0)$ is a line segment
 %% $[H,T]$ perpendicular to $\ENCLOSE{x=d}$ 
 %% with $H\in \ENCLOSE{x=d}$.
 %% In particular $\bar S$ is connected.
