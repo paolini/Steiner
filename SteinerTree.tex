@@ -1378,6 +1378,7 @@ there exists a subset $S\subset \Sigma_u\setminus A_u$
 such that $S$ is homeomorphic to the topological space given by the abstract tree 
 (and hence, by the previous point, $S\in \M(D)$ is a Steiner tree for 
 the set of its endpoints $D$).
+
 \item[(iii)] 
   Let $X$ be any metric space with the Heine-Borel property
   (for example $X=\RR^d$), let $D\subset X$ be a compact set 
@@ -1387,14 +1388,19 @@ the set of its endpoints $D$).
 \end{enumerate}
 \end{theorem}
 
-\begin{remark}
+\begin{remark}\label{rem:universal}
   Notice that the set $\Sigma$ is also universal in the weaker 
   sense of containing homeomerphic copies of every \emph{finite}
   Steiner tree, but, for example, it does not contain a 
   homeomorphic copy of $\Sigma_u$.
+  Moreover, if the finite Steiner tree is coupled with an 
+  embedding class (as defined in \cite[lemma 3]{BasCheRasTep24}),
+  the construction of the homeomorphism in Step 4 of the proof of Theorem~\ref{th:universality}
+  below
+  can be done so that the embedding class is preserved.
   This weaker form of universality has been used, e.g., 
   in~\cite{BasCheRasTep24}.
-  \end{remark}
+\end{remark}
   %
 \begin{proof}[Proof of Theorem~\ref{th:universality}]
 Clearly $\H^1(S)\le \H^1(\Sigma_u)<+\infty$.
@@ -1449,7 +1455,7 @@ which proves $S\in \M(D)$, concluding the proof of (i).
 vertex $v$ of $T$.
 We map $v$ to the point $(0,0)\in \Sigma_u$. 
 Then we consider the $k\le 3$ edges of $T$ meeting in $v$ and map them 
-to $k$ of the three segments of $\Sigma_u$ meeting in $(0,0)$. 
+to $k$ (preserving the embedding class if applicable, see Remark~\ref{rem:universal}) of the three segments of $\Sigma_u$ meeting in $(0,0)$. 
 We then proceed by induction on the graph distance of the vertices from $v$: once 
 we have mapped all the vertices up to distance $n$, for each of these vertices 
 we have at most two adjacent vertices at distance $n+1$ which we can map to one or both of the two 
